@@ -9,9 +9,21 @@ class ClientController extends Controller
 {
     public function create()
     {
-        $services = [
-            'Kujdesi për pleq', 'Kujdesi për higjienë', 'Prania e flokëve', 'Ndihmë në ngrënie', 'Medikamented', 'Mbikëqyrje 24/7', 'Aktivitete shoqërore'
+        $serviceKeys = [
+            'service_elderly_care',
+            'service_hygiene',
+            'service_hair',
+            'service_eating',
+            'service_medication',
+            'service_monitoring',
+            'service_activities'
         ];
+        
+        $services = [];
+        foreach ($serviceKeys as $key) {
+            $services[] = __('services.' . $key);
+        }
+        
         $cantons = [
             'Zurich', 'Bern', 'Luzern', 'Uri', 'Schwyz', 'Obwalden', 'Nidwalden',
             'Glarus', 'Zug', 'Fribourg', 'Solothurn', 'Basel-Stadt', 'Basel-Landschaft',
@@ -28,23 +40,41 @@ class ClientController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
+            'phone_prefix' => 'required|string|max:10',
+            'phone_number' => 'required|string|max:20',
             'canton' => 'required|string|max:255',
             'services' => 'required|array|min:1',
             'hours' => 'required|integer|min:1|max:24',
             'total_price' => 'required|integer|min:0',
+            'service_date' => 'nullable|date|after_or_equal:today',
         ]);
         $data['services'] = implode(',', $data['services']);
         $client = Client::create($data);
 
         // Send email automatically to client
         try {
-            \Mail::raw(
-                "Pershendetje {$client->first_name},\n\nKerkesa juaj u pranua me sukses!\n\nDetajet:\nSherbimet: {$client->services}\nKantoni: {$client->canton}\nOre: {$client->hours}\nTotali: {$client->total_price} CHF\n\nFaleminderit!",
-                function($message) use ($client) {
-                    $message->to($client->email)
-                        ->subject('Kerkesa u pranua');
-                }
-            );
+            $emailBody = "Pershendetje {$client->first_name},\n\n";
+            $emailBody .= "Kerkesa juaj u pranua me sukses!\n\n";
+            $emailBody .= "Detajet:\n";
+            $emailBody .= "Emri: {$client->first_name} {$client->last_name}\n";
+            $emailBody .= "Email: {$client->email}\n";
+            $emailBody .= "Telefoni: {$client->phone_prefix} {$client->phone_number}\n";
+            $emailBody .= "Sherbimet: {$client->services}\n";
+            $emailBody .= "Kantoni: {$client->canton}\n";
+            $emailBody .= "Ore: {$client->hours}\n";
+            
+            if ($client->service_date) {
+                $serviceDate = \Carbon\Carbon::parse($client->service_date)->format('d M Y');
+                $emailBody .= "Data e sherbimit: {$serviceDate}\n";
+            }
+            
+            $emailBody .= "Totali: {$client->total_price} CHF\n\n";
+            $emailBody .= "Faleminderit!";
+            
+            \Mail::raw($emailBody, function($message) use ($client) {
+                $message->to($client->email)
+                    ->subject('Kerkesa u pranua');
+            });
         } catch (\Exception $e) {
             // Optional: log error
         }

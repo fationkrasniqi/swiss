@@ -115,6 +115,10 @@
                 <span class="value">{{ $client->email }}</span>
             </div>
             <div class="info-row">
+                <span class="label">Phone:</span>
+                <span class="value">{{ $client->phone_prefix }} {{ $client->phone_number }}</span>
+            </div>
+            <div class="info-row">
                 <span class="label">Canton:</span>
                 <span class="value">{{ $client->canton }}</span>
             </div>
@@ -130,6 +134,12 @@
                 <span class="label">Hours Requested:</span>
                 <span class="value">{{ $client->hours }} hours</span>
             </div>
+            @if($client->service_date)
+            <div class="info-row">
+                <span class="label">Service Date:</span>
+                <span class="value">{{ \Carbon\Carbon::parse($client->service_date)->format('d M Y') }}</span>
+            </div>
+            @endif
             <div class="info-row">
                 <span class="label">Total Price:</span>
                 <span class="value" style="font-weight:bold;color:#059669;font-size:16px">{{ $client->total_price }} CHF</span>

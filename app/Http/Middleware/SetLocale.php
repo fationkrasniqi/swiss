@@ -21,7 +21,7 @@ class SetLocale
         $locale = session('locale', 'sq');
         
         // Validate locale is one of the supported languages
-        if (in_array($locale, ['en', 'de', 'sq'])) {
+        if (in_array($locale, ['en', 'de', 'sq', 'fr'])) {
             App::setLocale($locale);
         } else {
             App::setLocale('sq');

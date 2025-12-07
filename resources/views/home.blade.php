@@ -1,22 +1,93 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kujdesi për Pleq - Shërbime profesionale</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>{{ __('home.seo_title') }}</title>
+    <meta name="description" content="{{ __('home.seo_description') }}">
+    <meta name="keywords" content="{{ __('home.seo_keywords') }}">
+    <meta name="author" content="{{ __('home.nav_brand') }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url('/') }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:title" content="{{ __('home.seo_title') }}">
+    <meta property="og:description" content="{{ __('home.seo_description') }}">
+    <meta property="og:image" content="{{ asset('images/og-image.jpg') }}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url('/') }}">
+    <meta name="twitter:title" content="{{ __('home.seo_title') }}">
+    <meta name="twitter:description" content="{{ __('home.seo_description') }}">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <!-- Stylesheets -->
     <link href="{{ asset('css/simple.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "{{ __('home.nav_brand') }}",
+      "description": "{{ __('home.seo_description') }}",
+      "url": "{{ url('/') }}",
+      "logo": "{{ asset('images/logo.png') }}",
+      "image": "{{ asset('images/og-image.jpg') }}",
+      "priceRange": "CHF",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CH"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      },
+      "medicalSpecialty": ["Geriatrics", "ElderCare", "HomeCare"],
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "{{ __('home.service_elderly_care') }}"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "{{ __('home.service_hygiene') }}"
+        }
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
+            line-height: 1.7; 
+            color: #2d3748;
+            font-size: 16px;
+        }
         
         /* Navbar */
         .navbar {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 18px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
         .navbar .container {
             display: flex;
@@ -24,89 +95,175 @@
             align-items: center;
         }
         .navbar-brand {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            color: #667eea;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
         .navbar-menu {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 35px;
             list-style: none;
         }
         .navbar-menu a {
-            color: #333;
+            color: #4a5568;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 15px;
+            transition: all 0.3s;
+            position: relative;
         }
         .navbar-menu a:hover {
-            color: #667eea;
+            color: #4facfe;
+        }
+        .navbar-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transition: width 0.3s;
+        }
+        .navbar-menu a:hover::after {
+            width: 100%;
         }
         .lang-switcher {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
         .lang-btn {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            border: 2px solid #667eea;
-            padding: 6px 14px;
-            border-radius: 20px;
+            background: rgba(79, 172, 254, 0.08);
+            color: #4facfe;
+            border: 2px solid rgba(79, 172, 254, 0.3);
+            padding: 8px 16px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
+            font-weight: 600;
+            font-size: 15px;
             transition: all 0.3s;
             cursor: pointer;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .lang-btn .flag {
+            font-size: 18px;
+            display: inline-block;
+            margin-right: 4px;
         }
         .lang-btn:hover {
-            background: #667eea;
+            background: #4facfe;
             color: white;
+            border-color: #4facfe;
+            transform: translateY(-2px);
         }
         .lang-btn.active {
-            background: #667eea;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
+            border-color: transparent;
         }
         
-        /* Hero Section */
+        /* Hero Section with Slider */
         .hero { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
             position: relative;
+            height: 650px;
+            overflow: hidden;
         }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; font-weight: 700; }
-        .hero p { font-size: 20px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.85) 0%, rgba(0, 242, 254, 0.75) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        .hero h1 { 
+            font-size: 56px; 
+            margin-bottom: 24px; 
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .hero p { 
+            font-size: 22px; 
+            margin-bottom: 35px; 
+            max-width: 700px; 
+            margin-left: auto; 
+            margin-right: auto;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
         .hero .btn-primary {
             background: white;
-            color: #667eea;
-            padding: 15px 40px;
-            border-radius: 30px;
+            color: #4facfe;
+            padding: 18px 50px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 17px;
             display: inline-block;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        .hero .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .hero .btn-primary:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
 
         /* Container */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* Section */
-        .section { padding: 80px 20px; }
+        .section { padding: 100px 20px; }
         .section-title { 
             text-align: center; 
-            font-size: 36px; 
-            margin-bottom: 50px; 
-            color: #333;
+            font-size: 42px; 
+            margin-bottom: 20px; 
+            color: #1a202c;
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
         .section-subtitle {
             text-align: center;
-            font-size: 18px;
-            color: #666;
+            font-size: 19px;
+            color: #718096;
             margin-bottom: 50px;
             max-width: 800px;
             margin-left: auto;
@@ -116,42 +273,62 @@
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
         }
         .service-card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 40px 35px;
+            box-shadow: 0 8px 30px rgba(79, 172, 254, 0.08);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(79, 172, 254, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(79, 172, 254, 0.2);
+            border-color: rgba(79, 172, 254, 0.3);
         }
         .service-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 56px;
+            margin-bottom: 22px;
+            display: block;
         }
         .service-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #1a202c;
+            font-weight: 600;
         }
         .service-card p {
-            color: #666;
+            color: #718096;
             line-height: 1.8;
+            font-size: 15px;
         }
 
         /* Gallery */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
         }
         .gallery-item {
             position: relative;
@@ -249,86 +426,185 @@
             color: #065f46;
             border: 1px solid #6ee7b7;
         }
+
+        /* Review Cards */
+        .review-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.1);
+            border: 2px solid rgba(79, 172, 254, 0.1);
+            transition: all 0.4s;
+        }
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(79, 172, 254, 0.2);
+            border-color: #4facfe;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-year {
+            min-width: 120px;
+            font-size: 42px;
+            font-weight: 700;
+            color: #4facfe;
+            text-align: center;
+        }
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.15);
+            border-left: 4px solid #4facfe;
+        }
+        .timeline-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 10px;
+        }
+        .timeline-content p {
+            color: #718096;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 60px;
+            }
+            .timeline-year {
+                position: absolute;
+                left: 0;
+                min-width: 80px;
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="{{ url('/') }}" class="navbar-brand">{{ __('home.nav_brand') }}</a>
-            <ul class="navbar-menu">
-                <li><a href="#home">{{ __('home.nav_home') }}</a></li>
-                <li><a href="#services">{{ __('home.nav_services') }}</a></li>
-                <li><a href="#gallery">{{ __('home.nav_gallery') }}</a></li>
-                <li><a href="#contact">{{ __('home.nav_contact') }}</a></li>
-                <li class="lang-switcher">
-                    <a href="{{ url('/lang/de') }}" class="lang-btn {{ app()->getLocale() == 'de' ? 'active' : '' }}">DE</a>
-                    <a href="{{ url('/lang/sq') }}" class="lang-btn {{ app()->getLocale() == 'sq' ? 'active' : '' }}">SQ</a>
-                    <a href="{{ url('/lang/en') }}" class="lang-btn {{ app()->getLocale() == 'en' ? 'active' : '' }}">EN</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: #4facfe; color: white; text-decoration: none;" 
+       onfocus="this.style.left = '10px'" onblur="this.style.left = '-9999px'">Skip to main content</a>
+    
+    <!-- Header with Navigation -->
+    <header role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="container">
+                <a href="{{ url('/') }}" class="navbar-brand" aria-label="Home - {{ __('home.nav_brand') }}">{{ __('home.nav_brand') }}</a>
+                <ul class="navbar-menu" role="menubar">
+                    <li role="none"><a href="#home" role="menuitem" aria-label="{{ __('home.nav_home') }}">{{ __('home.nav_home') }}</a></li>
+                    <li role="none"><a href="#services" role="menuitem" aria-label="{{ __('home.nav_services') }}">{{ __('home.nav_services') }}</a></li>
+                    <li role="none"><a href="#gallery" role="menuitem" aria-label="{{ __('home.nav_gallery') }}">{{ __('home.nav_gallery') }}</a></li>
+                    <li role="none"><a href="#contact" role="menuitem" aria-label="{{ __('home.nav_contact') }}">{{ __('home.nav_contact') }}</a></li>
+                    <li class="lang-switcher" role="none">
+                        <a href="{{ url('/lang/de') }}" class="lang-btn {{ app()->getLocale() == 'de' ? 'active' : '' }}" aria-label="Switch to German">🇩🇪 Deutsch</a>
+                        <a href="{{ url('/lang/fr') }}" class="lang-btn {{ app()->getLocale() == 'fr' ? 'active' : '' }}" aria-label="Switch to French">🇫🇷 Français</a>
+                        <a href="{{ url('/lang/sq') }}" class="lang-btn {{ app()->getLocale() == 'sq' ? 'active' : '' }}" aria-label="Switch to Albanian">🇦🇱 Shqip</a>
+                        <a href="{{ url('/lang/en') }}" class="lang-btn {{ app()->getLocale() == 'en' ? 'active' : '' }}" aria-label="Switch to English">🇬🇧 English</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>{{ __('home.hero_title') }}</h1>
-            <p>{{ __('home.hero_subtitle') }}</p>
-            <a href="#contact" class="btn-primary">{{ __('home.hero_cta') }}</a>
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section with Slider -->
+        <section id="home" class="hero" aria-label="Hero Banner">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1920&h=1080&fit=crop')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1920&h=1080&fit=crop')"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=1920&h=1080&fit=crop')"></div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 data-aos="fade-up" itemprop="name">{{ __('home.hero_title') }}</h1>
+                <p data-aos="fade-up" data-aos-delay="200" itemprop="description">{{ __('home.hero_subtitle') }}</p>
+                <a href="#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="400" aria-label="Contact us for elderly care services">{{ __('home.hero_cta') }}</a>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section">
+    <section id="services" class="section" aria-labelledby="services-heading" itemscope itemtype="https://schema.org/Service">
         <div class="container">
-            <h2 class="section-title">{{ __('home.services_title') }}</h2>
-            <p class="section-subtitle">{{ __('home.services_subtitle') }}</p>
+            <h2 id="services-heading" class="section-title" itemprop="name">{{ __('home.services_title') }}</h2>
+            <p class="section-subtitle" itemprop="description">{{ __('home.services_subtitle') }}</p>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">👴</div>
                     <h3>{{ __('home.service_elderly_care') }}</h3>
                     <p>{{ __('home.service_elderly_care_desc') }}</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">🧼</div>
                     <h3>{{ __('home.service_hygiene') }}</h3>
                     <p>{{ __('home.service_hygiene_desc') }}</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">💇</div>
                     <h3>{{ __('home.service_hair') }}</h3>
                     <p>{{ __('home.service_hair_desc') }}</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-icon">🍽️</div>
                     <h3>{{ __('home.service_eating') }}</h3>
                     <p>{{ __('home.service_eating_desc') }}</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">💊</div>
                     <h3>{{ __('home.service_medication') }}</h3>
                     <p>{{ __('home.service_medication_desc') }}</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">👁️</div>
                     <h3>{{ __('home.service_monitoring') }}</h3>
                     <p>{{ __('home.service_monitoring_desc') }}</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">🎨</div>
                     <h3>{{ __('home.service_activities') }}</h3>
                     <p>{{ __('home.service_activities_desc') }}</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-icon">🏥</div>
                     <h3>{{ __('home.service_transport') }}</h3>
                     <p>{{ __('home.service_transport_desc') }}</p>
@@ -342,29 +618,143 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="section" style="background:#f9fafb">
+    <section id="gallery" class="section" style="background:#f9fafb" aria-labelledby="gallery-heading">
         <div class="container">
-            <h2 class="section-title">{{ __('home.gallery_title') }}</h2>
+            <h2 id="gallery-heading" class="section-title">{{ __('home.gallery_title') }}</h2>
             <p class="section-subtitle">{{ __('home.gallery_subtitle') }}</p>
             
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&h=400&fit=crop" alt="Kujdesi për të moshuarit">
+            <div class="gallery" role="list">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100" role="listitem">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&h=400&fit=crop" 
+                         alt="Professional caregiver providing elderly care services to senior woman - Swiss elderly care center" 
+                         width="600" height="400">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=400&fit=crop" alt="Aktivitete argëtuese">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200" role="listitem">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=400&fit=crop" 
+                         alt="Seniors enjoying recreational activities and social engagement - Elderly care Switzerland" 
+                         width="600" height="400">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=400&fit=crop" alt="Stafi ynë profesional">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300" role="listitem">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=400&fit=crop" 
+                         alt="Professional medical staff team providing 24/7 elderly care and hygiene services" 
+                         width="600" height="400">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&h=400&fit=crop" alt="Ambiente të rehatshme">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400" role="listitem">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&h=400&fit=crop" 
+                         alt="Comfortable and safe living environment for elderly care - Swiss senior home" 
+                         width="600" height="400">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Kujdes personal">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500" role="listitem">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" 
+                         alt="Personal hygiene care and daily assistance for elderly - Professional caregiving services" 
+                         width="600" height="400">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&h=400&fit=crop" alt="Momente të lumtura">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600" role="listitem">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&h=400&fit=crop" 
+                         alt="Happy seniors enjoying quality care and support - Elderly care center Switzerland" 
+                         width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="section" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center;">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div style="font-size: 56px; font-weight: 700; margin-bottom: 10px;" class="counter" data-target="850">0</div>
+                    <div style="font-size: 18px; opacity: 0.95;">{{ __('home.stat_happy_seniors') }}</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div style="font-size: 56px; font-weight: 700; margin-bottom: 10px;" class="counter" data-target="15">0</div>
+                    <div style="font-size: 18px; opacity: 0.95;">{{ __('home.stat_years_experience') }}</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div style="font-size: 56px; font-weight: 700; margin-bottom: 10px;" class="counter" data-target="45">0</div>
+                    <div style="font-size: 18px; opacity: 0.95;">{{ __('home.stat_staff_members') }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section" style="background: #f9fafb;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">{{ __('home.reviews_title') }}</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.reviews_subtitle') }}</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px;">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Maria Schmidt</h4>
+                            <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
+                        </div>
+                    </div>
+                    <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_1_text') }}"</p>
+                </div>
+
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Thomas Müller</h4>
+                            <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
+                        </div>
+                    </div>
+                    <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_2_text') }}"</p>
+                </div>
+
+                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Sophie Dubois</h4>
+                            <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
+                        </div>
+                    </div>
+                    <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_3_text') }}"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Timeline Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">{{ __('home.story_title') }}</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.story_subtitle') }}</p>
+            
+            <div class="timeline" style="margin-top: 60px;">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-year">2009</div>
+                    <div class="timeline-content">
+                        <h3>{{ __('home.timeline_2009_title') }}</h3>
+                        <p>{{ __('home.timeline_2009_text') }}</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-content">
+                        <h3>{{ __('home.timeline_2014_title') }}</h3>
+                        <p>{{ __('home.timeline_2014_text') }}</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-content">
+                        <h3>{{ __('home.timeline_2019_title') }}</h3>
+                        <p>{{ __('home.timeline_2019_text') }}</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3>{{ __('home.timeline_2025_title') }}</h3>
+                        <p>{{ __('home.timeline_2025_text') }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,10 +763,10 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title">{{ __('home.contact_title') }}</h2>
-            <p class="section-subtitle">{{ __('home.contact_subtitle') }}</p>
+            <h2 class="section-title" data-aos="fade-up">{{ __('home.contact_title') }}</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.contact_subtitle') }}</p>
             
-            <div class="contact-form">
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
                 @if(session('status'))
                     <div class="alert alert-success">{{ __('home.contact_success') }}</div>
                 @endif
@@ -412,16 +802,80 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
         <div class="container">
-            <p>&copy; {{ date('Y') }} Kujdesi për Pleq. {{ __('home.footer_rights') }}</p>
+            <p itemprop="copyrightNotice">&copy; {{ date('Y') }} {{ __('home.nav_brand') }}. {{ __('home.footer_rights') }}</p>
             <p style="margin-top:10px">
-                <a href="{{ route('login') }}">Login</a> | 
-                <a href="{{ route('register') }}">Register</a>
+                <a href="{{ route('login') }}" aria-label="Login to admin panel">Login</a> | 
+                <a href="{{ route('register') }}" aria-label="Register new account">Register</a>
             </p>
+            <div style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.8);">
+                <p>{{ __('home.seo_keywords') }}</p>
+            </div>
         </div>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        let counterAnimated = false;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCounter();
+            });
+        };
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counterAnimated) {
+                    animateCounters();
+                    counterAnimated = true;
+                }
+            });
+        }, observerOptions);
+
+        if (counters.length > 0) {
+            observer.observe(counters[0].closest('section'));
+        }
+    </script>
 </body>
 </html>

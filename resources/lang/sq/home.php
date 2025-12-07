@@ -53,4 +53,33 @@ return [
     'contact_success' => 'Mesazhi u dërgua me sukses!',
     
     'footer_rights' => 'Të gjitha të drejtat e rezervuara.',
+    
+    // SEO Meta Tags
+    'seo_title' => 'Kujdesi për Pleq Zvicër | Shërbim Profesional 24/7 | Higjienë & Shëndët',
+    'seo_description' => 'Kujdes profesional për pleqtë dhe mbeshtetje mjekësore në Zvicër. 15 vjet eksperiencë, 850+ pleq të lumtur. Kujdes higjenik, asistencë mjekësore, ndihmë e përditshmem.',
+    'seo_keywords' => 'kujdesi për pleq, mbeshtetje mjekësore, kujdes higjenik, kujdes në shtepi, shërbim 24/7, Zvicër',
+    
+    // Stats
+    'stat_happy_seniors' => 'Pleq të Lumtur',
+    'stat_years_experience' => 'Vite Eksperiencë',
+    'stat_staff_members' => 'Staf Mjekësor',
+    
+    // Reviews
+    'reviews_title' => 'Vlerësimet & Komentet',
+    'reviews_subtitle' => 'Çfarë thonë klientët tanë për ne',
+    'review_1_text' => 'Kujdes i shkëlqyer për nënën time. Stafi është shumë profesional dhe i dashamër. Jam shumë i kënaqur me shërbimin.',
+    'review_2_text' => 'Vendimi më i mirë për kujdesin e babait tim. Stafi është shumë kompetent dhe miqsor. E rekomandoj fort!',
+    'review_3_text' => 'Shërbim i shkëlqyer! Ekipi kujdeset mrekullisht për gjyshen time. Ajo është e lumtur dhe e mirëmbajtur.',
+    
+    // Story Timeline
+    'story_title' => 'Historia Jonë',
+    'story_subtitle' => 'Si filloi gjithcka dhe si u zhvillua',
+    'timeline_2009_title' => 'Fillimi',
+    'timeline_2009_text' => 'U themelua me misionin për të ofruar kujdes cilësor për pleqtë.',
+    'timeline_2014_title' => 'Zgjerimi',
+    'timeline_2014_text' => 'Hapën e tre qendrave të reja të kujdesit në rajon.',
+    'timeline_2019_title' => 'Inovacioni',
+    'timeline_2019_text' => 'Prezantimi i sistemeve më të fundit të kujdesit dhe monitorimit shendëtsor.',
+    'timeline_2025_title' => 'Sot',
+    'timeline_2025_text' => 'Më shumë se 850 pleq të lumtur dhe 45 profesionistë të kujdesit.',
 ];

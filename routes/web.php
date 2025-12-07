@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 // Language Switcher
 Route::get('/lang/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'de', 'sq'])) {
+    if (in_array($locale, ['en', 'de', 'sq', 'fr'])) {
         session(['locale' => $locale]);
     }
     return redirect()->back();

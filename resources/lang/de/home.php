@@ -53,4 +53,33 @@ return [
     'contact_success' => 'Nachricht erfolgreich gesendet!',
     
     'footer_rights' => 'Alle Rechte vorbehalten.',
+    
+    // SEO Meta Tags
+    'seo_title' => 'Altenpflege Schweiz | Professionelle Pflege für Senioren | 24/7 Service',
+    'seo_description' => 'Professionelle Altenpflege und medizinische Betreuung in der Schweiz. 15 Jahre Erfahrung, 850+ zufriedene Senioren. Hygienepflege, medizinische Unterstützung, tägliche Hilfe.',
+    'seo_keywords' => 'Altenpflege, Seniorenbetreuung, Hygienepflege, medizinische Pflege, häusliche Pflege, 24/7 Betreuung, Schweiz',
+    
+    // Stats
+    'stat_happy_seniors' => 'Glückliche Senioren',
+    'stat_years_experience' => 'Jahre Erfahrung',
+    'stat_staff_members' => 'Pflegekräfte',
+    
+    // Reviews
+    'reviews_title' => 'Bewertungen & Erfahrungen',
+    'reviews_subtitle' => 'Was unsere Kunden über uns sagen',
+    'review_1_text' => 'Ausgezeichnete Pflege für meine Mutter. Das Personal ist sehr professionell und liebevoll. Ich bin sehr zufrieden mit dem Service.',
+    'review_2_text' => 'Die beste Entscheidung für die Pflege meines Vaters. Die Pflegekräfte sind sehr kompetent und freundlich. Sehr empfehlenswert!',
+    'review_3_text' => 'Hervorragender Service! Das Team kümmert sich wunderbar um meine Großmutter. Sie ist glücklich und gut versorgt.',
+    
+    // Story Timeline
+    'story_title' => 'Unsere Geschichte',
+    'story_subtitle' => 'Wie alles begann und sich entwickelt hat',
+    'timeline_2009_title' => 'Der Anfang',
+    'timeline_2009_text' => 'Gegründet mit der Mission, qualitativ hochwertige Pflege für Senioren anzubieten.',
+    'timeline_2014_title' => 'Expansion',
+    'timeline_2014_text' => 'Eröffnung von drei neuen Pflegezentren in der Region.',
+    'timeline_2019_title' => 'Innovation',
+    'timeline_2019_text' => 'Einführung modernster Pflege- und Gesundheitsüberwachungssysteme.',
+    'timeline_2025_title' => 'Heute',
+    'timeline_2025_text' => 'Über 850 glückliche Senioren und 45 professionelle Pflegekräfte.',
 ];

@@ -53,4 +53,33 @@ return [
     'contact_success' => 'Message sent successfully!',
     
     'footer_rights' => 'All rights reserved.',
+    
+    // SEO Meta Tags
+    'seo_title' => 'Elderly Care Switzerland | Professional 24/7 Service | Hygiene & Health',
+    'seo_description' => 'Professional elderly care and medical support in Switzerland. 15 years of experience, 850+ happy seniors. Hygiene care, medical assistance, daily support.',
+    'seo_keywords' => 'elderly care, senior care, hygiene care, medical support, home care, 24/7 service, Switzerland',
+    
+    // Stats
+    'stat_happy_seniors' => 'Happy Seniors',
+    'stat_years_experience' => 'Years of Experience',
+    'stat_staff_members' => 'Medical Staff',
+    
+    // Reviews
+    'reviews_title' => 'Reviews & Testimonials',
+    'reviews_subtitle' => 'What our clients say about us',
+    'review_1_text' => 'Excellent care for my mother. The staff is very professional and caring. I am very satisfied with the service.',
+    'review_2_text' => 'The best decision for my father’s care. The staff is very competent and friendly. Highly recommended!',
+    'review_3_text' => 'Outstanding service! The team takes wonderful care of my grandmother. She is happy and well cared for.',
+    
+    // Story Timeline
+    'story_title' => 'Our Story',
+    'story_subtitle' => 'How it all started and evolved',
+    'timeline_2009_title' => 'The Beginning',
+    'timeline_2009_text' => 'Founded with the mission to provide quality care for seniors.',
+    'timeline_2014_title' => 'Expansion',
+    'timeline_2014_text' => 'Opening of three new care centers in the region.',
+    'timeline_2019_title' => 'Innovation',
+    'timeline_2019_text' => 'Introduction of state-of-the-art care and health monitoring systems.',
+    'timeline_2025_title' => 'Today',
+    'timeline_2025_text' => 'Over 850 happy seniors and 45 professional caregivers.',
 ];
