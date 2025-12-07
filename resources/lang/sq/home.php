@@ -14,6 +14,12 @@ return [
     'services_title' => 'Shërbimet Tona',
     'services_subtitle' => 'Ofrojmë një gamë të gjerë shërbimesh të personalizuara për kujdesin e të moshuarve',
     
+    // Service Filter Buttons
+    'filter_all' => 'Të Gjitha',
+    'filter_care' => 'Kujdesi',
+    'filter_health' => 'Shëndeti',
+    'filter_activity' => 'Aktivitetet',
+    
     'service_elderly_care' => 'Kujdesi për Pleq',
     'service_elderly_care_desc' => 'Asistencë 24/7 për aktivitetet e përditshme, duke përfshirë lëvizjen, veshjen dhe kujdesin personal.',
     
@@ -44,10 +50,19 @@ return [
     'gallery_subtitle' => 'Momentet më të bukura të kujdesit dhe dashurisë për të moshuarit tanë',
     
     'contact_title' => 'Na Kontaktoni',
-    'contact_subtitle' => 'Jemi këtu për t\'ju dëgjuar dhe për t\'ju ndihmuar me çdo pyetje apo nevojë',
+    'contact_subtitle' => 'Jemi këtu për t’ju dëgjuar dhe ndihmuar me çdo pyetje apo nevojë',
+    'contact_phone' => 'Telefoni',
+    'contact_email_label' => 'E-mail',
+    'contact_address' => 'Adresa',
+    'contact_hours' => 'Orari i punës',
+    'contact_hours_weekdays' => 'Hën-Pre: 08:00 - 18:00',
+    'contact_hours_weekend' => 'Sht-Die: 10:00 - 16:00',
+    'contact_follow_us' => 'Na ndiqni',
+    'contact_form_title' => 'Dërgoni një mesazh',
+    'contact_form_subtitle' => 'Plotësoni formularin dhe ne do t’ju përgjigjemi sa më shpejt',
     'contact_first_name' => 'Emri',
     'contact_last_name' => 'Mbiemri',
-    'contact_email' => 'Email',
+    'contact_email' => 'E-mail',
     'contact_message' => 'Mesazhi',
     'contact_submit' => 'Dërgo Mesazhin',
     'contact_success' => 'Mesazhi u dërgua me sukses!',
@@ -81,7 +96,16 @@ return [
     'team_role_3' => 'Specialiste e Higjienës',
     'team_bio_3' => '10 vjet eksperiencë në kujdesin higjenik. E certifikuar në higjienë mjekësore dhe kujdes të plageve.',
     'team_role_4' => 'Asistent Mjekësor',
-    'team_bio_4' => '12 vjet në mbeshtetje mjekësore. I specializuar në menaxhimin e medikamenteve.',
+    'team_bio_4' => '12 vjet në mbeshtetje mjekësore. I specializuar në menaxhimin e barnave.',
+    'team_skill_1_1' => 'Geriatri',
+    'team_skill_1_2' => 'Kardiologji',
+    'team_skill_1_3' => '25 vjet',
+    'team_skill_2_1' => 'Neurologji',
+    'team_skill_2_2' => 'Demencë',
+    'team_skill_2_3' => '18 vjet',
+    'team_skill_3_1' => 'Kujdes intensiv',
+    'team_skill_3_2' => 'Kujdes i plagëve',
+    'team_skill_3_3' => '15 vjet',
     
     // Story Timeline
     'story_title' => 'Historia Jonë',

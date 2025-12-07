@@ -14,6 +14,12 @@ return [
     'services_title' => 'Unsere Dienstleistungen',
     'services_subtitle' => 'Wir bieten eine breite Palette personalisierter Dienstleistungen für die Altenpflege',
     
+    // Service Filter Buttons
+    'filter_all' => 'Alle',
+    'filter_care' => 'Pflege',
+    'filter_health' => 'Gesundheit',
+    'filter_activity' => 'Aktivitäten',
+    
     'service_elderly_care' => 'Altenpflege',
     'service_elderly_care_desc' => '24/7 Unterstützung bei täglichen Aktivitäten, einschließlich Mobilität, Ankleiden und persönlicher Pflege.',
     
@@ -45,6 +51,15 @@ return [
     
     'contact_title' => 'Kontaktieren Sie Uns',
     'contact_subtitle' => 'Wir sind hier, um Ihnen bei allen Fragen oder Bedürfnissen zuzuhören und zu helfen',
+    'contact_phone' => 'Telefon',
+    'contact_email_label' => 'E-Mail',
+    'contact_address' => 'Adresse',
+    'contact_hours' => 'Öffnungszeiten',
+    'contact_hours_weekdays' => 'Mo-Fr: 08:00 - 18:00',
+    'contact_hours_weekend' => 'Sa-So: 10:00 - 16:00',
+    'contact_follow_us' => 'Folgen Sie uns',
+    'contact_form_title' => 'Senden Sie uns eine Nachricht',
+    'contact_form_subtitle' => 'Füllen Sie das Formular aus und wir melden uns so schnell wie möglich',
     'contact_first_name' => 'Vorname',
     'contact_last_name' => 'Nachname',
     'contact_email' => 'E-Mail',
@@ -82,6 +97,15 @@ return [
     'team_bio_3' => '10 Jahre Erfahrung in Hygienepflege. Zertifiziert in medizinischer Hygiene und Wundpflege.',
     'team_role_4' => 'Medizinischer Assistent',
     'team_bio_4' => '12 Jahre in der medizinischen Unterstützung. Spezialisiert auf Medikamentenmanagement.',
+    'team_skill_1_1' => 'Geriatrie',
+    'team_skill_1_2' => 'Kardiologie',
+    'team_skill_1_3' => '25 Jahre',
+    'team_skill_2_1' => 'Neurologie',
+    'team_skill_2_2' => 'Demenz',
+    'team_skill_2_3' => '18 Jahre',
+    'team_skill_3_1' => 'Intensivpflege',
+    'team_skill_3_2' => 'Wundpflege',
+    'team_skill_3_3' => '15 Jahre',
     
     // Story Timeline
     'story_title' => 'Unsere Geschichte',

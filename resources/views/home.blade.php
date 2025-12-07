@@ -76,6 +76,64 @@
             line-height: 1.7; 
             color: #2d3748;
             font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #0a0e1a;
+            color: #e5e7eb;
+        }
+        body.dark-mode .navbar {
+            background: rgba(10, 14, 26, 0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+        }
+        body.dark-mode .navbar-brand {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        body.dark-mode .nav-link {
+            color: #d1d5db;
+        }
+        body.dark-mode .nav-link:hover {
+            color: #60a5fa;
+        }
+        body.dark-mode .hero-content h1 {
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        body.dark-mode .hero-content p {
+            color: #e5e7eb;
+        }
+        body.dark-mode .section {
+            background: #0a0e1a !important;
+        }
+        body.dark-mode .section-title {
+            color: #f9fafb;
+        }
+        body.dark-mode h3 {
+            color: #f3f4f6;
+        }
+        body.dark-mode h4 {
+            color: #e5e7eb;
+        }
+        body.dark-mode .section-subtitle {
+            color: #9ca3af;
+        }
+        body.dark-mode p {
+            color: #d1d5db;
+        }
+        body.dark-mode .footer {
+            background: #0a0e1a;
+            border-top: 1px solid rgba(79, 172, 254, 0.15);
+        }
+        body.dark-mode .footer a {
+            color: #60a5fa;
+        }
+        body.dark-mode .footer a:hover {
+            color: #3b82f6;
         }
         
         /* Navbar */
@@ -93,6 +151,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
+        }
+        .dark-mode-toggle {
+            background: transparent;
+            border: 2px solid #4facfe;
+            color: #4facfe;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .dark-mode-toggle:hover {
+            background: #4facfe;
+            color: white;
+            transform: rotate(180deg);
+        }
+        body.dark-mode .dark-mode-toggle {
+            border-color: #fbbf24;
+            color: #fbbf24;
+        }
+        body.dark-mode .dark-mode-toggle:hover {
+            background: #fbbf24;
+            color: #0f172a;
         }
         .navbar-brand {
             font-size: 26px;
@@ -342,6 +428,7 @@
             color: #999;
             font-size: 14px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
         .gallery-item img {
             width: 100%;
@@ -352,17 +439,99 @@
         .gallery-item:hover img {
             transform: scale(1.1);
         }
+        
+        /* Filter Buttons */
+        .filter-btn {
+            background: white;
+            border: 2px solid #4facfe;
+            color: #4facfe;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+        .filter-btn:hover {
+            background: #4facfe;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+        }
+        .back-to-top.show {
+            display: flex;
+        }
+        
+        /* Lightbox for Gallery */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 10000;
+        }
 
         /* Contact Form */
         .contact-section {
             background: #f9fafb;
         }
         .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
             background: white;
             padding: 40px;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .form-group {
@@ -387,7 +556,7 @@
             resize: vertical;
         }
         .btn-submit {
-            background: #667eea;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
             padding: 14px 40px;
             border: none;
@@ -395,6 +564,7 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            width: 100%;
             width: 100%;
             transition: background 0.3s;
         }
@@ -427,7 +597,27 @@
             border: 1px solid #6ee7b7;
         }
 
-        /* Review Cards */
+        /* Review Cards & Slider */
+        .reviews-slider {
+            position: relative;
+            min-height: 280px;
+            overflow: hidden;
+        }
+        .review-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+        .review-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
         .review-card {
             background: white;
             padding: 35px;
@@ -435,11 +625,71 @@
             box-shadow: 0 10px 30px rgba(79, 172, 254, 0.1);
             border: 2px solid rgba(79, 172, 254, 0.1);
             transition: all 0.4s;
+            max-width: 650px;
         }
         .review-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(79, 172, 254, 0.2);
             border-color: #4facfe;
+        }
+        .review-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid #4facfe;
+            color: #4facfe;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .review-arrow:hover {
+            background: #4facfe;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .review-arrow-prev {
+            left: -70px;
+        }
+        .review-arrow-next {
+            right: -70px;
+        }
+        .review-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 35px;
+        }
+        .review-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .review-dot.active {
+            background: #4facfe;
+            width: 32px;
+            border-radius: 6px;
+        }
+        .review-dot:hover {
+            background: #4facfe;
+        }
+        
+        @media (max-width: 1024px) {
+            .review-arrow-prev {
+                left: 10px;
+            }
+            .review-arrow-next {
+                right: 10px;
+            }
         }
 
         /* Team Cards */
@@ -491,6 +741,75 @@
             font-size: 15px;
             color: #718096;
             line-height: 1.7;
+        }
+
+        /* Team Cards - Simple Professional Design */
+        .team-card-advanced {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.15);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .team-card-advanced:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.25);
+        }
+        .team-badge {
+            background: #4facfe;
+            color: white;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        .team-photo-advanced {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        .team-photo-advanced img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .team-card-advanced:hover .team-photo-advanced img {
+            transform: scale(1.08);
+        }
+        .team-info-advanced {
+            padding: 30px 25px;
+        }
+        .team-info-advanced h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0 0 5px 0;
+        }
+        .team-role-advanced {
+            color: #4facfe;
+            font-weight: 600;
+            font-size: 15px;
+            margin: 0 0 15px 0;
+        }
+        .team-bio-advanced {
+            color: #718096;
+            line-height: 1.7;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        .team-skill {
+            display: inline-block;
+            background: rgba(79, 172, 254, 0.1);
+            color: #4facfe;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 3px;
         }
 
         /* Timeline */
@@ -583,6 +902,11 @@
                         <a href="{{ url('/lang/sq') }}" class="lang-btn {{ app()->getLocale() == 'sq' ? 'active' : '' }}" aria-label="Switch to Albanian">🇦🇱 Shqip</a>
                         <a href="{{ url('/lang/en') }}" class="lang-btn {{ app()->getLocale() == 'en' ? 'active' : '' }}" aria-label="Switch to English">🇬🇧 English</a>
                     </li>
+                    <li role="none">
+                        <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+                            <span class="dark-mode-icon">🌙</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -606,56 +930,64 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section with Filter -->
     <section id="services" class="section" aria-labelledby="services-heading" itemscope itemtype="https://schema.org/Service">
         <div class="container">
             <h2 id="services-heading" class="section-title" itemprop="name">{{ __('home.services_title') }}</h2>
             <p class="section-subtitle" itemprop="description">{{ __('home.services_subtitle') }}</p>
             
+            <!-- Service Filter Buttons -->
+            <div style="display: flex; justify-content: center; gap: 15px; margin: 40px 0; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="150">
+                <button class="filter-btn active" onclick="filterServices('all')" data-filter="all">{{ __('home.filter_all') }}</button>
+                <button class="filter-btn" onclick="filterServices('care')" data-filter="care">{{ __('home.filter_care') }}</button>
+                <button class="filter-btn" onclick="filterServices('health')" data-filter="health">{{ __('home.filter_health') }}</button>
+                <button class="filter-btn" onclick="filterServices('activity')" data-filter="activity">{{ __('home.filter_activity') }}</button>
+            </div>
+            
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100" data-category="care">
                     <div class="service-icon">👴</div>
                     <h3>{{ __('home.service_elderly_care') }}</h3>
                     <p>{{ __('home.service_elderly_care_desc') }}</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200" data-category="care">
                     <div class="service-icon">🧼</div>
                     <h3>{{ __('home.service_hygiene') }}</h3>
                     <p>{{ __('home.service_hygiene_desc') }}</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300" data-category="care">
                     <div class="service-icon">💇</div>
                     <h3>{{ __('home.service_hair') }}</h3>
                     <p>{{ __('home.service_hair_desc') }}</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400" data-category="care">
                     <div class="service-icon">🍽️</div>
                     <h3>{{ __('home.service_eating') }}</h3>
                     <p>{{ __('home.service_eating_desc') }}</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100" data-category="health">
                     <div class="service-icon">💊</div>
                     <h3>{{ __('home.service_medication') }}</h3>
                     <p>{{ __('home.service_medication_desc') }}</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200" data-category="health">
                     <div class="service-icon">👁️</div>
                     <h3>{{ __('home.service_monitoring') }}</h3>
                     <p>{{ __('home.service_monitoring_desc') }}</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300" data-category="activity">
                     <div class="service-icon">🎨</div>
                     <h3>{{ __('home.service_activities') }}</h3>
                     <p>{{ __('home.service_activities_desc') }}</p>
                 </div>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400" data-category="health">
                     <div class="service-icon">🏥</div>
                     <h3>{{ __('home.service_transport') }}</h3>
                     <p>{{ __('home.service_transport_desc') }}</p>
@@ -675,32 +1007,32 @@
             <p class="section-subtitle">{{ __('home.gallery_subtitle') }}</p>
             
             <div class="gallery" role="list">
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100" role="listitem">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100" role="listitem" onclick="openLightbox(this)">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&h=400&fit=crop" 
                          alt="Professional caregiver providing elderly care services to senior woman - Swiss elderly care center" 
                          width="600" height="400">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200" role="listitem">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200" role="listitem" onclick="openLightbox(this)">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=400&fit=crop" 
                          alt="Seniors enjoying recreational activities and social engagement - Elderly care Switzerland" 
                          width="600" height="400">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300" role="listitem">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300" role="listitem" onclick="openLightbox(this)">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=400&fit=crop" 
                          alt="Professional medical staff team providing 24/7 elderly care and hygiene services" 
                          width="600" height="400">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400" role="listitem">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400" role="listitem" onclick="openLightbox(this)">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&h=400&fit=crop" 
                          alt="Comfortable and safe living environment for elderly care - Swiss senior home" 
                          width="600" height="400">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500" role="listitem">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500" role="listitem" onclick="openLightbox(this)">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" 
                          alt="Personal hygiene care and daily assistance for elderly - Professional caregiving services" 
                          width="600" height="400">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600" role="listitem">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600" role="listitem" onclick="openLightbox(this)">
                     <img loading="lazy" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&h=400&fit=crop" 
                          alt="Happy seniors enjoying quality care and support - Elderly care center Switzerland" 
                          width="600" height="400">
@@ -729,101 +1061,135 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
+    <!-- Reviews Section with Slider -->
     <section class="section" style="background: #f9fafb;">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">{{ __('home.reviews_title') }}</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.reviews_subtitle') }}</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px;">
-                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
-                        <div>
-                            <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Maria Schmidt</h4>
-                            <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
+            <div style="position: relative; max-width: 900px; margin: 50px auto 0;">
+                <!-- Reviews Slider Container -->
+                <div class="reviews-slider">
+                    <div class="review-slide active">
+                        <div class="review-card" style="margin: 0 auto;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Maria Schmidt</h4>
+                                    <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_1_text') }}"</p>
                         </div>
                     </div>
-                    <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_1_text') }}"</p>
+
+                    <div class="review-slide">
+                        <div class="review-card" style="margin: 0 auto;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Thomas Müller</h4>
+                                    <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_2_text') }}"</p>
+                        </div>
+                    </div>
+
+                    <div class="review-slide">
+                        <div class="review-card" style="margin: 0 auto;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                                <div>
+                                    <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Sophie Dubois</h4>
+                                    <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
+                                </div>
+                            </div>
+                            <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_3_text') }}"</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
-                        <div>
-                            <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Thomas Müller</h4>
-                            <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
-                        </div>
-                    </div>
-                    <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_2_text') }}"</p>
-                </div>
+                <!-- Navigation Arrows -->
+                <button class="review-arrow review-arrow-prev" onclick="changeReview(-1)" aria-label="Previous review">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <button class="review-arrow review-arrow-next" onclick="changeReview(1)" aria-label="Next review">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
 
-                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
-                        <div>
-                            <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Sophie Dubois</h4>
-                            <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
-                        </div>
-                    </div>
-                    <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_3_text') }}"</p>
+                <!-- Dots Indicator -->
+                <div class="review-dots">
+                    <span class="review-dot active" onclick="goToReview(0)"></span>
+                    <span class="review-dot" onclick="goToReview(1)"></span>
+                    <span class="review-dot" onclick="goToReview(2)"></span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Our Team Section -->
-    <section class="section">
+    <section class="section" style="background: #f8fafc;">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">{{ __('home.team_title') }}</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.team_subtitle') }}</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; margin-top: 50px;">
-                <!-- Team Member 1 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="team-photo">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr. Anna Weber - Head Physician" loading="lazy" width="280" height="280">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 60px;">
+                <!-- Dr. Anna Weber - Chief Medical Officer -->
+                <div class="team-card-advanced" data-aos="fade-up">
+                    <div class="team-photo-advanced">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=600&fit=crop" alt="Dr. Anna Weber">
                     </div>
-                    <div class="team-info">
+                    <div class="team-info-advanced">
+                        <div class="team-badge">{{ __('home.team_badge_1') }}</div>
                         <h3>Dr. Anna Weber</h3>
-                        <p class="team-role">{{ __('home.team_role_1') }}</p>
-                        <p class="team-bio">{{ __('home.team_bio_1') }}</p>
+                        <p class="team-role-advanced">{{ __('home.team_role_1') }}</p>
+                        <div style="margin: 15px 0;">
+                            <span class="team-skill">{{ __('home.team_skill_1_1') }}</span>
+                            <span class="team-skill">{{ __('home.team_skill_1_2') }}</span>
+                            <span class="team-skill">{{ __('home.team_skill_1_3') }}</span>
+                        </div>
+                        <p class="team-bio-advanced">{{ __('home.team_bio_1') }}</p>
                     </div>
                 </div>
-
-                <!-- Team Member 2 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="team-photo">
-                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Michael Schmidt - Senior Caregiver" loading="lazy" width="280" height="280">
+                
+                <!-- Dr. Michael Schmidt - Senior Doctor -->
+                <div class="team-card-advanced" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-photo-advanced">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=600&fit=crop" alt="Dr. Michael Schmidt">
                     </div>
-                    <div class="team-info">
-                        <h3>Michael Schmidt</h3>
-                        <p class="team-role">{{ __('home.team_role_2') }}</p>
-                        <p class="team-bio">{{ __('home.team_bio_2') }}</p>
+                    <div class="team-info-advanced">
+                        <div class="team-badge">{{ __('home.team_badge_2') }}</div>
+                        <h3>Dr. Michael Schmidt</h3>
+                        <p class="team-role-advanced">{{ __('home.team_role_2') }}</p>
+                        <div style="margin: 15px 0;">
+                            <span class="team-skill">{{ __('home.team_skill_2_1') }}</span>
+                            <span class="team-skill">{{ __('home.team_skill_2_2') }}</span>
+                            <span class="team-skill">{{ __('home.team_skill_2_3') }}</span>
+                        </div>
+                        <p class="team-bio-advanced">{{ __('home.team_bio_2') }}</p>
                     </div>
                 </div>
-
-                <!-- Team Member 3 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="team-photo">
-                        <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Sarah Müller - Hygiene Specialist" loading="lazy" width="280" height="280">
+                
+                <!-- Sarah Müller - Head Nurse -->
+                <div class="team-card-advanced" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo-advanced">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&h=600&fit=crop&fp-y=0.35" alt="Sarah Müller">
                     </div>
-                    <div class="team-info">
+                    <div class="team-info-advanced">
+                        <div class="team-badge">{{ __('home.team_badge_3') }}</div>
                         <h3>Sarah Müller</h3>
-                        <p class="team-role">{{ __('home.team_role_3') }}</p>
-                        <p class="team-bio">{{ __('home.team_bio_3') }}</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 4 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="team-photo">
-                        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Peter Hoffmann - Medical Support" loading="lazy" width="280" height="280">
-                    </div>
-                    <div class="team-info">
-                        <h3>Peter Hoffmann</h3>
-                        <p class="team-role">{{ __('home.team_role_4') }}</p>
-                        <p class="team-bio">{{ __('home.team_bio_4') }}</p>
+                        <p class="team-role-advanced">{{ __('home.team_role_3') }}</p>
+                        <div style="margin: 15px 0;">
+                            <span class="team-skill">{{ __('home.team_skill_3_1') }}</span>
+                            <span class="team-skill">{{ __('home.team_skill_3_2') }}</span>
+                            <span class="team-skill">{{ __('home.team_skill_3_3') }}</span>
+                        </div>
+                        <p class="team-bio-advanced">{{ __('home.team_bio_3') }}</p>
                     </div>
                 </div>
             </div>
@@ -869,13 +1235,103 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
+    <!-- Contact & Location Section -->
+    <section id="contact" class="section" style="background: #f8fafc;">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">{{ __('home.contact_title') }}</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.contact_subtitle') }}</p>
             
-            <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px;">
+                <!-- Contact Info & Form -->
+                <div data-aos="fade-right">
+                    <!-- Contact Cards -->
+                    <div style="display: grid; gap: 20px; margin-bottom: 40px;">
+                        <!-- Phone -->
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
+                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
+                                📞
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_phone') }}</h4>
+                                <a href="tel:+41441234567" style="color: #4facfe; font-weight: 600; text-decoration: none;">+41 44 123 45 67</a>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
+                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
+                                ✉️
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_email_label') }}</h4>
+                                <a href="mailto:info@eldercare.ch" style="color: #4facfe; font-weight: 600; text-decoration: none;">info@eldercare.ch</a>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
+                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
+                                📍
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_address') }}</h4>
+                                <p style="margin: 0; color: #718096; line-height: 1.6;">Bahnhofstrasse 123<br>8001 Zürich, Schweiz</p>
+                            </div>
+                        </div>
+
+                        <!-- Working Hours -->
+                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
+                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
+                                🕒
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_hours') }}</h4>
+                                <p style="margin: 0; color: #718096; line-height: 1.6;">{{ __('home.contact_hours_weekdays') }}<br>{{ __('home.contact_hours_weekend') }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                        <h4 style="margin: 0 0 20px 0; font-size: 18px; color: #1a202c;">{{ __('home.contact_follow_us') }}</h4>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="https://facebook.com" target="_blank" style="background: #1877f2; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                📘
+                            </a>
+                            <a href="https://instagram.com" target="_blank" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                📷
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" style="background: #0077b5; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                💼
+                            </a>
+                            <a href="https://twitter.com" target="_blank" style="background: #1da1f2; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                                🐦
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map -->
+                <div data-aos="fade-left">
+                    <div style="background: white; padding: 10px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); height: 100%;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.217856662707!2d8.537788776543656!3d47.376888571172395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a08cc0e6e41%3A0xf5c698b65f8c52a7!2sBarhnhofstrasse%2C%20Z%C3%BCrich%2C%20Switzerland!5e0!3m2!1sen!2s!4v1701234567890!5m2!1sen!2s" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; border-radius: 10px; min-height: 600px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form" data-aos="fade-up" style="margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h3 style="text-align: center; font-size: 28px; margin-bottom: 15px; color: #1a202c;">{{ __('home.contact_form_title') }}</h3>
+                <p style="text-align: center; color: #718096; margin-bottom: 40px;">{{ __('home.contact_form_subtitle') }}</p>
+                
                 @if(session('status'))
                     <div class="alert alert-success">{{ __('home.contact_success') }}</div>
                 @endif
@@ -912,6 +1368,17 @@
         </div>
     </section>
     </main>
+
+    <!-- Lightbox for Gallery -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="Gallery image">
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">
+        ↑
+    </button>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
@@ -984,6 +1451,138 @@
 
         if (counters.length > 0) {
             observer.observe(counters[0].closest('section'));
+        }
+
+        // Reviews Slider
+        let currentReview = 0;
+        const reviewSlides = document.querySelectorAll('.review-slide');
+        const reviewDots = document.querySelectorAll('.review-dot');
+
+        function changeReview(direction) {
+            reviewSlides[currentReview].classList.remove('active');
+            reviewDots[currentReview].classList.remove('active');
+            
+            currentReview = (currentReview + direction + reviewSlides.length) % reviewSlides.length;
+            
+            reviewSlides[currentReview].classList.add('active');
+            reviewDots[currentReview].classList.add('active');
+        }
+
+        function goToReview(index) {
+            reviewSlides[currentReview].classList.remove('active');
+            reviewDots[currentReview].classList.remove('active');
+            
+            currentReview = index;
+            
+            reviewSlides[currentReview].classList.add('active');
+            reviewDots[currentReview].classList.add('active');
+        }
+
+        // Auto-play reviews slider every 7 seconds
+        setInterval(() => {
+            changeReview(1);
+        }, 7000);
+
+        // Service Filter
+        function filterServices(category) {
+            const cards = document.querySelectorAll('.service-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Gallery Lightbox
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = img.src.replace('w=600&h=400', 'w=1920&h=1080');
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const icon = document.querySelector('.dark-mode-icon');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.textContent = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.textContent = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.dark-mode-icon').textContent = '☀️';
         }
     </script>
 </body>

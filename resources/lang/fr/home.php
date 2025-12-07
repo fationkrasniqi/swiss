@@ -14,6 +14,12 @@ return [
     'services_title' => 'Nos Services',
     'services_subtitle' => 'Nous offrons une large gamme de services personnalisés pour les soins aux personnes âgées',
     
+    // Service Filter Buttons
+    'filter_all' => 'Tous',
+    'filter_care' => 'Soins',
+    'filter_health' => 'Santé',
+    'filter_activity' => 'Activités',
+    
     'service_elderly_care' => 'Soins aux Personnes Âgées',
     'service_elderly_care_desc' => 'Assistance 24/7 pour les activités quotidiennes, y compris la mobilité, l\'habillement et les soins personnels.',
     
@@ -44,13 +50,22 @@ return [
     'gallery_subtitle' => 'Les plus beaux moments de soins et d\'amour pour nos personnes âgées',
     
     'contact_title' => 'Contactez-Nous',
-    'contact_subtitle' => 'Nous sommes là pour vous écouter et vous aider avec toutes vos questions ou besoins',
+    'contact_subtitle' => 'Nous sommes ici pour écouter et vous aider avec toutes vos questions ou besoins',
+    'contact_phone' => 'Téléphone',
+    'contact_email_label' => 'E-mail',
+    'contact_address' => 'Adresse',
+    'contact_hours' => 'Heures d\'ouverture',
+    'contact_hours_weekdays' => 'Lun-Ven: 08:00 - 18:00',
+    'contact_hours_weekend' => 'Sam-Dim: 10:00 - 16:00',
+    'contact_follow_us' => 'Suivez-nous',
+    'contact_form_title' => 'Envoyez-nous un message',
+    'contact_form_subtitle' => 'Remplissez le formulaire et nous vous répondrons dans les plus brefs délais',
     'contact_first_name' => 'Prénom',
     'contact_last_name' => 'Nom',
     'contact_email' => 'E-mail',
     'contact_message' => 'Message',
-    'contact_submit' => 'Envoyer le message',
-    'contact_success' => 'Message envoyé avec succès!',
+    'contact_submit' => 'Envoyer le Message',
+    'contact_success' => 'Message envoyé avec succès !',
     
     'footer_rights' => 'Tous droits réservés.',
     
@@ -81,7 +96,16 @@ return [
     'team_role_3' => 'Spécialiste en Hygiène',
     'team_bio_3' => '10 ans d’expérience en soins d’hygiène. Certifiée en hygiène médicale et soins des plaies.',
     'team_role_4' => 'Assistant Médical',
-    'team_bio_4' => '12 ans en assistance médicale. Spécialisé dans la gestion des médicaments.',
+    'team_bio_4' => '12 ans dans l\'assistance médicale. Spécialisé dans la gestion des médicaments.',
+    'team_skill_1_1' => 'Gériatrie',
+    'team_skill_1_2' => 'Cardiologie',
+    'team_skill_1_3' => '25 ans',
+    'team_skill_2_1' => 'Neurologie',
+    'team_skill_2_2' => 'Démence',
+    'team_skill_2_3' => '18 ans',
+    'team_skill_3_1' => 'Soins intensifs',
+    'team_skill_3_2' => 'Soins des plaies',
+    'team_skill_3_3' => '15 ans',
     
     // Story Timeline
     'story_title' => 'Notre Histoire',

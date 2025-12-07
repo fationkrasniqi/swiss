@@ -14,6 +14,12 @@ return [
     'services_title' => 'Our Services',
     'services_subtitle' => 'We offer a wide range of personalized services for elderly care',
     
+    // Service Filter Buttons
+    'filter_all' => 'All',
+    'filter_care' => 'Care',
+    'filter_health' => 'Health',
+    'filter_activity' => 'Activities',
+    
     'service_elderly_care' => 'Elderly Care',
     'service_elderly_care_desc' => '24/7 assistance for daily activities, including mobility, dressing, and personal care.',
     
@@ -45,6 +51,15 @@ return [
     
     'contact_title' => 'Contact Us',
     'contact_subtitle' => 'We are here to listen and help you with any questions or needs',
+    'contact_phone' => 'Phone',
+    'contact_email_label' => 'Email',
+    'contact_address' => 'Address',
+    'contact_hours' => 'Working Hours',
+    'contact_hours_weekdays' => 'Mon-Fri: 08:00 - 18:00',
+    'contact_hours_weekend' => 'Sat-Sun: 10:00 - 16:00',
+    'contact_follow_us' => 'Follow us',
+    'contact_form_title' => 'Send us a message',
+    'contact_form_subtitle' => 'Fill out the form and we will respond as soon as possible',
     'contact_first_name' => 'First Name',
     'contact_last_name' => 'Last Name',
     'contact_email' => 'Email',
@@ -82,6 +97,15 @@ return [
     'team_bio_3' => '10 years of experience in hygiene care. Certified in medical hygiene and wound care.',
     'team_role_4' => 'Medical Assistant',
     'team_bio_4' => '12 years in medical support. Specialized in medication management.',
+    'team_skill_1_1' => 'Geriatrics',
+    'team_skill_1_2' => 'Cardiology',
+    'team_skill_1_3' => '25 years',
+    'team_skill_2_1' => 'Neurology',
+    'team_skill_2_2' => 'Dementia',
+    'team_skill_2_3' => '18 years',
+    'team_skill_3_1' => 'Intensive care',
+    'team_skill_3_2' => 'Wound care',
+    'team_skill_3_3' => '15 years',
     
     // Story Timeline
     'story_title' => 'Our Story',
