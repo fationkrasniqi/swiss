@@ -71,6 +71,18 @@ return [
     'review_2_text' => 'Die beste Entscheidung für die Pflege meines Vaters. Die Pflegekräfte sind sehr kompetent und freundlich. Sehr empfehlenswert!',
     'review_3_text' => 'Hervorragender Service! Das Team kümmert sich wunderbar um meine Großmutter. Sie ist glücklich und gut versorgt.',
     
+    // Our Team
+    'team_title' => 'Unser Team',
+    'team_subtitle' => 'Professionelle und erfahrene Pflegekräfte',
+    'team_role_1' => 'Chefärztin & Gründerin',
+    'team_bio_1' => '20 Jahre Erfahrung in der Altenpflege. Spezialisiert auf Geriatrie und medizinische Betreuung.',
+    'team_role_2' => 'Leitender Pfleger',
+    'team_bio_2' => '15 Jahre in der häuslichen Pflege. Experte für tägliche Unterstützung und Mobilitätshilfe.',
+    'team_role_3' => 'Hygienespezialistin',
+    'team_bio_3' => '10 Jahre Erfahrung in Hygienepflege. Zertifiziert in medizinischer Hygiene und Wundpflege.',
+    'team_role_4' => 'Medizinischer Assistent',
+    'team_bio_4' => '12 Jahre in der medizinischen Unterstützung. Spezialisiert auf Medikamentenmanagement.',
+    
     // Story Timeline
     'story_title' => 'Unsere Geschichte',
     'story_subtitle' => 'Wie alles begann und sich entwickelt hat',

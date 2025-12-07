@@ -71,6 +71,18 @@ return [
     'review_2_text' => 'La meilleure décision pour les soins de mon père. Le personnel est très compétent et aimable. Hautement recommandé!',
     'review_3_text' => 'Service exceptionnel! L’équipe prend merveilleusement soin de ma grand-mère. Elle est heureuse et bien soignée.',
     
+    // Our Team
+    'team_title' => 'Notre Équipe',
+    'team_subtitle' => 'Personnel soignant professionnel et expérimenté',
+    'team_role_1' => 'Médecin-Chef & Fondatrice',
+    'team_bio_1' => '20 ans d’expérience dans les soins aux personnes âgées. Spécialisée en gériatrie et assistance médicale.',
+    'team_role_2' => 'Infirmier Principal',
+    'team_bio_2' => '15 ans dans les soins à domicile. Expert en assistance quotidienne et aide à la mobilité.',
+    'team_role_3' => 'Spécialiste en Hygiène',
+    'team_bio_3' => '10 ans d’expérience en soins d’hygiène. Certifiée en hygiène médicale et soins des plaies.',
+    'team_role_4' => 'Assistant Médical',
+    'team_bio_4' => '12 ans en assistance médicale. Spécialisé dans la gestion des médicaments.',
+    
     // Story Timeline
     'story_title' => 'Notre Histoire',
     'story_subtitle' => 'Comment tout a commencé et évolué',

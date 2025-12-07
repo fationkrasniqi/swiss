@@ -442,6 +442,57 @@
             border-color: #4facfe;
         }
 
+        /* Team Cards */
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.1);
+            border: 2px solid rgba(79, 172, 254, 0.1);
+            transition: all 0.4s;
+            text-align: center;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(79, 172, 254, 0.25);
+            border-color: #4facfe;
+        }
+        .team-photo {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .team-card:hover .team-photo img {
+            transform: scale(1.1);
+        }
+        .team-info {
+            padding: 30px 25px;
+        }
+        .team-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+        .team-role {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        .team-bio {
+            font-size: 15px;
+            color: #718096;
+            line-height: 1.7;
+        }
+
         /* Timeline */
         .timeline {
             position: relative;
@@ -716,6 +767,64 @@
                         </div>
                     </div>
                     <p style="color: #718096; line-height: 1.8; font-style: italic;">"{{ __('home.review_3_text') }}"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">{{ __('home.team_title') }}</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.team_subtitle') }}</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; margin-top: 50px;">
+                <!-- Team Member 1 -->
+                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-photo">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr. Anna Weber - Head Physician" loading="lazy" width="280" height="280">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Anna Weber</h3>
+                        <p class="team-role">{{ __('home.team_role_1') }}</p>
+                        <p class="team-bio">{{ __('home.team_bio_1') }}</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Michael Schmidt - Senior Caregiver" loading="lazy" width="280" height="280">
+                    </div>
+                    <div class="team-info">
+                        <h3>Michael Schmidt</h3>
+                        <p class="team-role">{{ __('home.team_role_2') }}</p>
+                        <p class="team-bio">{{ __('home.team_bio_2') }}</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-photo">
+                        <img src="https://randomuser.me/api/portraits/women/47.jpg" alt="Sarah Müller - Hygiene Specialist" loading="lazy" width="280" height="280">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sarah Müller</h3>
+                        <p class="team-role">{{ __('home.team_role_3') }}</p>
+                        <p class="team-bio">{{ __('home.team_bio_3') }}</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-photo">
+                        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Peter Hoffmann - Medical Support" loading="lazy" width="280" height="280">
+                    </div>
+                    <div class="team-info">
+                        <h3>Peter Hoffmann</h3>
+                        <p class="team-role">{{ __('home.team_role_4') }}</p>
+                        <p class="team-bio">{{ __('home.team_bio_4') }}</p>
+                    </div>
                 </div>
             </div>
         </div>

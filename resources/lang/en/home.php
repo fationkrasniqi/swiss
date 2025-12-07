@@ -71,6 +71,18 @@ return [
     'review_2_text' => 'The best decision for my father’s care. The staff is very competent and friendly. Highly recommended!',
     'review_3_text' => 'Outstanding service! The team takes wonderful care of my grandmother. She is happy and well cared for.',
     
+    // Our Team
+    'team_title' => 'Our Team',
+    'team_subtitle' => 'Professional and experienced care staff',
+    'team_role_1' => 'Chief Physician & Founder',
+    'team_bio_1' => '20 years of experience in elderly care. Specialized in geriatrics and medical support.',
+    'team_role_2' => 'Senior Caregiver',
+    'team_bio_2' => '15 years in home care. Expert in daily assistance and mobility support.',
+    'team_role_3' => 'Hygiene Specialist',
+    'team_bio_3' => '10 years of experience in hygiene care. Certified in medical hygiene and wound care.',
+    'team_role_4' => 'Medical Assistant',
+    'team_bio_4' => '12 years in medical support. Specialized in medication management.',
+    
     // Story Timeline
     'story_title' => 'Our Story',
     'story_subtitle' => 'How it all started and evolved',

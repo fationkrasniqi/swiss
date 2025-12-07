@@ -71,6 +71,18 @@ return [
     'review_2_text' => 'Vendimi më i mirë për kujdesin e babait tim. Stafi është shumë kompetent dhe miqsor. E rekomandoj fort!',
     'review_3_text' => 'Shërbim i shkëlqyer! Ekipi kujdeset mrekullisht për gjyshen time. Ajo është e lumtur dhe e mirëmbajtur.',
     
+    // Our Team
+    'team_title' => 'Ekipi Ynë',
+    'team_subtitle' => 'Staf profesional dhe me eksperiencë',
+    'team_role_1' => 'Mjeke Kryesore & Themeluese',
+    'team_bio_1' => '20 vjet eksperiencë në kujdesin për pleqtë. E specializuar në geriatri dhe mbeshtetje mjekësore.',
+    'team_role_2' => 'Kujdestar Kryesor',
+    'team_bio_2' => '15 vjet në kujdesin në shtepi. Ekspert për ndihmë të përditshmem dhe mobilitet.',
+    'team_role_3' => 'Specialiste e Higjienës',
+    'team_bio_3' => '10 vjet eksperiencë në kujdesin higjenik. E certifikuar në higjienë mjekësore dhe kujdes të plageve.',
+    'team_role_4' => 'Asistent Mjekësor',
+    'team_bio_4' => '12 vjet në mbeshtetje mjekësore. I specializuar në menaxhimin e medikamenteve.',
+    
     // Story Timeline
     'story_title' => 'Historia Jonë',
     'story_subtitle' => 'Si filloi gjithcka dhe si u zhvillua',
