@@ -56,26 +56,25 @@
 
             <!-- Main content -->
             <main class="site-main">
-                <div class="container main-inner">
-
-                    <!-- Session / Flash message -->
-                    @if (session('status'))
-                        <div class="flash flash-success">{{ session('status') }}</div>
-                    @endif
-
-                    @if (isset($header))
-                        <div class="page-header">{{ $header }}</div>
-                    @endif
-
-                    <div class="card">
-                        {{-- Support both component slots (`$slot`) and Blade sections (`@section('content')`) --}}
-                        @hasSection('content')
-                            @yield('content')
-                        @else
-                            {{ isset($slot) ? $slot : '' }}
+                {{-- Support both component slots (`$slot`) and Blade sections (`@section('content')`) --}}
+                @hasSection('content')
+                    @yield('content')
+                @else
+                    <div class="container main-inner">
+                        <!-- Session / Flash message -->
+                        @if (session('status'))
+                            <div class="flash flash-success">{{ session('status') }}</div>
                         @endif
+
+                        @if (isset($header))
+                            <div class="page-header">{{ $header }}</div>
+                        @endif
+
+                        <div class="card">
+                            {{ isset($slot) ? $slot : '' }}
+                        </div>
                     </div>
-                </div>
+                @endif
             </main>
 
             <!-- Footer -->

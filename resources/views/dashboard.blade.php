@@ -1,41 +1,467 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container main-inner" style="padding-top:24px;padding-bottom:24px;">
-        <div class="page-header"> <h2 style="margin:0;font-size:1.25rem;font-weight:700">{{ __('Dashboard') }}</h2> </div>
+<style>
+    .dashboard-layout {
+        display: flex;
+        min-height: calc(100vh - 80px);
+        background: #f8fafc;
+    }
+    .sidebar {
+        width: 280px;
+        background: white;
+        border-right: 1px solid #e2e8f0;
+        padding: 30px 0;
+        position: sticky;
+        top: 80px;
+        height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+    .sidebar-header {
+        padding: 0 25px 25px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .sidebar-header h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: #1e293b;
+    }
+    .sidebar-header p {
+        margin: 5px 0 0 0;
+        font-size: 13px;
+        color: #64748b;
+    }
+    .sidebar-menu {
+        padding: 20px 0;
+    }
+    .menu-section {
+        margin-bottom: 25px;
+    }
+    .menu-section-title {
+        padding: 0 25px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #94a3b8;
+        margin-bottom: 8px;
+    }
+    .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 25px;
+        color: #64748b;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        cursor: pointer;
+    }
+    .menu-item:hover {
+        background: #f8fafc;
+        color: #1e293b;
+        border-left-color: #e2e8f0;
+    }
+    .menu-item.active {
+        background: #f1f5f9;
+        color: #4f46e5;
+        border-left-color: #4f46e5;
+        font-weight: 600;
+    }
+    .menu-icon {
+        font-size: 20px;
+        width: 24px;
+        text-align: center;
+    }
+    .menu-badge {
+        margin-left: auto;
+        background: #ef4444;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+    .dashboard-content {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+    }
+    .content-section {
+        display: none;
+    }
+    .content-section.active {
+        display: block;
+    }
+    .section-header {
+        margin-bottom: 30px;
+    }
+    .section-header h1 {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 700;
+        color: #1e293b;
+    }
+    .section-header p {
+        margin: 8px 0 0 0;
+        color: #64748b;
+        font-size: 15px;
+    }
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        border-left: 4px solid #e2e8f0;
+    }
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .stat-card.blue { border-left-color: #3b82f6; }
+    .stat-card.green { border-left-color: #10b981; }
+    .stat-card.orange { border-left-color: #f59e0b; }
+    .stat-card.purple { border-left-color: #8b5cf6; }
+    .stat-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        background: #f1f5f9;
+    }
+    .stat-number {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+    }
+    .stat-label {
+        color: #64748b;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 4px;
+    }
+    .profile-card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        max-width: 600px;
+    }
+    .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 25px;
+    }
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+    .profile-info h3 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: #1e293b;
+    }
+    .profile-info p {
+        margin: 4px 0 0 0;
+        color: #64748b;
+        font-size: 14px;
+    }
+    .profile-badge {
+        display: inline-block;
+        background: #4f46e5;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .info-item {
+        padding: 15px;
+        background: #f8fafc;
+        border-radius: 10px;
+    }
+    .info-label {
+        font-size: 12px;
+        color: #64748b;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+    }
+    .info-value {
+        font-size: 16px;
+        color: #1e293b;
+        font-weight: 600;
+    }
+    .content-card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .content-card h3 {
+        margin: 0 0 20px 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e293b;
+    }
+    @media (max-width: 968px) {
+        .dashboard-layout {
+            flex-direction: column;
+        }
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+            top: 0;
+        }
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 
-        <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap">
-            <div style="flex:1;min-width:280px">
-       
-            </div>
+<script>
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    // Remove active class from all menu items
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    // Show selected section
+    document.getElementById(sectionId).classList.add('active');
+    // Add active class to clicked menu item
+    event.currentTarget.classList.add('active');
+}
+</script>
 
-            <div style="width:320px;min-width:220px">
-                @auth
-                <div class="card" style="padding:12px;">
-                    <h3 style="margin:0 0 8px 0;font-size:1rem;font-weight:600">Your profile</h3>
-                    <div style="display:flex;align-items:center;gap:10px">
-                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                            <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" style="width:54px;height:54px;border-radius:9999px;object-fit:cover">
-                        @endif
-                        <div>
-                            <div style="font-weight:600">{{ Auth::user()->name }}</div>
-                            <div style="color:#6b7280;font-size:0.9rem">{{ Auth::user()->email }}</div>
-                        </div>
-                    </div>
+@php 
+    $msgCount = \App\Models\ContactMessage::count(); 
+    $clientCount = \App\Models\Client::count();
+    $userCount = \App\Models\User::count();
+@endphp
 
-                    <div style="margin-top:12px;display:flex;gap:8px">
-                        <a href="{{ route('profile.show') }}" class="btn" style="padding:8px 10px;background:#2563eb;color:#fff;border-radius:6px;text-decoration:none">Profile</a>
-                        @if(auth()->user() && auth()->user()->is_admin)
-                            <a href="{{ route('admin.users.index') }}" class="btn" style="padding:8px 10px;background:#10b981;color:#fff;border-radius:6px;text-decoration:none">Manage users</a>
-                            @php $msgCount = \App\Models\ContactMessage::count(); @endphp
-                            @php $clientCount = \App\Models\Client::count(); @endphp
-                            <a href="{{ route('admin.messages.index') }}" class="btn" style="padding:8px 10px;background:#f59e0b;color:#fff;border-radius:6px;text-decoration:none">Messages @if($msgCount>0) ({{ $msgCount }}) @endif</a>
-                            <a href="{{ route('admin.clients.index') }}" class="btn" style="padding:8px 10px;background:#6366f1;color:#fff;border-radius:6px;text-decoration:none">Clients @if($clientCount>0) ({{ $clientCount }}) @endif</a>
-                        @endif
-                    </div>
+<div class="dashboard-layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Dashboard</h2>
+            <p>{{ Auth::user()->name }}</p>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-section">
+                <div class="menu-section-title">Main</div>
+                <div class="menu-item active" onclick="showSection('overview')">
+                    <span class="menu-icon">📊</span>
+                    <span>Overview</span>
                 </div>
-                @endauth
+                <div class="menu-item" onclick="showSection('profile')">
+                    <span class="menu-icon">👤</span>
+                    <span>My Profile</span>
+                </div>
+            </div>
+            
+            @if(auth()->user() && auth()->user()->is_admin)
+            <div class="menu-section">
+                <div class="menu-section-title">Management</div>
+                <a href="{{ route('admin.users.index') }}" class="menu-item">
+                    <span class="menu-icon">👥</span>
+                    <span>Users</span>
+                </a>
+                <a href="{{ route('admin.clients.index') }}" class="menu-item">
+                    <span class="menu-icon">🏥</span>
+                    <span>Clients</span>
+                    @if($clientCount > 0)
+                        <span class="menu-badge">{{ $clientCount }}</span>
+                    @endif
+                </a>
+                <a href="{{ route('admin.messages.index') }}" class="menu-item">
+                    <span class="menu-icon">✉️</span>
+                    <span>Messages</span>
+                    @if($msgCount > 0)
+                        <span class="menu-badge">{{ $msgCount }}</span>
+                    @endif
+                </a>
+            </div>
+            @endif
+            
+            <div class="menu-section">
+                <div class="menu-section-title">Quick Actions</div>
+                <a href="{{ url('/') }}" class="menu-item">
+                    <span class="menu-icon">🏠</span>
+                    <span>Home Page</span>
+                </a>
+                @if(auth()->user() && auth()->user()->is_admin)
+                <a href="{{ route('clients.create') }}" class="menu-item">
+                    <span class="menu-icon">➕</span>
+                    <span>Add Client</span>
+                </a>
+                @endif
+                <div class="menu-item" onclick="showSection('settings')">
+                    <span class="menu-icon">⚙️</span>
+                    <span>Settings</span>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+        <!-- Overview Section -->
+        <div id="overview" class="content-section active">
+            <div class="section-header">
+                <h1>Welcome back, {{ Auth::user()->name }}</h1>
+                <p>Here's your dashboard overview</p>
+            </div>
+
+        <!-- Stats Grid -->
+        @if(auth()->user() && auth()->user()->is_admin)
+            <div class="stats-grid">
+                <div class="stat-card blue">
+                    <div class="stat-header">
+                        <div>
+                            <h2 class="stat-number">{{ $userCount }}</h2>
+                            <p class="stat-label">Total Users</p>
+                        </div>
+                        <div class="stat-icon">📊</div>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-header">
+                        <div>
+                            <h2 class="stat-number">{{ $clientCount }}</h2>
+                            <p class="stat-label">Active Clients</p>
+                        </div>
+                        <div class="stat-icon">👥</div>
+                    </div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-header">
+                        <div>
+                            <h2 class="stat-number">{{ $msgCount }}</h2>
+                            <p class="stat-label">Messages</p>
+                        </div>
+                        <div class="stat-icon">✉️</div>
+                    </div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-header">
+                        <div>
+                            <h2 class="stat-number">4.9</h2>
+                            <p class="stat-label">Rating Score</p>
+                        </div>
+                        <div class="stat-icon">⭐</div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profile" class="content-section">
+            <div class="section-header">
+                <h1>My Profile</h1>
+                <p>Manage your account information</p>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-header">
+                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="profile-avatar">
+                    @else
+                        <div class="profile-avatar" style="background: #4f46e5; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: 700;">
+                            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                        </div>
+                    @endif
+                    <div class="profile-info">
+                        <h3>{{ Auth::user()->name }}</h3>
+                        <p>{{ Auth::user()->email }}</p>
+                        @if(auth()->user() && auth()->user()->is_admin)
+                            <span class="profile-badge">Administrator</span>
+                        @else
+                            <span class="profile-badge">User</span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Full Name</div>
+                        <div class="info-value">{{ Auth::user()->name }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Email Address</div>
+                        <div class="info-value">{{ Auth::user()->email }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Account Type</div>
+                        <div class="info-value">{{ auth()->user()->is_admin ? 'Administrator' : 'User' }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Member Since</div>
+                        <div class="info-value">{{ Auth::user()->created_at->format('M d, Y') }}</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid #e2e8f0;">
+                    <a href="{{ route('profile.show') }}" style="display: inline-block; background: #4f46e5; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: all 0.2s ease;">
+                        Edit Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings" class="content-section">
+            <div class="section-header">
+                <h1>Settings</h1>
+                <p>Manage your preferences and account settings</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Account Settings</h3>
+                <p style="color: #64748b; margin-bottom: 20px;">Update your account information, password, and security preferences</p>
+                
+                <a href="{{ route('profile.show') }}" style="display: inline-block; background: #4f46e5; color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: all 0.2s ease;">
+                    Go to Profile Settings
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

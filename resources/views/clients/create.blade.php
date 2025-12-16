@@ -17,23 +17,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
-            line-height: 1.7; 
-            color: #2d3748;
-            font-size: 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        /* ============================================
+           SWISS HEALTHCARE DESIGN SYSTEM
+           Inspired by Swiss medical precision & warmth
+           Background: Artistic canton map concept
+        ============================================ */
+        
+        :root {
+            /* Swiss Medical Color Palette */
+            --swiss-blue: #5B8FB9;
+            --medical-teal: #76A89D;
+            --sage-green: #9AB3A0;
+            --warm-beige: #D4C5B0;
+            --light-gold: #E5D4B8;
+            --off-white: #F8F6F3;
+            --soft-gray: #B4B8BF;
+            --text-primary: #2C3E50;
+            --text-secondary: #6B7C8E;
+            
+            /* Typography Scale - Optimized for elderly users */
+            --font-base: 18px;
+            --font-lg: 22px;
+            --font-xl: 28px;
+            --font-2xl: 38px;
+            --font-hero: 52px;
+            
+            /* Spacing - Organic rhythm */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 28px;
+            --space-lg: 42px;
+            --space-xl: 68px;
+            
+            /* Shadows - Soft & subtle */
+            --shadow-sm: 0 2px 12px rgba(91, 143, 185, 0.08);
+            --shadow-md: 0 4px 24px rgba(91, 143, 185, 0.12);
+            --shadow-lg: 0 8px 40px rgba(91, 143, 185, 0.15);
         }
         
-        /* Navbar - same as home */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: var(--font-base); }
+        body { 
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.75;
+            color: var(--text-primary);
+            background: var(--off-white);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* ============================================
+           ARTISTIC CANTON MAP BACKGROUND
+           Inspired by Swiss topography & medical sketches
+        ============================================ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(91, 143, 185, 0.04) 0%, transparent 35%),
+                radial-gradient(circle at 85% 15%, rgba(118, 168, 157, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 65% 75%, rgba(154, 179, 160, 0.04) 0%, transparent 38%),
+                radial-gradient(circle at 25% 85%, rgba(212, 197, 176, 0.06) 0%, transparent 42%);
+            pointer-events: none;
+        }
+        
+        /* Topographic contour lines - subtle Swiss canton boundaries */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            right: -10%;
+            bottom: -10%;
+            z-index: -1;
+            opacity: 0.55;
+            background-image:
+                /* Abstract canton curves - inspired by Zürich, Bern, Ticino boundaries */
+                repeating-linear-gradient(
+                    108deg,
+                    transparent,
+                    transparent 180px,
+                    rgba(91, 143, 185, 0.045) 180px,
+                    rgba(91, 143, 185, 0.045) 183px
+                ),
+                repeating-linear-gradient(
+                    -42deg,
+                    transparent,
+                    transparent 220px,
+                    rgba(118, 168, 157, 0.055) 220px,
+                    rgba(118, 168, 157, 0.055) 223px
+                ),
+                repeating-linear-gradient(
+                    75deg,
+                    transparent,
+                    transparent 160px,
+                    rgba(154, 179, 160, 0.038) 160px,
+                    rgba(154, 179, 160, 0.038) 162px
+                ),
+                repeating-linear-gradient(
+                    135deg,
+                    transparent,
+                    transparent 200px,
+                    rgba(212, 197, 176, 0.042) 200px,
+                    rgba(212, 197, 176, 0.042) 202px
+                );
+            filter: blur(0.8px);
+            transform: scale(1.1) rotate(2deg);
+            animation: slowDrift 120s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes slowDrift {
+            0%, 100% { transform: scale(1.1) rotate(2deg) translateY(0); }
+            50% { transform: scale(1.1) rotate(2deg) translateY(-8px); }
+        }
+        
+        /* Navbar - Responsive with Hamburger Menu */
         .navbar {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            padding: 18px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -45,28 +155,53 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 20px;
         }
         .navbar-brand {
-            font-size: 26px;
+            font-size: 20px;
             font-weight: 700;
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
             letter-spacing: -0.5px;
+            z-index: 1001;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
         .navbar-menu {
             display: flex;
             align-items: center;
-            gap: 35px;
+            gap: 20px;
             list-style: none;
         }
         .navbar-menu a {
             color: #4a5568;
             text-decoration: none;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.3s;
             position: relative;
         }
@@ -88,36 +223,82 @@
         }
         .lang-switcher {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
         .lang-btn {
             background: rgba(79, 172, 254, 0.08);
             color: #4facfe;
-            border: 2px solid rgba(79, 172, 254, 0.3);
-            padding: 8px 16px;
-            border-radius: 25px;
+            border: 1.5px solid rgba(79, 172, 254, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 13px;
             transition: all 0.3s;
             cursor: pointer;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", Roboto, Helvetica, Arial, sans-serif;
         }
         .lang-btn .flag {
-            font-size: 18px;
+            font-size: 14px;
             display: inline-block;
-            margin-right: 4px;
+            margin-right: 3px;
         }
         .lang-btn:hover {
             background: #4facfe;
             color: white;
             border-color: #4facfe;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
         .lang-btn.active {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
             border-color: transparent;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .navbar-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: right 0.4s ease;
+                padding: 20px;
+            }
+            .navbar-menu.active {
+                right: 0;
+            }
+            .navbar-menu a {
+                font-size: 18px;
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+            }
+            .lang-switcher {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            .lang-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 10px 15px;
+                font-size: 15px;
+            }
+            .navbar-brand {
+                font-size: 18px;
+            }
         }
         
         /* Footer - same as home */
@@ -143,73 +324,76 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 var(--space-md);
         }
         
     .service-container {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 20px;
+        max-width: 920px;
+        margin: var(--space-xl) auto;
+        padding: var(--space-md);
     }
     .service-header {
         text-align: center;
-        color: white;
-        margin-bottom: 40px;
+        color: var(--text-primary);
+        margin-bottom: var(--space-lg);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: var(--space-md);
     }
     .service-header h1 {
-        font-size: 42px;
-        font-weight: 700;
-        margin-bottom: 12px;
-        text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        font-size: var(--font-hero);
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        color: var(--swiss-blue);
+        letter-spacing: -0.5px;
     }
     .service-header p {
-        font-size: 18px;
-        opacity: 0.95;
+        font-size: var(--font-lg);
+        color: var(--text-secondary);
+        line-height: 1.7;
     }
     .service-card {
         background: white;
-        border-radius: 24px;
-        padding: 50px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        border-radius: 28px;
+        padding: var(--space-xl);
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(91, 143, 185, 0.08);
     }
     .form-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: #1a202c;
-        margin-bottom: 30px;
+        font-size: var(--font-2xl);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: var(--space-lg);
         text-align: center;
     }
     .form-group {
-        margin-bottom: 28px;
+        margin-bottom: var(--space-md);
     }
     .form-group label {
         display: block;
         font-weight: 600;
-        color: #2d3748;
-        margin-bottom: 10px;
-        font-size: 15px;
+        color: var(--text-primary);
+        margin-bottom: var(--space-xs);
+        font-size: var(--font-lg);
     }
     .form-group .input,
     .form-group select {
         width: 100%;
         padding: 14px 18px;
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        font-size: 15px;
-        transition: all 0.3s;
+        border: 2px solid rgba(91, 143, 185, 0.15);
+        border-radius: 16px;
+        font-size: var(--font-base);
+        transition: all 0.3s ease;
         font-family: inherit;
     }
     .form-group .input:focus,
     .form-group select:focus {
         outline: none;
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        border-color: var(--swiss-blue);
+        box-shadow: 0 0 0 3px rgba(91, 143, 185, 0.08);
     }
     .phone-group {
         display: flex;
@@ -230,69 +414,74 @@
     }
     .checkbox-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 14px;
-        padding: 16px;
-        background: #f7fafc;
-        border-radius: 12px;
-        border: 2px solid #e2e8f0;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: var(--space-sm);
+        padding: var(--space-md);
+        background: rgba(91, 143, 185, 0.03);
+        border-radius: 20px;
+        border: 2px solid rgba(91, 143, 185, 0.08);
     }
     .checkbox-label {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 10px 14px;
+        gap: 12px;
+        padding: 12px 16px;
         background: white;
-        border-radius: 8px;
+        border-radius: 14px;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: 2px solid transparent;
+        box-shadow: var(--shadow-sm);
     }
     .checkbox-label:hover {
-        background: #edf2f7;
-        border-color: #667eea;
+        background: rgba(118, 168, 157, 0.06);
+        border-color: var(--medical-teal);
+        transform: translateY(-1px);
     }
     .checkbox-label input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         cursor: pointer;
+        accent-color: var(--swiss-blue);
     }
     .checkbox-label input[type="checkbox"]:checked + span {
-        color: #667eea;
+        color: var(--swiss-blue);
         font-weight: 600;
     }
     .btn-submit {
         width: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--swiss-blue);
         color: white;
-        padding: 16px 40px;
+        padding: 16px 44px;
         border: none;
-        border-radius: 12px;
-        font-size: 16px;
+        border-radius: 42px;
+        font-size: var(--font-lg);
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
-        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-        margin-top: 20px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-md);
+        margin-top: var(--space-md);
     }
     .btn-submit:hover {
+        background: var(--medical-teal);
         transform: translateY(-2px);
-        box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+        box-shadow: var(--shadow-lg);
     }
     .form-error {
-        color: #e53e3e;
-        font-size: 14px;
-        margin-top: 6px;
+        color: #c53030;
+        font-size: 15px;
+        margin-top: var(--space-xs);
     }
     .success-alert {
-        background: #c6f6d5;
-        color: #22543d;
-        padding: 16px 20px;
-        border-radius: 12px;
-        margin-bottom: 24px;
-        border: 2px solid #9ae6b4;
+        background: rgba(154, 179, 160, 0.12);
+        color: #2d5f3d;
+        padding: var(--space-sm) var(--space-md);
+        border-radius: 18px;
+        margin-bottom: var(--space-md);
+        border: 1.5px solid rgba(154, 179, 160, 0.3);
         text-align: center;
         font-weight: 500;
+        font-size: var(--font-base);
     }
 </style>
 </head>
@@ -300,11 +489,16 @@
     <!-- Skip to content for accessibility -->
     <a href="#main-content" style="position:absolute;left:-9999px;z-index:999;">Skip to content</a>
     
-    <!-- Navbar - same as home -->
+    <!-- Navbar - Responsive with Hamburger -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <a href="{{ url('/') }}" class="navbar-brand" aria-label="Homepage">{{ __('home.nav_brand') }}</a>
-            <ul class="navbar-menu">
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
                 <li><a href="{{ url('/') }}" aria-label="Homepage">{{ __('home.nav_home') }}</a></li>
                 <li><a href="{{ url('/services') }}" aria-label="Our Services">{{ __('home.nav_services') }}</a></li>
                 <li><a href="{{ url('/') }}#contact" aria-label="Contact Us">{{ __('home.nav_contact') }}</a></li>
@@ -415,6 +609,31 @@
     </main>
 
     <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navbarMenu = document.getElementById('navbarMenu');
+    
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navbarMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking on a link
+    navbarMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navbarMenu.classList.remove('active');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !navbarMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navbarMenu.classList.remove('active');
+        }
+    });
+    
     // Phone number auto-formatting
     const phoneInput = document.getElementById('phoneInput');
     if (phoneInput) {
