@@ -45,6 +45,36 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for creating a new user.
+     */
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    /**
+     * Store a newly created user.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'is_admin' => ['boolean']
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'is_admin' => $request->has('is_admin') ? 1 : 0,
+        ]);
+
+        return redirect()->route('admin.users.index')->with('status', 'User created successfully');
+    }
+
+    /**
      * Toggle admin flag for a user (promote/demote).
      */
     public function toggleAdmin(Request $request, $id)

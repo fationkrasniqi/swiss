@@ -326,12 +326,6 @@ function showSection(sectionId) {
                     <span class="menu-icon">🏠</span>
                     <span>Home Page</span>
                 </a>
-                @if(auth()->user() && auth()->user()->is_admin)
-                <a href="{{ route('clients.create') }}" class="menu-item">
-                    <span class="menu-icon">➕</span>
-                    <span>Add Client</span>
-                </a>
-                @endif
                 <div class="menu-item" onclick="showSection('settings')">
                     <span class="menu-icon">⚙️</span>
                     <span>Settings</span>

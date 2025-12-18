@@ -115,6 +115,7 @@
         
         html { 
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
             font-size: var(--font-base);
         }
         
@@ -128,8 +129,8 @@
         }
         
         /* ============================================
-           ARTISTIC CANTON MAP BACKGROUND
-           Inspired by Swiss topography & medical sketches
+           VIBRANT MEDICAL BACKGROUND
+           Hospital colors - doctor theme with energy
         ============================================ */
         body::before {
             content: '';
@@ -140,103 +141,89 @@
             bottom: 0;
             z-index: -2;
             background: 
-                radial-gradient(circle at 15% 25%, rgba(91, 143, 185, 0.04) 0%, transparent 35%),
-                radial-gradient(circle at 85% 15%, rgba(118, 168, 157, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 65% 75%, rgba(154, 179, 160, 0.04) 0%, transparent 38%),
-                radial-gradient(circle at 25% 85%, rgba(212, 197, 176, 0.06) 0%, transparent 42%);
+                /* Medical blue zones */
+                radial-gradient(circle at 10% 20%, rgba(41, 128, 185, 0.12) 0%, transparent 30%),
+                radial-gradient(circle at 90% 25%, rgba(52, 152, 219, 0.10) 0%, transparent 35%),
+                /* Medical green/teal zones */
+                radial-gradient(circle at 75% 70%, rgba(26, 188, 156, 0.14) 0%, transparent 32%),
+                radial-gradient(circle at 25% 80%, rgba(22, 160, 133, 0.11) 0%, transparent 38%),
+                /* Fresh mint accents */
+                radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.08) 0%, transparent 45%),
+                /* Warm medical orange/coral */
+                radial-gradient(circle at 85% 85%, rgba(230, 126, 34, 0.09) 0%, transparent 28%),
+                /* Professional purple accents */
+                radial-gradient(circle at 15% 75%, rgba(155, 89, 182, 0.10) 0%, transparent 33%);
             pointer-events: none;
         }
         
-        /* Topographic contour lines - subtle Swiss canton boundaries */
+        /* Soft medical ambient glow - no lines */
         body::after {
             content: '';
             position: fixed;
-            top: -10%;
-            left: -10%;
-            right: -10%;
-            bottom: -10%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             z-index: -1;
-            opacity: 0.55;
-            background-image:
-                /* Abstract canton curves - inspired by Zürich, Bern, Ticino boundaries */
-                repeating-linear-gradient(
-                    108deg,
-                    transparent,
-                    transparent 180px,
-                    rgba(91, 143, 185, 0.045) 180px,
-                    rgba(91, 143, 185, 0.045) 183px
-                ),
-                repeating-linear-gradient(
-                    -42deg,
-                    transparent,
-                    transparent 220px,
-                    rgba(118, 168, 157, 0.055) 220px,
-                    rgba(118, 168, 157, 0.055) 223px
-                ),
-                repeating-linear-gradient(
-                    75deg,
-                    transparent,
-                    transparent 160px,
-                    rgba(154, 179, 160, 0.038) 160px,
-                    rgba(154, 179, 160, 0.038) 162px
-                ),
-                repeating-linear-gradient(
-                    135deg,
-                    transparent,
-                    transparent 200px,
-                    rgba(212, 197, 176, 0.042) 200px,
-                    rgba(212, 197, 176, 0.042) 202px
-                );
-            filter: blur(0.8px);
-            transform: scale(1.1) rotate(2deg);
-            animation: slowDrift 120s ease-in-out infinite;
+            opacity: 0.3;
+            background: 
+                radial-gradient(ellipse at 30% 40%, rgba(41, 128, 185, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(26, 188, 156, 0.06) 0%, transparent 50%);
             pointer-events: none;
         }
         
-        @keyframes slowDrift {
-            0%, 100% { transform: scale(1.1) rotate(2deg) translateY(0); }
-            50% { transform: scale(1.1) rotate(2deg) translateY(-8px); }
+        @keyframes medicalPulse {
+            0%, 100% { 
+                transform: scale(1.1) rotate(1deg) translateY(0);
+                opacity: 0.65;
+            }
+            50% { 
+                transform: scale(1.12) rotate(1deg) translateY(-10px);
+                opacity: 0.72;
+            }
         }
         
-        /* Additional decorative organic shapes */
+        /* Medical stethoscope circular shapes */
         .section::after {
             content: '';
             position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 42% 58% 45% 55% / 48% 62% 38% 52%;
-            background: radial-gradient(circle, rgba(118, 168, 157, 0.05), transparent);
+            width: 380px;
+            height: 380px;
+            border-radius: 45% 55% 52% 48% / 50% 58% 42% 50%;
+            background: radial-gradient(circle, rgba(26, 188, 156, 0.08), rgba(52, 152, 219, 0.05) 50%, transparent);
             z-index: -1;
-            animation: organicFloat 25s ease-in-out infinite;
+            animation: doctorFloat 28s ease-in-out infinite;
         }
         
         .section:nth-child(odd)::after {
-            top: -80px;
-            right: 5%;
+            top: -100px;
+            right: 8%;
+            background: radial-gradient(circle, rgba(41, 128, 185, 0.09), rgba(155, 89, 182, 0.06) 50%, transparent);
         }
         
         .section:nth-child(even)::after {
-            bottom: -80px;
-            left: 8%;
-            animation-delay: -12s;
+            bottom: -100px;
+            left: 5%;
+            animation-delay: -14s;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.08), rgba(230, 126, 34, 0.05) 50%, transparent);
         }
         
-        @keyframes organicFloat {
+        @keyframes doctorFloat {
             0%, 100% { 
-                transform: translateY(0) rotate(0deg);
-                border-radius: 42% 58% 45% 55% / 48% 62% 38% 52%;
+                transform: translateY(0) rotate(0deg) scale(1);
+                border-radius: 45% 55% 52% 48% / 50% 58% 42% 50%;
             }
             25% { 
-                transform: translateY(-20px) rotate(5deg);
-                border-radius: 48% 52% 50% 50% / 55% 45% 55% 45%;
+                transform: translateY(-25px) rotate(8deg) scale(1.05);
+                border-radius: 50% 50% 48% 52% / 55% 45% 60% 40%;
             }
             50% { 
-                transform: translateY(-10px) rotate(-3deg);
-                border-radius: 55% 45% 42% 58% / 50% 58% 42% 50%;
+                transform: translateY(-15px) rotate(-5deg) scale(1.08);
+                border-radius: 58% 42% 50% 50% / 48% 52% 45% 55%;
             }
             75% { 
-                transform: translateY(-25px) rotate(7deg);
-                border-radius: 45% 55% 48% 52% / 42% 58% 42% 58%;
+                transform: translateY(-30px) rotate(10deg) scale(1.03);
+                border-radius: 42% 58% 55% 45% / 52% 48% 58% 42%;
             }
         }
         
@@ -1882,8 +1869,7 @@
         <div class="container">
             <p itemprop="copyrightNotice">&copy; {{ date('Y') }} {{ __('home.nav_brand') }}. {{ __('home.footer_rights') }}</p>
             <p style="margin-top:10px">
-                <a href="{{ route('login') }}" aria-label="Login to admin panel">Login</a> | 
-                <a href="{{ route('register') }}" aria-label="Register new account">Register</a>
+                <a href="{{ route('login') }}" aria-label="Login to admin panel">Login</a>
             </p>
             <div style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.8);">
                 <p>{{ __('home.seo_keywords') }}</p>
@@ -1924,6 +1910,49 @@
         } else {
             console.error('Hamburger or navbarMenu not found!');
         }
+        
+        // Slow smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') return;
+                
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const targetPosition = targetElement.offsetTop - 80;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1000; // 1 second
+                    let start = null;
+                    
+                    function animation(currentTime) {
+                        if (start === null) start = currentTime;
+                        const timeElapsed = currentTime - start;
+                        const run = ease(timeElapsed, startPosition, distance, duration);
+                        window.scrollTo(0, run);
+                        if (timeElapsed < duration) requestAnimationFrame(animation);
+                    }
+                    
+                    function ease(t, b, c, d) {
+                        t /= d / 2;
+                        if (t < 1) return c / 2 * t * t + b;
+                        t--;
+                        return -c / 2 * (t * (t - 2) - 1) + b;
+                    }
+                    
+                    requestAnimationFrame(animation);
+                    
+                    // Close mobile menu if open
+                    if (hamburger && navbarMenu) {
+                        hamburger.classList.remove('active');
+                        navbarMenu.classList.remove('active');
+                    }
+                }
+            });
+        });
     
         AOS.init({
             duration: 800,
@@ -2062,10 +2091,27 @@
         });
 
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            const startPosition = window.pageYOffset;
+            const distance = -startPosition;
+            const duration = 1000; // 1 second
+            let start = null;
+            
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+            
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+            
+            requestAnimationFrame(animation);
         }
 
         // Smooth scroll for navigation links

@@ -56,6 +56,8 @@ Route::middleware([
         Route::get('/clients/{id}/pdf', [\App\Http\Controllers\ClientController::class, 'viewPdf'])->name('clients.pdf');
         Route::get('/clients/{id}/download', [\App\Http\Controllers\ClientController::class, 'downloadPdf'])->name('clients.download');
         Route::get('/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
+        Route::get('/users/create', [\App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
+        Route::post('/users', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
         Route::delete('/users/{id}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
         Route::post('/users/{id}/toggle-admin', [\App\Http\Controllers\Admin\UserController::class, 'toggleAdmin'])->name('users.toggleAdmin');
         // Admin messages

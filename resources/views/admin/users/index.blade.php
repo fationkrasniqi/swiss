@@ -270,6 +270,7 @@
                     <a href="{{ route('admin.users.index') }}">Clear</a>
                 @endif
             </form>
+            <a href="{{ route('admin.users.create') }}" class="action-btn success" style="white-space:nowrap;">➕ Create User</a>
         </div>
 
         @if(session('status'))

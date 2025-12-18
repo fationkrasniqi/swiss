@@ -68,8 +68,8 @@
         }
         
         /* ============================================
-           ARTISTIC CANTON MAP BACKGROUND
-           Inspired by Swiss topography & medical sketches
+           VIBRANT MEDICAL BACKGROUND
+           Hospital colors - doctor theme with energy
         ============================================ */
         body::before {
             content: '';
@@ -80,62 +80,46 @@
             bottom: 0;
             z-index: -2;
             background: 
-                radial-gradient(circle at 15% 25%, rgba(91, 143, 185, 0.04) 0%, transparent 35%),
-                radial-gradient(circle at 85% 15%, rgba(118, 168, 157, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 65% 75%, rgba(154, 179, 160, 0.04) 0%, transparent 38%),
-                radial-gradient(circle at 25% 85%, rgba(212, 197, 176, 0.06) 0%, transparent 42%);
+                /* Medical blue zones */
+                radial-gradient(circle at 10% 20%, rgba(41, 128, 185, 0.12) 0%, transparent 30%),
+                radial-gradient(circle at 90% 25%, rgba(52, 152, 219, 0.10) 0%, transparent 35%),
+                /* Medical green/teal zones */
+                radial-gradient(circle at 75% 70%, rgba(26, 188, 156, 0.14) 0%, transparent 32%),
+                radial-gradient(circle at 25% 80%, rgba(22, 160, 133, 0.11) 0%, transparent 38%),
+                /* Fresh mint accents */
+                radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.08) 0%, transparent 45%),
+                /* Warm medical orange/coral */
+                radial-gradient(circle at 85% 85%, rgba(230, 126, 34, 0.09) 0%, transparent 28%),
+                /* Professional purple accents */
+                radial-gradient(circle at 15% 75%, rgba(155, 89, 182, 0.10) 0%, transparent 33%);
             pointer-events: none;
         }
         
-        /* Topographic contour lines - subtle Swiss canton boundaries */
+        /* Soft medical ambient glow - no lines */
         body::after {
             content: '';
             position: fixed;
-            top: -10%;
-            left: -10%;
-            right: -10%;
-            bottom: -10%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             z-index: -1;
-            opacity: 0.55;
-            background-image:
-                /* Abstract canton curves - inspired by Zürich, Bern, Ticino boundaries */
-                repeating-linear-gradient(
-                    108deg,
-                    transparent,
-                    transparent 180px,
-                    rgba(91, 143, 185, 0.045) 180px,
-                    rgba(91, 143, 185, 0.045) 183px
-                ),
-                repeating-linear-gradient(
-                    -42deg,
-                    transparent,
-                    transparent 220px,
-                    rgba(118, 168, 157, 0.055) 220px,
-                    rgba(118, 168, 157, 0.055) 223px
-                ),
-                repeating-linear-gradient(
-                    75deg,
-                    transparent,
-                    transparent 160px,
-                    rgba(154, 179, 160, 0.038) 160px,
-                    rgba(154, 179, 160, 0.038) 162px
-                ),
-                repeating-linear-gradient(
-                    135deg,
-                    transparent,
-                    transparent 200px,
-                    rgba(212, 197, 176, 0.042) 200px,
-                    rgba(212, 197, 176, 0.042) 202px
-                );
-            filter: blur(0.8px);
-            transform: scale(1.1) rotate(2deg);
-            animation: slowDrift 120s ease-in-out infinite;
+            opacity: 0.3;
+            background: 
+                radial-gradient(ellipse at 30% 40%, rgba(41, 128, 185, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(26, 188, 156, 0.06) 0%, transparent 50%);
             pointer-events: none;
         }
         
-        @keyframes slowDrift {
-            0%, 100% { transform: scale(1.1) rotate(2deg) translateY(0); }
-            50% { transform: scale(1.1) rotate(2deg) translateY(-8px); }
+        @keyframes medicalPulse {
+            0%, 100% { 
+                transform: scale(1.1) rotate(1deg) translateY(0);
+                opacity: 0.65;
+            }
+            50% { 
+                transform: scale(1.12) rotate(1deg) translateY(-10px);
+                opacity: 0.72;
+            }
         }
         
         /* Navbar - Responsive with Hamburger Menu */
@@ -672,8 +656,7 @@
     <div class="container">
         <p>&copy; {{ date('Y') }} {{ __('home.nav_brand') }}. {{ __('home.footer_rights') }}</p>
         <p style="margin-top:10px">
-            <a href="{{ route('login') }}" aria-label="Login to admin panel">Login</a> | 
-            <a href="{{ route('register') }}" aria-label="Register new account">Register</a>
+            <a href="{{ route('login') }}" aria-label="Login to admin panel">Login</a>
         </p>
         <div style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.8);">
             <p>{{ __('home.seo_keywords') }}</p>
