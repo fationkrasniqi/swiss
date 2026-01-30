@@ -15,6 +15,7 @@
     
     <!-- Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
     
     <style>
         /* ============================================
@@ -34,6 +35,9 @@
             --soft-gray: #B4B8BF;
             --text-primary: #2C3E50;
             --text-secondary: #6B7C8E;
+            
+            /* Background */
+            --background-main: #F6F9FC;
             
             /* Typography Scale - Optimized for elderly users */
             --font-base: 18px;
@@ -61,7 +65,7 @@
             font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.75;
             color: var(--text-primary);
-            background: var(--off-white);
+            background: var(--background-main);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
@@ -80,34 +84,8 @@
             bottom: 0;
             z-index: -2;
             background: 
-                /* Medical blue zones */
-                radial-gradient(circle at 10% 20%, rgba(41, 128, 185, 0.12) 0%, transparent 30%),
-                radial-gradient(circle at 90% 25%, rgba(52, 152, 219, 0.10) 0%, transparent 35%),
-                /* Medical green/teal zones */
-                radial-gradient(circle at 75% 70%, rgba(26, 188, 156, 0.14) 0%, transparent 32%),
-                radial-gradient(circle at 25% 80%, rgba(22, 160, 133, 0.11) 0%, transparent 38%),
-                /* Fresh mint accents */
-                radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.08) 0%, transparent 45%),
-                /* Warm medical orange/coral */
-                radial-gradient(circle at 85% 85%, rgba(230, 126, 34, 0.09) 0%, transparent 28%),
-                /* Professional purple accents */
-                radial-gradient(circle at 15% 75%, rgba(155, 89, 182, 0.10) 0%, transparent 33%);
-            pointer-events: none;
-        }
-        
-        /* Soft medical ambient glow - no lines */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            opacity: 0.3;
-            background: 
-                radial-gradient(ellipse at 30% 40%, rgba(41, 128, 185, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 60%, rgba(26, 188, 156, 0.06) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(18, 72, 126, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(247, 149, 203, 0.06) 0%, transparent 40%);
             pointer-events: none;
         }
         
@@ -283,14 +261,27 @@
             .navbar-brand {
                 font-size: 18px;
             }
+            .form-group .input,
+            .form-group select {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 14px 18px !important;
+            }
+            .phone-group {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+            .service-header h1 {
+                font-size: 28px !important;
+            }
         }
         
-        /* Footer - same as home */
+        /* Footer */
         .footer {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 50px 0 30px;
-            text-align: center;
+            padding: 60px 0 30px;
             margin-top: 80px;
         }
         .footer .container {
@@ -298,13 +289,8 @@
             margin: 0 auto;
             padding: 0 30px;
         }
-        .footer a {
-            color: #4facfe;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
         .footer a:hover {
-            color: #00f2fe;
+            opacity: 1 !important;
         }
         
         .container {
@@ -342,59 +328,76 @@
     .service-card {
         background: white;
         border-radius: 28px;
-        padding: var(--space-xl);
-        box-shadow: var(--shadow-lg);
-        border: 1px solid rgba(91, 143, 185, 0.08);
+        padding: 5px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        border: 1px solid rgba(18,72,126,0.08);
+    }
+    .service-logo {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .service-logo img {
+        max-width: 180px;
+        height: auto;
     }
     .form-title {
-        font-size: var(--font-2xl);
-        font-weight: 600;
-        color: var(--text-primary);
+        font-size: 32px;
+        font-weight: 700;
+        color: #12487E;
         margin-bottom: var(--space-lg);
         text-align: center;
     }
     .form-group {
-        margin-bottom: var(--space-md);
+        margin-bottom: 25px;
     }
     .form-group label {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 8px;
         font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: var(--space-xs);
-        font-size: var(--font-lg);
+        color: #12487E;
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+    .form-group label i {
+        color: #F795CB;
+        font-size: 14px;
     }
     .form-group .input,
     .form-group select {
         width: 100%;
         padding: 14px 18px;
-        border: 2px solid rgba(91, 143, 185, 0.15);
-        border-radius: 16px;
-        font-size: var(--font-base);
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        font-size: 15px;
         transition: all 0.3s ease;
         font-family: inherit;
+        outline: none;
     }
     .form-group .input:focus,
     .form-group select:focus {
-        outline: none;
-        border-color: var(--swiss-blue);
-        box-shadow: 0 0 0 3px rgba(91, 143, 185, 0.08);
+        border-color: #12487E;
+        box-shadow: 0 0 0 4px rgba(18,72,126,0.08);
     }
     .phone-group {
-        display: flex;
-        gap: 14px;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 15px;
         align-items: stretch;
+        width: 100%;
     }
     .phone-prefix {
-        width: 150px;
-        flex-shrink: 0;
-    }
-    .phone-number {
-        flex: 1;
-        min-width: 0;
+        width: 100%;
     }
     .phone-input-wrapper {
-        flex: 1;
+        width: 100%;
         display: flex;
+    }
+    .phone-number {
+        width: 100%;
+        min-width: 0;
+        font-size: 15px;
+        padding: 14px 18px;
     }
     .checkbox-grid {
         display: grid;
@@ -408,48 +411,57 @@
     .checkbox-label {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
+        gap: 8px;
+        padding: 9px 12px;
         background: white;
-        border-radius: 14px;
+        border-radius: 10px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid transparent;
-        box-shadow: var(--shadow-sm);
+        transition: all 0.3s;
+        border: 2px solid #e5e7eb;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        font-size: 13px;
     }
     .checkbox-label:hover {
-        background: rgba(118, 168, 157, 0.06);
-        border-color: var(--medical-teal);
+        background: rgba(247,149,203,0.06);
+        border-color: #F795CB;
         transform: translateY(-1px);
     }
     .checkbox-label input[type="checkbox"] {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
         cursor: pointer;
-        accent-color: var(--swiss-blue);
+        accent-color: #12487E;
+        flex-shrink: 0;
+    }
+    .checkbox-label span {
+        font-size: 13px;
+        line-height: 1.3;
     }
     .checkbox-label input[type="checkbox"]:checked + span {
-        color: var(--swiss-blue);
+        color: #12487E;
         font-weight: 600;
     }
     .btn-submit {
         width: 100%;
-        background: var(--swiss-blue);
+        background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);
         color: white;
-        padding: 16px 44px;
+        padding: 16px 40px;
         border: none;
-        border-radius: 42px;
-        font-size: var(--font-lg);
-        font-weight: 600;
+        border-radius: 50px;
+        font-size: 17px;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: var(--shadow-md);
-        margin-top: var(--space-md);
+        transition: all 0.3s;
+        box-shadow: 0 8px 20px rgba(18,72,126,0.3);
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
     .btn-submit:hover {
-        background: var(--medical-teal);
         transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
+        box-shadow: 0 12px 30px rgba(18,72,126,0.4);
     }
     .form-error {
         color: #c53030;
@@ -476,14 +488,16 @@
     <!-- Navbar - Responsive with Hamburger -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
-            <a href="{{ url('/') }}" class="navbar-brand" aria-label="Homepage">{{ __('home.nav_brand') }}</a>
+            <a href="{{ url('/') }}" class="navbar-brand" aria-label="Homepage">
+                <img src="{{ asset('images/logo.png') }}" alt="{{ __('home.nav_brand') }}" style="max-width: 100px; height: auto;">
+            </a>
             <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="{{ url('/') }}" aria-label="Homepage">{{ __('home.nav_home') }}</a></li>
+                <li><a href="{{ url('/') }}#home" aria-label="Homepage">{{ __('home.nav_home') }}</a></li>
                 <li><a href="{{ url('/services') }}" aria-label="Our Services">{{ __('home.nav_services') }}</a></li>
                 <li><a href="{{ url('/') }}#contact" aria-label="Contact Us">{{ __('home.nav_contact') }}</a></li>
                 <li class="lang-switcher">
@@ -500,7 +514,6 @@
         <div class="service-container">
             <div class="service-header">
                 <h1>{{ __('services.page_title') }}</h1>
-                <p>{{ __('services.page_subtitle') }}</p>
             </div>
 
             @if(session('status'))
@@ -508,27 +521,30 @@
             @endif
 
             <div class="service-card">
+                <div class="service-logo">
+                    <img src="{{ asset('images/logo.png') }}" alt="{{ __('home.nav_brand') }}">
+                </div>
                 <h3 class="form-title">{{ __('services.form_title') }}</h3>
                 <form method="POST" action="{{ route('clients.store') }}" id="serviceForm">
                     @csrf
                     <div class="form-group">
-                        <label>{{ __('services.first_name') }}</label>
+                        <label><i class="fas fa-user"></i>{{ __('services.first_name') }}</label>
                         <input type="text" name="first_name" value="{{ old('first_name') }}" class="input" required />
                         @error('first_name')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label>{{ __('services.last_name') }}</label>
+                        <label><i class="fas fa-user"></i>{{ __('services.last_name') }}</label>
                         <input type="text" name="last_name" value="{{ old('last_name') }}" class="input" required />
                         @error('last_name')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label>{{ __('services.email') }}</label>
+                        <label><i class="fas fa-envelope"></i>{{ __('services.email') }}</label>
                         <input type="email" name="email" value="{{ old('email') }}" class="input" required />
                         @error('email')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     
                     <div class="form-group">
-                        <label>{{ __('services.phone') }}</label>
+                        <label><i class="fas fa-phone"></i>{{ __('services.phone') }}</label>
                         <div class="phone-group">
                             <select name="phone_prefix" class="input phone-prefix" required>
                                 <option value="+41" {{ old('phone_prefix', '+41') == '+41' ? 'selected' : '' }}>🇨🇭 +41</option>
@@ -546,7 +562,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>{{ __('services.canton') }}</label>
+                        <label><i class="fas fa-map-marker-alt"></i>{{ __('services.canton') }}</label>
                         <select name="canton" class="input" required>
                             @foreach($cantons as $canton)
                                 <option value="{{ $canton }}" @if(old('canton')==$canton)selected @endif>{{ $canton }}</option>
@@ -555,7 +571,7 @@
                         @error('canton')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label>{{ __('services.services') }}</label>
+                        <label><i class="fas fa-tasks"></i>{{ __('services.services') }}</label>
                         <div class="checkbox-grid">
                             @foreach($services as $i => $service)
                                 <label class="checkbox-label">
@@ -567,7 +583,7 @@
                         @error('services')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label>{{ __('services.hours') }}</label>
+                        <label><i class="fas fa-clock"></i>{{ __('services.hours') }}</label>
                         <select name="hours" class="input" id="hoursInput">
                             @for($h=1;$h<=12;$h++)
                                 <option value="{{ $h }}" @if(old('hours')==$h)selected @endif>{{ $h }} {{ trans_choice('services.hours_text', $h) }}</option>
@@ -576,17 +592,17 @@
                         @error('hours')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label>{{ __('services.service_date') }}</label>
+                        <label><i class="fas fa-calendar"></i>{{ __('services.service_date') }}</label>
                         <input type="date" name="service_date" value="{{ old('service_date') }}" class="input" min="{{ date('Y-m-d') }}" />
                         @error('service_date')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label>{{ __('services.total') }}</label>
-                        <input type="text" name="total_price" id="totalPriceInput" class="input" readonly value="{{ old('total_price', 0) }}" style="background: #f7fafc; font-weight: 600; font-size: 18px; color: #667eea;" />
+                        <label><i class="fas fa-money-bill-wave"></i>{{ __('services.total') }}</label>
+                        <input type="text" name="total_price" id="totalPriceInput" class="input" readonly value="{{ old('total_price', 0) }}" style="background: linear-gradient(135deg, rgba(18,72,126,0.05), rgba(247,149,203,0.05)); font-weight: 700; font-size: 18px; color: #12487E; border-color: #12487E;" />
                         @error('total_price')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     
-                    <button type="submit" class="btn-submit">📩 {{ __('services.submit') }}</button>
+                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i>{{ __('services.submit') }}</button>
                 </form>
             </div>
         </div>
@@ -651,17 +667,56 @@
     });
     </script>
 
-    <!-- Footer - same as home -->
+    <!-- Footer -->
     <footer class="footer" role="contentinfo">
-    <div class="container">
-        <p>&copy; {{ date('Y') }} {{ __('home.nav_brand') }}. {{ __('home.footer_rights') }}</p>
-        <p style="margin-top:10px">
-            <a href="{{ route('login') }}" aria-label="Login to admin panel">Login</a>
-        </p>
-        <div style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.8);">
-            <p>{{ __('home.seo_keywords') }}</p>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <!-- Company Info -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">{{ __('home.nav_brand') }}</h4>
+                    <p style="opacity: 0.9; line-height: 1.6; font-size: 14px;">{{ __('home.seo_description') }}</p>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+                        <a href="tel:+41791234567" style="color: rgba(255,255,255,0.9); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-phone"></i> +41 79 123 45 67
+                        </a>
+                        <a href="mailto:info@janiracare.ch" style="color: rgba(255,255,255,0.9); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-envelope"></i> info@janiracare.ch
+                        </a>
+                        <p style="margin: 0; opacity: 0.9; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-map-marker-alt"></i> Zürich, Switzerland
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">Follow Us</h4>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="https://facebook.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#1877f2'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#E4405F'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#0077b5'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; text-align: center;">
+                <p style="opacity: 0.9;">&copy; {{ date('Y') }} {{ __('home.nav_brand') }}. {{ __('home.footer_rights') }}</p>
+                <p style="margin-top: 10px;">
+                    <a href="{{ route('login') }}" style="color: rgba(255,255,255,0.9); text-decoration: none; font-size: 13px;" aria-label="Login to admin panel">Admin Login</a>
+                </p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>

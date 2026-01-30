@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -48,20 +47,44 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    // Admin area: protected by auth + verified + admin middleware
+    // Staff routes: clients (accessible to admins OR users with can_view_clients)
+    Route::middleware([
+        'auth',
+        config('jetstream.auth_session'),
+        'verified',
+        'can.view.clients'
+    ])->group(function () {
+        Route::get('/admin/clients', [\App\Http\Controllers\ClientController::class, 'adminIndex'])->name('admin.clients.index');
+        Route::post('/admin/clients/{id}/send-email', [\App\Http\Controllers\ClientController::class, 'sendEmail'])->name('admin.clients.sendEmail');
+        Route::get('/admin/clients/{id}/pdf', [\App\Http\Controllers\ClientController::class, 'viewPdf'])->name('admin.clients.pdf');
+        Route::get('/admin/clients/{id}/download', [\App\Http\Controllers\ClientController::class, 'downloadPdf'])->name('admin.clients.download');
+    });
+
+    // Staff routes: messages (accessible to admins OR users with can_view_messages)
+    Route::middleware([
+        'auth',
+        config('jetstream.auth_session'),
+        'verified',
+        'can.view.messages'
+    ])->group(function () {
+        Route::get('/admin/messages', [\App\Http\Controllers\ContactMessageController::class, 'adminIndex'])->name('admin.messages.index');
+        Route::delete('/admin/messages/{id}', [\App\Http\Controllers\ContactMessageController::class, 'destroy'])->name('admin.messages.destroy');
+    });
+
+    // Admin area: keep strict admin-only routes here
     Route::prefix('admin')->name('admin.')->middleware(['admin'])->group(function () {
-        // Admin clients
-        Route::get('/clients', [\App\Http\Controllers\ClientController::class, 'adminIndex'])->name('clients.index');
-        Route::post('/clients/{id}/send-email', [\App\Http\Controllers\ClientController::class, 'sendEmail'])->name('clients.sendEmail');
-        Route::get('/clients/{id}/pdf', [\App\Http\Controllers\ClientController::class, 'viewPdf'])->name('clients.pdf');
-        Route::get('/clients/{id}/download', [\App\Http\Controllers\ClientController::class, 'downloadPdf'])->name('clients.download');
+        // Admin users management only
         Route::get('/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
         Route::get('/users/create', [\App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
         Route::post('/users', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
         Route::delete('/users/{id}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
+        
+        // Cantons pricing management
+        Route::get('/cantons', [\App\Http\Controllers\Admin\CantonController::class, 'index'])->name('cantons.index');
+        Route::put('/cantons/{id}', [\App\Http\Controllers\Admin\CantonController::class, 'update'])->name('cantons.update');
         Route::post('/users/{id}/toggle-admin', [\App\Http\Controllers\Admin\UserController::class, 'toggleAdmin'])->name('users.toggleAdmin');
-        // Admin messages
-        Route::get('/messages', [\App\Http\Controllers\ContactMessageController::class, 'adminIndex'])->name('messages.index');
-        Route::delete('/messages/{id}', [\App\Http\Controllers\ContactMessageController::class, 'destroy'])->name('messages.destroy');
     });
 });
+
+// Public API endpoint for canton prices (for real-time price calculation)
+Route::get('/api/cantons/prices', [\App\Http\Controllers\Admin\CantonController::class, 'getPrices'])->name('api.cantons.prices');

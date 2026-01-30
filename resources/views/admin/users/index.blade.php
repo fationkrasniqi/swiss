@@ -250,6 +250,10 @@
                 <span class="admin-menu-icon">👥</span>
                 <span>Users</span>
             </a>
+            <a href="{{ route('admin.cantons.index') }}" class="admin-menu-item">
+                <span class="admin-menu-icon">🗺️</span>
+                <span>Cantons</span>
+            </a>
         </div>
     </div>
 

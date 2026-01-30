@@ -11,6 +11,19 @@ return [
     'hero_subtitle' => 'Nous offrons des services spécialisés et personnalisés pour vos proches âgés. Avec un personnel formé et un dévouement total à leur bien-être.',
     'hero_cta' => 'Contactez-Nous Maintenant',
     
+    // How It Works Section
+    'how_it_works_aria' => 'Comment fonctionne le processus de réservation',
+    'how_it_works_title' => 'Comment Ça Marche',
+    'how_it_works_subtitle' => 'Seulement 4 étapes simples pour obtenir les meilleurs soins pour vos proches',
+    'step_1_title' => 'Choisir le Service',
+    'step_1_description' => 'Parcourez notre liste de services et sélectionnez celui dont vous avez le plus besoin pour vos proches.',
+    'step_2_title' => 'Réserver un Rendez-vous',
+    'step_2_description' => 'Choisissez la date et l\'heure qui vous conviennent le mieux. Notre système est disponible 24h/24 et 7j/7.',
+    'step_3_title' => 'Recevoir la Confirmation',
+    'step_3_description' => 'Vous recevrez une confirmation immédiate avec tous les détails de votre rendez-vous.',
+    'step_4_title' => 'Recevoir les Soins',
+    'step_4_description' => 'Notre personnel professionnel arrivera à l\'heure et fournira d\'excellents soins pour vos personnes âgées.',
+    
     'services_title' => 'Nos Services',
     'services_subtitle' => 'Nous offrons une large gamme de services personnalisés pour les soins aux personnes âgées',
     
@@ -118,4 +131,30 @@ return [
     'timeline_2019_text' => 'Introduction des systèmes de soins et de surveillance de santé les plus modernes.',
     'timeline_2025_title' => 'Aujourd’hui',
     'timeline_2025_text' => 'Plus de 850 seniors heureux et 45 professionnels des soins.',
+
+    // Booking hero specific keys
+    'hero_title_html' => 'Soins Professionnels pour les Personnes Âgées <span>près de chez vous</span>',
+    'hero_cta_primary' => 'Réserver un Rendez-vous',
+    'hero_cta_secondary' => 'Comment ça marche',
+    'stat_doctors' => 'Médecins Qualifiés',
+    'stat_patients' => 'Patients Satisfaits',
+    'stat_online' => 'Réservation en Ligne',
+    'hero_image_alt' => 'Soignant aidant une personne âgée',
+    'hero_stats_aria' => 'Statistiques clés sur nos services',
+    'hero_aria' => 'Bannière principale',
+
+    // Our Story Section
+    'our_story_title' => 'Notre Histoire – Comment Tout A Commencé',
+    'our_story_subtitle' => 'Construire la confiance grâce à des soins professionnels et une compassion authentique',
+    'story_1_title' => 'Le Début',
+    'story_1_text' => 'Nous avons commencé avec une conviction simple : chaque personne âgée mérite des soins compassionnels et professionnels dans le confort de son propre domicile. Fondée par des professionnels de la santé expérimentés en Suisse, notre entreprise a été construite sur des années de travail en étroite collaboration avec les patients et la compréhension de leurs besoins réels. Nous avons vu des familles à la recherche d\'un soutien fiable, et nous savions que nous pouvions aider.',
+    'story_1_image_alt' => 'Le début de notre parcours de soins de santé',
+    'story_2_title' => 'Notre Fondation',
+    'story_2_text' => 'Dès le premier jour, nous nous sommes concentrés sur le recrutement d\'infirmières et de soignants qualifiés et certifiés qui partagent notre engagement envers la dignité et le respect. Chaque membre de l\'équipe est soigneusement sélectionné et formé pour répondre aux normes suisses de soins de santé. Nous sommes peut-être une nouvelle entreprise, mais notre approche est fondée sur des pratiques professionnelles éprouvées et une véritable connexion humaine.',
+    'story_2_image_alt' => 'Notre fondation professionnelle',
+    'story_3_title' => 'Grandir Avec Un But',
+    'story_3_text' => 'En grandissant, notre mission reste inchangée : fournir des soins fiables et personnalisés qui permettent aux seniors de maintenir leur indépendance et leur qualité de vie. Nous écoutons les familles, nous nous adaptons aux besoins individuels et nous construisons des relations durables basées sur la confiance. Chaque patient que nous servons renforce notre engagement envers l\'excellence dans les soins de santé à domicile.',
+    'story_3_image_alt' => 'Grandir avec un but',
+    'mission_title' => 'Notre Mission Aujourd\'hui',
+    'mission_text' => 'Nous sommes dédiés à fournir des soins aux personnes âgées compassionnels et professionnels dans toute la Suisse. Chaque jour, notre équipe travaille pour s\'assurer que les seniors reçoivent la dignité, l\'attention et le soutien de qualité qu\'ils méritent dans leur propre domicile.',
 ];

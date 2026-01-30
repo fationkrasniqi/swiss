@@ -34,6 +34,7 @@
     <link href="{{ asset('css/simple.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
     
     <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">
@@ -74,6 +75,117 @@
            Inspired by Swiss medical precision & warmth
            Background: Artistic canton map concept
         ============================================ */
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+            /* Logo / brand colors */
+            --brand-blue: #12487E; /* primary */
+            --brand-pink: #F795CB; /* accent */
+            --brand-white: #FFFFFF;
+
+            /* Compatibility aliases used throughout the CSS */
+            --swiss-blue: var(--brand-blue);
+            --medical-teal: var(--brand-pink);
+
+            /* Common tokens */
+            --text-primary: #0f1724;
+            --text-secondary: #6b7280;
+            --warm-beige: rgba(247,149,203,0.06);
+            --shadow-md: 0 8px 24px rgba(18,72,126,0.06);
+            --shadow-lg: 0 20px 60px rgba(18,72,126,0.10);
+
+            --gradient-brand: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-pink) 100%);
+            --gradient-cta: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-pink) 100%);
+        }
+
+        /* Branding overrides to adopt logo colors across commonly used components */
+        .navbar-brand {
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-hero-main {
+            background: var(--gradient-cta) !important;
+            box-shadow: 0 10px 30px rgba(18,72,126,0.12);
+            color: var(--brand-white);
+        }
+
+        .btn-hero-ghost {
+            background: rgba(255,255,255,0.06);
+            color: var(--brand-white);
+            border: 1px solid rgba(18,72,126,0.08);
+        }
+
+        .hero .btn-primary {
+            background: var(--brand-white);
+            color: var(--brand-blue);
+            border-color: transparent;
+        }
+
+        .hero-decor {
+            background: radial-gradient(circle at 30% 30%, rgba(18,72,126,0.14), rgba(247,149,203,0.04));
+        }
+
+        .footer {
+            background: var(--gradient-brand);
+        }
+
+        .service-icon {
+            background: rgba(18,72,126,0.06);
+        }
+
+        .contact-card .icon-circle {
+            background: var(--brand-blue);
+        }
+
+        .back-to-top {
+            background: var(--brand-white);
+            color: var(--brand-blue);
+            border: 2px solid rgba(18,72,126,0.12);
+        }
+
+        .team-badge {
+            background: var(--brand-pink);
+            color: var(--brand-white);
+        }
+
+        .review-arrow {
+            border-color: var(--brand-blue);
+            color: var(--brand-blue);
+        }
+
+        .review-arrow:hover {
+            background: var(--brand-blue);
+            color: var(--brand-white);
+        }
+
+        .lang-btn {
+            border: 1.5px solid rgba(18,72,126,0.12);
+            color: var(--brand-blue);
+            background: rgba(18,72,126,0.04);
+        }
+
+        .lang-btn.active {
+            background: var(--brand-blue);
+            color: var(--brand-white);
+        }
+
+        /* Small utility: make any leftover hard-coded gradients lean on brand variables */
+        .bg-brand-gradient {
+            background: var(--gradient-brand) !important;
+        }
         
         :root {
             /* Swiss Medical Color Palette */
@@ -247,6 +359,9 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            max-width: min(1200px, 100%);
+            position: relative;
         }
         .navbar-brand {
             font-size: 20px;
@@ -265,6 +380,9 @@
             cursor: pointer;
             z-index: 1001;
             padding: 8px;
+            position: relative;
+            background: transparent;
+            border: none;
         }
         .hamburger span {
             width: 25px;
@@ -351,12 +469,17 @@
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
+                margin-left: auto;
+            }
+            .navbar .container {
+                overflow: visible;
             }
             .navbar-menu {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: -280px;
                 width: 280px;
+                max-width: 85vw;
                 height: 100vh;
                 background: rgba(255, 255, 255, 0.98);
                 backdrop-filter: blur(20px);
@@ -367,6 +490,7 @@
                 box-shadow: -5px 0 20px rgba(0,0,0,0.1);
                 transition: right 0.4s ease;
                 padding: 20px;
+                overflow-y: auto;
             }
             .navbar-menu.active {
                 right: 0;
@@ -513,7 +637,25 @@
             opacity: 0.96;
             line-height: 1.65;
         }
-        
+
+        /* Hero - modern glass CTA and layout */
+        .hero { position: relative; overflow: hidden; }
+        .hero-content { position: relative; z-index: 2; padding: 80px 0; }
+        .hero-copy h1 { margin:8px 0 8px 0; font-size:42px; line-height:1.05; color: #fff; }
+        .hero-copy p { color: rgba(255,255,255,0.92); max-width: 640px; }
+
+        .btn-hero-main { background: linear-gradient(90deg,#667eea,#4facfe); color: white; padding:14px 26px; border-radius:12px; font-weight:700; text-decoration:none; display:inline-block; box-shadow: 0 10px 30px rgba(79,172,254,0.18); }
+        .btn-hero-main:focus { outline: 3px solid rgba(79,172,254,0.22); }
+        .btn-hero-ghost { background: rgba(255,255,255,0.12); color: #fff; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600; border:1px solid rgba(255,255,255,0.08); }
+
+        .hero-decor { position:absolute; right:-120px; bottom:-80px; width:520px; height:520px; background: radial-gradient(circle at 30% 30%, rgba(79,172,254,0.14), rgba(79,172,254,0.04)); transform: rotate(-12deg) scale(1.02); filter: blur(6px); pointer-events:none; }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-copy h1 { font-size: 32px; }
+            .hero-decor { display:none; }
+        }
+
         /* ============================================
            PRIMARY CTA BUTTON - Friendly pill shape
         ============================================ */
@@ -541,7 +683,8 @@
            LAYOUT CONTAINERS
         ============================================ */
         .container { 
-            max-width: 1280px;
+            max-width: min(1280px, 100%);
+            width: 100%;
             margin: 0 auto;
             padding: 0 var(--space-md);
         }
@@ -580,7 +723,7 @@
             text-align: center;
             font-size: var(--font-2xl);
             margin-bottom: var(--space-sm);
-            color: var(--text-primary);
+            color: var (--text-primary);
             font-weight: 600;
             letter-spacing: -0.3px;
         }
@@ -601,71 +744,92 @@
         ============================================ */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .service-card {
-            background: white;
-            border-radius: 28px;
-            padding: var(--space-lg) var(--space-md);
-            box-shadow: var(--shadow-md);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(91, 143, 185, 0.08);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(18, 72, 126, 0.08);
             position: relative;
-            overflow: visible;
+            overflow: hidden;
+            text-align: center;
+            max-width: 350px;
+            margin: 0 auto;
         }
         
-        /* Subtle decorative corner element */
         .service-card::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            width: 72px;
-            height: 72px;
-            background: 
-                linear-gradient(135deg, var(--medical-teal) 0%, var(--sage-green) 100%);
-            border-radius: 28px 0 28px 0;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #12487E 0%, #F795CB 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
         
         .service-card:hover::before {
-            opacity: 0.06;
+            transform: scaleX(1);
         }
         
         .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(118, 168, 157, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(18, 72, 126, 0.12);
+            border-color: rgba(18, 72, 126, 0.2);
+            background: #ffffff;
         }
         
         .service-icon {
-            font-size: 54px;
-            margin-bottom: var(--space-sm);
-            display: block;
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            background: linear-gradient(135deg, rgba(18, 72, 126, 0.1) 0%, rgba(247, 149, 203, 0.1) 100%);
+            border-radius: 50%;
+            color: #12487E;
             position: relative;
             z-index: 1;
+            box-shadow: 0 2px 8px rgba(18, 72, 126, 0.08);
+        }
+        
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(18, 72, 126, 0.15);
         }
         
         .service-card h3 {
-            font-size: var(--font-xl);
-            margin-bottom: var(--space-sm);
-            color: var(--text-primary);
-            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: #12487E;
+            font-weight: 700;
             position: relative;
             z-index: 1;
         }
         
         .service-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: var(--font-base);
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 13px;
             position: relative;
             z-index: 1;
+            margin: 0;
         }
 
         /* ============================================
@@ -682,7 +846,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 24px;
-            height: 280px;
+            height: 420px;
             background: rgba(91, 143, 185, 0.06);
             display: flex;
             align-items: center;
@@ -698,7 +862,7 @@
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
         }
         
@@ -716,30 +880,30 @@
         ============================================ */
         .filter-btn {
             background: white;
-            border: 2px solid rgba(91, 143, 185, 0.25);
-            color: var(--swiss-blue);
-            padding: 12px 28px;
-            border-radius: 32px;
+            border: 2px solid rgba(18, 72, 126, 0.2);
+            color: #12487E;
+            padding: 8px 20px;
+            border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: var(--font-base);
-            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            font-size: 13px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
         
         .filter-btn:hover {
-            background: var(--swiss-blue);
+            background: #12487E;
             color: white;
-            border-color: var(--swiss-blue);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
+            border-color: #12487E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(18, 72, 126, 0.2);
         }
         
         .filter-btn.active {
-            background: var(--medical-teal);
+            background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);
             color: white;
-            border-color: var(--medical-teal);
-            box-shadow: var(--shadow-md);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(18, 72, 126, 0.25);
         }
         
         /* ============================================
@@ -844,7 +1008,7 @@
         }
         
         .form-group {
-            margin-bottom: var(--space-md);
+            margin-bottom: var (--space-md);
         }
         
         .form-group label {
@@ -999,7 +1163,7 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 10;
-            box-shadow: var(--shadow-md);
+            box-shadow: var (--shadow-md);
         }
         
         .review-arrow:hover {
@@ -1109,7 +1273,7 @@
         
         .team-bio {
             font-size: var(--font-base);
-            color: var(--text-secondary);
+            color: var (--text-secondary);
             line-height: 1.7;
         }
 
@@ -1149,7 +1313,6 @@
         
         .team-photo-advanced img {
             width: 100%;
-            height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
@@ -1213,7 +1376,7 @@
                 to bottom,
                 var(--swiss-blue),
                 var(--medical-teal),
-                var(--sage-green)
+                var (--sage-green)
             );
             transform: translateX(-50%);
             border-radius: 2px;
@@ -1274,7 +1437,7 @@
             }
             
             .navbar-menu {
-                gap: var(--space-md);
+                gap: var (--space-md);
             }
             
             .services-grid {
@@ -1363,6 +1526,122 @@
                 page-break-inside: avoid;
             }
         }
+
+        /* ICON THEME - blue, accessible */
+        :root { --swiss-blue: #4facfe; }
+
+        /* Service icons (circle background, blue icon) */
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(79,172,254,0.08);
+            margin-bottom: 12px;
+            flex-shrink: 0;
+        }
+        .service-icon i {
+            color: var(--swiss-blue);
+            font-size: 30px;
+            line-height: 1;
+        }
+
+        /* Contact cards - icon circle */
+        .contact-card { display:flex; align-items:center; gap:20px; }
+        .contact-card .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--swiss-blue);
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 6px 18px rgba(79,172,254,0.12);
+            transition: transform 0.18s ease;
+        }
+        .contact-card .icon-circle i { font-size: 22px; }
+        .contact-card:hover .icon-circle { transform: translateY(-4px); }
+
+        /* Social icons - white icons on colored circle (keeps existing inline bg) */
+        .social-links a { width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; }
+        .social-links a i { color: #fff; font-size: 18px; }
+        .social-links a:hover { transform: translateY(-5px); }
+
+        /* Back to top - ensure icon is blue on white background */
+        .back-to-top { background: white; color: var(--swiss-blue); border: 2px solid rgba(79,172,254,0.14); }
+        .back-to-top i { font-size: 18px; }
+
+        /* STORY CARDS - image and hover */
+        .story-grid .story-card { transition: transform 0.28s ease, box-shadow 0.28s ease; }
+        .story-grid .story-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(31, 41, 55, 0.08); }
+        .story-card .story-img { width: 100%; height: 140px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; display: block; }
+
+        /* Branding final overrides: force logo palette onto CTAs, forms and common controls */
+        :root {
+            --swiss-blue: var(--brand-blue);
+            --medical-teal: var(--brand-pink);
+        }
+
+        /* Fix broken variable usages and ensure spacing variables apply */
+        .form-group { margin-bottom: var(--space-md) !important; }
+        .section-title { color: var(--text-primary) !important; }
+
+        /* Buttons & CTAs */
+        .btn-hero-main, .btn-hero-main:visited {
+            background: var(--gradient-cta) !important;
+            color: var(--brand-white) !important;
+            box-shadow: 0 12px 36px rgba(18,72,126,0.10) !important;
+        }
+        .btn-hero-ghost {
+            background: rgba(255,255,255,0.08) !important;
+            color: var(--brand-white) !important;
+            border: 1px solid rgba(18,72,126,0.08) !important;
+        }
+        .btn-submit {
+            background: var(--brand-blue) !important;
+            color: var(--brand-white) !important;
+            border: none !important;
+        }
+
+        /* Filter buttons */
+        .filter-btn {
+            border: 2px solid rgba(18,72,126,0.14) !important;
+            color: var(--brand-blue) !important;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--brand-pink) !important;
+            color: var(--brand-white) !important;
+            border-color: var(--brand-pink) !important;
+        }
+
+        /* Navbar/brand */
+        .navbar-brand {
+            background: var(--gradient-brand) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        .navbar-logo { height: 50px; width: auto; display: block; }
+        .navbar-menu a:hover { color: var(--brand-blue) !important; }
+        .hamburger span { background: var(--brand-blue) !important; }
+
+        /* Back to top */
+        .back-to-top { background: var(--brand-white) !important; color: var(--brand-blue) !important; border: 2px solid rgba(18,72,126,0.12) !important; }
+        .back-to-top:hover { background: var(--brand-pink) !important; color: var(--brand-white) !important; }
+
+        /* Team badges & review controls */
+        .team-badge { background: var(--brand-pink) !important; color: var(--brand-white) !important; }
+        .review-arrow { border-color: var(--brand-blue) !important; color: var(--brand-blue) !important; }
+        .review-arrow:hover { background: var(--brand-blue) !important; color: var(--brand-white) !important; }
+
+        /* Ensure gallery/tiles use subtle brand tints */
+        .gallery-item { background: rgba(18,72,126,0.03) !important; border-color: rgba(18,72,126,0.08) !important; }
+
+        /* Small accessibility tweak: ensure sufficient contrast for pink CTAs */
+        .filter-btn.active, .filter-btn:hover, .btn-hero-main { outline-offset: 3px; }
     </style>
 </head>
 <body>
@@ -1374,7 +1653,9 @@
     <header role="banner">
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
-                <a href="{{ url('/') }}" class="navbar-brand" aria-label="Homepage">{{ __('home.nav_brand') }}</a>
+                <a href="{{ url('/') }}" class="navbar-brand" aria-label="Homepage">
+                    <img src="{{ asset('images/logo.png') }}" alt="{{ __('home.nav_brand') }}" class="navbar-logo">
+                </a>
                 <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
                     <span></span>
                     <span></span>
@@ -1382,8 +1663,7 @@
                 </div>
                 <ul class="navbar-menu" id="navbarMenu">
                     <li><a href="#home" aria-label="{{ __('home.nav_home') }}">{{ __('home.nav_home') }}</a></li>
-                    <li><a href="#services" aria-label="{{ __('home.nav_services') }}">{{ __('home.nav_services') }}</a></li>
-                    <li><a href="#gallery" aria-label="{{ __('home.nav_gallery') }}">{{ __('home.nav_gallery') }}</a></li>
+                    <li><a href="{{ url('/services') }}" aria-label="{{ __('home.nav_services') }}">{{ __('home.nav_services') }}</a></li>
                     <li><a href="#contact" aria-label="{{ __('home.nav_contact') }}">{{ __('home.nav_contact') }}</a></li>
                     <li class="lang-switcher">
                         <a href="{{ url('/lang/de') }}" class="lang-btn {{ app()->getLocale() == 'de' ? 'active' : '' }}" aria-label="Switch to German">🇩🇪 Deutsch</a>
@@ -1398,30 +1678,272 @@
 
     <!-- Main Content -->
     <main id="main-content" role="main">
-        <!-- Hero Section with Slider -->
-        <section id="home" class="hero" aria-label="Hero Banner">
-        <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1920&h=1080&fit=crop')"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1920&h=1080&fit=crop')"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=1920&h=1080&fit=crop')"></div>
-        </div>
-        <div class="hero-content">
-            <div class="container">
-                <h1 data-aos="fade-up" itemprop="name">{{ __('home.hero_title') }}</h1>
-                <p data-aos="fade-up" data-aos-delay="200" itemprop="description">{{ __('home.hero_subtitle') }}</p>
-                <a href="#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="400" aria-label="Contact us for elderly care services">{{ __('home.hero_cta') }}</a>
+        <!-- BookingTermin-style Hero (unique classes, localized) -->
+        <section id="home" class="booking-hero-section" aria-label="{{ __('home.hero_aria', [], app()->getLocale()) }}">
+            <style>
+                /* Scoped booking hero CSS to avoid conflicts with global styles */
+                .booking-hero-section { padding: 115px 0 95px; background: #F6F9FC; min-height: 80vh; display: flex; align-items: center; }
+                .booking-hero-container { max-width: 1350px; margin: 0 auto; padding: 0 35px; }
+                .booking-hero-layout { display:flex; gap:55px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+                .booking-hero-textside { flex:1; min-width:280px; max-width:700px; }
+                .booking-main-title { font-size: 2.7rem; line-height:1.25; margin:0 0 22px; color:#12487E; font-weight:700; max-height: 3.5em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+                .booking-main-title span{ color:#F795CB; }
+                .booking-hero-description{ color:#555; font-size:1.2rem; max-width:680px; margin-bottom:28px; line-height: 1.6; }
+                .booking-cta-buttons{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:28px; }
+                .booking-btn-primary-cta{ background:#12487E;color:#fff;padding:15px 34px;border-radius:999px;text-decoration:none;font-weight:600;border:2px solid #12487E; font-size:1.12rem; }
+                .booking-btn-secondary-cta{ background:transparent;color:#12487E;padding:15px 34px;border-radius:999px;text-decoration:none;font-weight:600;border:2px solid #12487E; font-size:1.12rem; }
+                .booking-stats-container{ display:flex; gap:22px; flex-wrap:wrap; margin-top:22px; align-items:stretch; }
+                .booking-stat-card{ background: #fff; padding:26px 34px; border-radius:12px; box-shadow:0 6px 18px rgba(18,72,126,0.06); text-align:center; min-width:155px; flex:1; display:flex; flex-direction:column; justify-content:center; min-height:120px; }
+                .booking-stat-number{ font-size:40px;font-weight:700;color:#12487E; display:block; margin-bottom:8px; }
+                .booking-stat-text{ font-size:20px;color:#444; line-height:1.4; }
+                .booking-hero-imageside{ flex:1; min-width:280px; text-align:center; }
+                .booking-hero-visual{ width:100%; height:580px; object-fit:cover; border-radius:16px; display:block; box-shadow: 0 20px 60px rgba(18,72,126,0.15); }
+                @media (max-width: 1200px) {
+                    .booking-hero-section { padding: 95px 0 75px; }
+                    .booking-main-title { font-size: 3rem; }
+                    .booking-hero-description { font-size: 1.18rem; }
+                    .booking-hero-visual { height: 480px; }
+                }
+                @media (max-width: 900px) {
+                    .booking-hero-section { padding: 80px 0; min-height: auto; }
+                    .booking-hero-container { padding: 0 20px; }
+                    .booking-hero-layout{ flex-direction:column-reverse; gap:32px; }
+                    .booking-hero-visual{ height:360px; }
+                    .booking-main-title{ font-size:2.2rem; text-align:left; }
+                    .booking-hero-description { font-size: 1.08rem; }
+                    .booking-btn-primary-cta, .booking-btn-secondary-cta { padding: 12px 28px; font-size: 1rem; }
+                }
+                @media (max-width: 576px) {
+                    .booking-hero-section { padding: 60px 0; }
+                    .booking-main-title{ text-align:center; font-size:1.9rem; margin-bottom: 16px; }
+                    .booking-hero-description{ text-align:center; font-size:1.05rem; }
+                    .booking-cta-buttons{ justify-content:center; }
+                    .booking-hero-visual{ height:300px; }
+                    .booking-stat-card { min-width: 110px; padding: 14px 18px; }
+                    .booking-stat-number { font-size: 22px; }
+                    .booking-stat-text { font-size: 13px; }
+                }
+            </style>
+                
+            <div class="booking-hero-container">
+                <div class="booking-hero-layout" data-aos="fade-up" data-aos-delay="80">
+                    <div class="booking-hero-textside">
+                        <h1 class="booking-main-title">{!! __('home.hero_title_html') !!}</h1>
+                        <p class="booking-hero-description">{{ __('home.hero_subtitle') }}</p>
+
+                        <div class="booking-cta-buttons">
+                            <a href="{{ route('clients.create') }}" class="booking-btn-primary-cta" aria-label="{{ __('home.hero_cta_primary') }}">{{ __('home.hero_cta_primary') }}</a>
+                            <a href="#how-it-works" class="booking-btn-secondary-cta" aria-label="{{ __('home.hero_cta_secondary') }}">{{ __('home.hero_cta_secondary') }}</a>
+                        </div>
+
+                        <div class="booking-stats-container" role="list" aria-label="{{ __('home.hero_stats_aria') }}">
+                            <div class="booking-stat-card" role="listitem">
+                                <span class="booking-stat-number">500+</span>
+                                <span class="booking-stat-text">{{ __('home.stat_doctors') }}</span>
+                            </div>
+                            <div class="booking-stat-card" role="listitem">
+                                <span class="booking-stat-number">15K+</span>
+                                <span class="booking-stat-text">{{ __('home.stat_patients') }}</span>
+                            </div>
+                            <div class="booking-stat-card" role="listitem">
+                                <span class="booking-stat-number">24/7</span>
+                                <span class="booking-stat-text">{{ __('home.stat_online') }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-hero-imageside" aria-hidden="true">
+                        <img class="booking-hero-visual" src="{{ asset('images/cover.jpg') }}" alt="{{ __('home.hero_image_alt') }}">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section - BookingTermin Style -->
+        <section id="how-it-works" class="booking-steps-section" aria-label="{{ __('home.how_it_works_aria') }}">
+            <style>
+                /* Scoped How It Works CSS with unique classes */
+                .booking-steps-section { padding: 65px 0; background: #fff; }
+                .booking-steps-container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+                .booking-section-header { text-align: center; margin-bottom: 45px; }
+                .booking-section-title { font-size: 2.3rem; color: #12487E; font-weight: 700; margin-bottom: 12px; }
+                .booking-section-subtitle { font-size: 1.05rem; color: #666; max-width: 680px; margin: 0 auto; line-height: 1.65; }
+                .booking-steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-top: 40px; }
+                .booking-step-card { background: transparent; padding: 32px 24px; border-radius: 15px; text-align: center; transition: all 0.3s ease; position: relative; border: 2px solid rgba(18,72,126,0.08); }
+                .booking-step-card:hover { transform: translateY(-7px); box-shadow: 0 15px 30px rgba(18,72,126,0.11); border-color: #F795CB; }
+                .booking-step-number { width: 62px; height: 62px; background: linear-gradient(135deg, #12487E, #1a5ba0); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; font-weight: 700; margin: 0 auto 18px; box-shadow: 0 5px 15px rgba(18,72,126,0.15); }
+                .booking-step-icon { font-size: 2.1rem; color: #F795CB; margin-bottom: 15px; }
+                .booking-step-title { font-size: 1.25rem; color: #12487E; font-weight: 600; margin-bottom: 12px; }
+                .booking-step-description { font-size: 0.95rem; color: #666; line-height: 1.55; }
+                
+                @media (max-width: 900px) {
+                    .booking-steps-section { padding: 55px 0; }
+                    .booking-section-title { font-size: 2rem; }
+                    .booking-steps-grid { gap: 22px; }
+                }
+                
+                @media (max-width: 576px) {
+                    .booking-steps-section { padding: 45px 0; }
+                    .booking-section-header { margin-bottom: 32px; }
+                    .booking-section-title { font-size: 1.7rem; }
+                    .booking-section-subtitle { font-size: 0.95rem; }
+                    .booking-steps-grid { grid-template-columns: 1fr; gap: 18px; }
+                    .booking-step-card { padding: 28px 22px; }
+                }
+            </style>
+            
+            <div class="booking-steps-container">
+                <div class="booking-section-header" data-aos="fade-up">
+                    <h2 class="booking-section-title">{{ __('home.how_it_works_title') }}</h2>
+                    <p class="booking-section-subtitle">{{ __('home.how_it_works_subtitle') }}</p>
+                </div>
+                
+                <div class="booking-steps-grid">
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="booking-step-number">1</div>
+                        <div class="booking-step-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_1_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_1_description') }}</p>
+                    </div>
+                    
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="booking-step-number">2</div>
+                        <div class="booking-step-icon"><i class="fas fa-calendar-check" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_2_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_2_description') }}</p>
+                    </div>
+                    
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="booking-step-number">3</div>
+                        <div class="booking-step-icon"><i class="fas fa-bell" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_3_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_3_description') }}</p>
+                    </div>
+                    
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="booking-step-number">4</div>
+                        <div class="booking-step-icon"><i class="fas fa-user-doctor" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_4_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_4_description') }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Our Story Section -->
+    <section id="our-story" style="background: #F6F9FC; padding: 40px 0;" aria-labelledby="story-heading">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <!-- Section Header -->
+            <div style="text-align: center; margin-bottom: 25px;" data-aos="fade-up">
+                <h2 id="story-heading" style="font-size: 1.7rem; color: #12487E; font-weight: 700; margin-bottom: 8px;">{{ __('home.our_story_title') }}</h2>
+                <p style="font-size: 0.9rem; color: #666; max-width: 600px; margin: 0 auto; line-height: 1.55;">{{ __('home.our_story_subtitle') }}</p>
+            </div>
+
+            <!-- Story Part 1 - The Beginning -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: center; margin-bottom: 30px;" data-aos="fade-right">
+                <div style="order: 1;">
+                    <div style="background: linear-gradient(135deg, rgba(18, 72, 126, 0.05) 0%, rgba(247, 149, 203, 0.05) 100%); border-radius: 12px; padding: 20px; border-left: 3px solid #12487E;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; font-weight: 700;">1</div>
+                            <h3 style="font-size: 1.2rem; color: #12487E; font-weight: 700; margin: 0;">{{ __('home.story_1_title') }}</h3>
+                        </div>
+                        <p style="color: #4a5568; line-height: 1.55; font-size: 0.9rem; margin: 0;">
+                            {{ __('home.story_1_text') }}
+                        </p>
+                    </div>
+                </div>
+                <div style="order: 2;">
+                    <div style="position: relative; border-radius: 12px; overflow: hidden; height: 220px; background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ asset('images/story1.jpg') }}" alt="{{ __('home.story_1_image_alt') }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; flex-direction: column; align-items: center; justify-content: center; color: white; padding: 20px; text-align: center;">
+                            <i class="fas fa-heart" style="font-size: 2.2rem; margin-bottom: 10px; opacity: 0.9;"></i>
+                            <p style="font-size: 0.95rem; font-weight: 600;">{{ __('home.story_1_title') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story Part 2 - Our Foundation -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: center; margin-bottom: 30px;" data-aos="fade-left">
+                <div style="order: 2;">
+                    <div style="background: linear-gradient(135deg, rgba(18, 72, 126, 0.05) 0%, rgba(247, 149, 203, 0.05) 100%); border-radius: 12px; padding: 20px; border-left: 3px solid #F795CB;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; font-weight: 700;">2</div>
+                            <h3 style="font-size: 1.2rem; color: #12487E; font-weight: 700; margin: 0;">{{ __('home.story_2_title') }}</h3>
+                        </div>
+                        <p style="color: #4a5568; line-height: 1.55; font-size: 0.9rem; margin: 0;">
+                            {{ __('home.story_2_text') }}
+                        </p>
+                    </div>
+                </div>
+                <div style="order: 1;">
+                    <div style="position: relative; border-radius: 12px; overflow: hidden; height: 220px; background: linear-gradient(135deg, #F795CB 0%, #12487E 100%); display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ asset('images/story2.jpg') }}" alt="{{ __('home.story_2_image_alt') }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; flex-direction: column; align-items: center; justify-content: center; color: white; padding: 20px; text-align: center;">
+                            <i class="fas fa-user-nurse" style="font-size: 2.2rem; margin-bottom: 10px; opacity: 0.9;"></i>
+                            <p style="font-size: 0.95rem; font-weight: 600;">{{ __('home.story_2_title') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story Part 3 - Growing with Purpose -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: center; margin-bottom: 25px;" data-aos="fade-right">
+                <div style="order: 1;">
+                    <div style="background: linear-gradient(135deg, rgba(18, 72, 126, 0.05) 0%, rgba(247, 149, 203, 0.05) 100%); border-radius: 12px; padding: 20px; border-left: 3px solid #12487E;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; font-weight: 700;">3</div>
+                            <h3 style="font-size: 1.2rem; color: #12487E; font-weight: 700; margin: 0;">{{ __('home.story_3_title') }}</h3>
+                        </div>
+                        <p style="color: #4a5568; line-height: 1.55; font-size: 0.9rem; margin: 0;">
+                            {{ __('home.story_3_text') }}
+                        </p>
+                    </div>
+                </div>
+                <div style="order: 2;">
+                    <div style="position: relative; border-radius: 12px; overflow: hidden; height: 220px; background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ asset('images/story3.jpg') }}" alt="{{ __('home.story_3_image_alt') }}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; flex-direction: column; align-items: center; justify-content: center; color: white; padding: 20px; text-align: center;">
+                            <i class="fas fa-hands-holding-circle" style="font-size: 2.2rem; margin-bottom: 10px; opacity: 0.9;"></i>
+                            <p style="font-size: 0.95rem; font-weight: 600;">{{ __('home.story_3_title') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Statement -->
+            <div style="background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(18, 72, 126, 0.1);" data-aos="zoom-in">
+                <h3 style="color: white; font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">{{ __('home.mission_title') }}</h3>
+                <p style="color: rgba(255, 255, 255, 0.95); font-size: 0.9rem; line-height: 1.55; max-width: 700px; margin: 0 auto;">
+                    {{ __('home.mission_text') }}
+                </p>
             </div>
         </div>
+
+        <!-- Responsive Styles -->
+        <style>
+            @media (max-width: 768px) {
+                #our-story > div > div[style*="grid-template-columns"] {
+                    grid-template-columns: 1fr !important;
+                }
+                #our-story > div > div[style*="grid-template-columns"] > div {
+                    order: 2 !important;
+                }
+                #our-story > div > div[style*="grid-template-columns"] > div:first-child {
+                    order: 1 !important;
+                }
+            }
+        </style>
     </section>
 
     <!-- Services Section with Filter -->
-    <section id="services" class="section" aria-labelledby="services-heading" itemscope itemtype="https://schema.org/Service">
-        <div class="container">
-            <h2 id="services-heading" class="section-title" itemprop="name">{{ __('home.services_title') }}</h2>
-            <p class="section-subtitle" itemprop="description">{{ __('home.services_subtitle') }}</p>
+    <section id="services" class="section" style="background: #fff; padding: 50px 0;" aria-labelledby="services-heading" itemscope itemtype="https://schema.org/Service">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h2 id="services-heading" class="section-title" itemprop="name" style="font-size: 28px; margin-bottom: 10px;">{{ __('home.services_title') }}</h2>
+            <p class="section-subtitle" itemprop="description" style="font-size: 14px; margin-bottom: 25px;">{{ __('home.services_subtitle') }}</p>
             
             <!-- Service Filter Buttons -->
-            <div style="display: flex; justify-content: center; gap: 15px; margin: 40px 0; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="150">
+            <div style="display: flex; justify-content: center; gap: 10px; margin: 25px 0; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="150">
                 <button class="filter-btn active" onclick="filterServices('all')" data-filter="all">{{ __('home.filter_all') }}</button>
                 <button class="filter-btn" onclick="filterServices('care')" data-filter="care">{{ __('home.filter_care') }}</button>
                 <button class="filter-btn" onclick="filterServices('health')" data-filter="health">{{ __('home.filter_health') }}</button>
@@ -1430,56 +1952,59 @@
             
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100" data-category="care">
-                    <div class="service-icon">👴</div>
+                    <div class="service-icon"><i class="fas fa-user-nurse" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_elderly_care') }}</h3>
                     <p>{{ __('home.service_elderly_care_desc') }}</p>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200" data-category="care">
-                    <div class="service-icon">🧼</div>
+                    <div class="service-icon"><i class="fas fa-bath" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_hygiene') }}</h3>
                     <p>{{ __('home.service_hygiene_desc') }}</p>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300" data-category="care">
-                    <div class="service-icon">💇</div>
+                    <div class="service-icon"><i class="fas fa-scissors" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_hair') }}</h3>
                     <p>{{ __('home.service_hair_desc') }}</p>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="400" data-category="care">
-                    <div class="service-icon">🍽️</div>
+                    <div class="service-icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_eating') }}</h3>
                     <p>{{ __('home.service_eating_desc') }}</p>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100" data-category="health">
-                    <div class="service-icon">💊</div>
+                    <div class="service-icon"><i class="fas fa-pills" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_medication') }}</h3>
                     <p>{{ __('home.service_medication_desc') }}</p>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200" data-category="health">
-                    <div class="service-icon">👁️</div>
+                    <div class="service-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_monitoring') }}</h3>
                     <p>{{ __('home.service_monitoring_desc') }}</p>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300" data-category="activity">
-                    <div class="service-icon">🎨</div>
+                    <div class="service-icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_activities') }}</h3>
                     <p>{{ __('home.service_activities_desc') }}</p>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="400" data-category="health">
-                    <div class="service-icon">🏥</div>
+                    <div class="service-icon"><i class="fas fa-ambulance" aria-hidden="true"></i></div>
                     <h3>{{ __('home.service_transport') }}</h3>
                     <p>{{ __('home.service_transport_desc') }}</p>
                 </div>
             </div>
 
-            <div style="text-align:center;margin-top:40px">
-                <a href="{{ route('clients.create') }}" style="background:#667eea;color:white;padding:15px 40px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block">{{ __('home.services_cta') }}</a>
+            <div style="text-align:center;margin-top:35px">
+                <a href="{{ route('clients.create') }}" style="background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);color:white;padding:12px 32px;border-radius:50px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;box-shadow:0 4px 15px rgba(18,72,126,0.25);transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(18,72,126,0.35)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(18,72,126,0.25)'">
+                    <i class="fas fa-calendar-check"></i>
+                    {{ __('home.services_cta') }}
+                </a>
             </div>
         </div>
     </section>
@@ -1492,36 +2017,21 @@
             
             <div class="gallery" role="list">
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100" role="listitem" onclick="openLightbox(this)">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&h=400&fit=crop" 
-                         alt="Professional caregiver providing elderly care services to senior woman - Swiss elderly care center" 
-                         width="600" height="400">
+                    <img loading="lazy" decoding="async" src="{{ asset('images/post 1.jpeg') }}" 
+                    alt="Elderly care services - Gallery image 1" 
+                    width="600" height="400">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200" role="listitem" onclick="openLightbox(this)">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=400&fit=crop" 
-                         alt="Seniors enjoying recreational activities and social engagement - Elderly care Switzerland" 
-                         width="600" height="400">
+                    <img loading="lazy" decoding="async" src="{{ asset('images/post 2.jpeg') }}" 
+                    alt="Elderly care services - Gallery image 2" 
+                    width="600" height="400">
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300" role="listitem" onclick="openLightbox(this)">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&h=400&fit=crop" 
-                         alt="Professional medical staff team providing 24/7 elderly care and hygiene services" 
-                         width="600" height="400">
+                    <img loading="lazy" decoding="async" src="{{ asset('images/post 3.jpeg') }}" 
+                    alt="Elderly care services - Gallery image 3" 
+                    width="600" height="400">
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400" role="listitem" onclick="openLightbox(this)">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&h=400&fit=crop" 
-                         alt="Comfortable and safe living environment for elderly care - Swiss senior home" 
-                         width="600" height="400">
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500" role="listitem" onclick="openLightbox(this)">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" 
-                         alt="Personal hygiene care and daily assistance for elderly - Professional caregiving services" 
-                         width="600" height="400">
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600" role="listitem" onclick="openLightbox(this)">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&h=400&fit=crop" 
-                         alt="Happy seniors enjoying quality care and support - Elderly care center Switzerland" 
-                         width="600" height="400">
-                </div>
-            </div>
+              
         </div>
     </section>
 
@@ -1557,7 +2067,7 @@
                     <div class="review-slide active">
                         <div class="review-card" style="margin: 0 auto;">
                             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                                <img loading="lazy" decoding="async" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                                 <div>
                                     <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Maria Schmidt</h4>
                                     <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
@@ -1570,7 +2080,7 @@
                     <div class="review-slide">
                         <div class="review-card" style="margin: 0 auto;">
                             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                                <img loading="lazy" decoding="async" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                                 <div>
                                     <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Thomas Müller</h4>
                                     <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
@@ -1583,7 +2093,7 @@
                     <div class="review-slide">
                         <div class="review-card" style="margin: 0 auto;">
                             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                                <img loading="lazy" decoding="async" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Review" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                                 <div>
                                     <h4 style="font-weight: 700; color: #1a202c; margin-bottom: 5px;">Sophie Dubois</h4>
                                     <div style="color: #fbbf24; font-size: 18px;">★★★★★</div>
@@ -1617,7 +2127,7 @@
     </section>
 
     <!-- Our Team Section -->
-    <section class="section" style="background: #f8fafc;">
+    <section class="section" style="background: #F6F9FC;">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">{{ __('home.team_title') }}</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.team_subtitle') }}</p>
@@ -1626,10 +2136,9 @@
                 <!-- Dr. Anna Weber - Chief Medical Officer -->
                 <div class="team-card-advanced" data-aos="fade-up">
                     <div class="team-photo-advanced">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&h=600&fit=crop" alt="Dr. Anna Weber">
+                        <img loading="lazy" decoding="async" src="{{ asset('images/doctor2.jpeg') }}" alt="Dr. Anna Weber">
                     </div>
                     <div class="team-info-advanced">
-                        <div class="team-badge">{{ __('home.team_badge_1') }}</div>
                         <h3>Dr. Anna Weber</h3>
                         <p class="team-role-advanced">{{ __('home.team_role_1') }}</p>
                         <div style="margin: 15px 0;">
@@ -1644,10 +2153,9 @@
                 <!-- Dr. Michael Schmidt - Senior Doctor -->
                 <div class="team-card-advanced" data-aos="fade-up" data-aos-delay="100">
                     <div class="team-photo-advanced">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=600&fit=crop" alt="Dr. Michael Schmidt">
+                        <img loading="lazy" decoding="async" src="{{ asset('images/doctor1.jpeg') }}" alt="Dr. Michael Schmidt">
                     </div>
                     <div class="team-info-advanced">
-                        <div class="team-badge">{{ __('home.team_badge_2') }}</div>
                         <h3>Dr. Michael Schmidt</h3>
                         <p class="team-role-advanced">{{ __('home.team_role_2') }}</p>
                         <div style="margin: 15px 0;">
@@ -1662,10 +2170,9 @@
                 <!-- Sarah Müller - Head Nurse -->
                 <div class="team-card-advanced" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-photo-advanced">
-                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&h=600&fit=crop&fp-y=0.35" alt="Sarah Müller">
+                        <img loading="lazy" decoding="async" src="{{ asset('images/doctor2.jpeg') }}" alt="Sarah Müller">
                     </div>
                     <div class="team-info-advanced">
-                        <div class="team-badge">{{ __('home.team_badge_3') }}</div>
                         <h3>Sarah Müller</h3>
                         <p class="team-role-advanced">{{ __('home.team_role_3') }}</p>
                         <div style="margin: 15px 0;">
@@ -1673,46 +2180,7 @@
                             <span class="team-skill">{{ __('home.team_skill_3_2') }}</span>
                             <span class="team-skill">{{ __('home.team_skill_3_3') }}</span>
                         </div>
-                        <p class="team-bio-advanced">{{ __('home.team_bio_3') }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Story Timeline Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">{{ __('home.story_title') }}</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.story_subtitle') }}</p>
-            
-            <div class="timeline" style="margin-top: 60px;">
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                    <div class="timeline-year">2009</div>
-                    <div class="timeline-content">
-                        <h3>{{ __('home.timeline_2009_title') }}</h3>
-                        <p>{{ __('home.timeline_2009_text') }}</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
-                    <div class="timeline-year">2014</div>
-                    <div class="timeline-content">
-                        <h3>{{ __('home.timeline_2014_title') }}</h3>
-                        <p>{{ __('home.timeline_2014_text') }}</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
-                    <div class="timeline-year">2019</div>
-                    <div class="timeline-content">
-                        <h3>{{ __('home.timeline_2019_title') }}</h3>
-                        <p>{{ __('home.timeline_2019_text') }}</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
-                    <div class="timeline-year">2025</div>
-                    <div class="timeline-content">
-                        <h3>{{ __('home.timeline_2025_title') }}</h3>
-                        <p>{{ __('home.timeline_2025_text') }}</p>
+                        <p class="team-bio-advanced">{{ __('home.team_bio_3') }}</div>
                     </div>
                 </div>
             </div>
@@ -1725,130 +2193,152 @@
             <h2 class="section-title" data-aos="fade-up">{{ __('home.contact_title') }}</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">{{ __('home.contact_subtitle') }}</p>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px;">
-                <!-- Contact Info & Form -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+                <!-- Contact Info -->
                 <div data-aos="fade-right">
                     <!-- Contact Cards -->
-                    <div style="display: grid; gap: 20px; margin-bottom: 40px;">
+                    <div style="display: grid; gap: 12px; margin-bottom: 20px;">
                         <!-- Phone -->
-                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
-                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
-                                📞
+                        <div class="contact-card" style="background: white; padding: 16px 20px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.06);">
+                            <div class="icon-circle" aria-hidden="true" style="width: 35px; height: 35px;">
+                                <i class="fas fa-phone-volume" style="font-size: 16px;"></i>
                             </div>
                             <div>
-                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_phone') }}</h4>
-                                <a href="tel:+41441234567" style="color: #4facfe; font-weight: 600; text-decoration: none;">+41 44 123 45 67</a>
+                                <h4 style="margin: 0 0 3px 0; font-size: 14px; color: #1a202c;">{{ __('home.contact_phone') }}</h4>
+                                <a href="tel:+41714227777" style="color: var(--swiss-blue); font-weight: 600; text-decoration: none; font-size: 14px;">+41 71 422 77 77</a>
                             </div>
                         </div>
 
                         <!-- Email -->
-                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
-                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
-                                ✉️
+                        <div class="contact-card" style="background: white; padding: 16px 20px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.06);">
+                            <div class="icon-circle" aria-hidden="true" style="width: 35px; height: 35px;">
+                                <i class="fas fa-paper-plane" style="font-size: 16px;"></i>
                             </div>
                             <div>
-                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_email_label') }}</h4>
-                                <a href="mailto:info@eldercare.ch" style="color: #4facfe; font-weight: 600; text-decoration: none;">info@eldercare.ch</a>
+                                <h4 style="margin: 0 0 3px 0; font-size: 14px; color: #1a202c;">{{ __('home.contact_email_label') }}</h4>
+                                <a href="mailto:info@janiracare.ch" style="color: var(--swiss-blue); font-weight: 600; text-decoration: none; font-size: 14px;">info@janiracare.ch</a>
                             </div>
                         </div>
 
                         <!-- Address -->
-                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
-                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
-                                📍
+                        <div class="contact-card" style="background: white; padding: 16px 20px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.06);">
+                            <div class="icon-circle" aria-hidden="true" style="width: 35px; height: 35px;">
+                                <i class="fas fa-location-dot" style="font-size: 16px;"></i>
                             </div>
                             <div>
-                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_address') }}</h4>
-                                <p style="margin: 0; color: #718096; line-height: 1.6;">Bahnhofstrasse 123<br>8001 Zürich, Schweiz</p>
+                                <h4 style="margin: 0 0 3px 0; font-size: 14px; color: #1a202c;">{{ __('home.contact_address') }}</h4>
+                                <p style="margin: 0; color: #718096; line-height: 1.5; font-size: 13px;">Bahnhofstrasse 123<br>8001 Zürich, Schweiz</p>
                             </div>
                         </div>
 
                         <!-- Working Hours -->
-                        <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 20px;">
-                            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
-                                🕒
+                        <div class="contact-card" style="background: white; padding: 16px 20px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.06);">
+                            <div class="icon-circle" aria-hidden="true" style="width: 35px; height: 35px;">
+                                <i class="fas fa-clock" style="font-size: 16px;"></i>
                             </div>
                             <div>
-                                <h4 style="margin: 0 0 5px 0; font-size: 16px; color: #1a202c;">{{ __('home.contact_hours') }}</h4>
-                                <p style="margin: 0; color: #718096; line-height: 1.6;">{{ __('home.contact_hours_weekdays') }}<br>{{ __('home.contact_hours_weekend') }}</p>
+                                <h4 style="margin: 0 0 3px 0; font-size: 14px; color: #1a202c;">{{ __('home.contact_hours') }}</h4>
+                                <p style="margin: 0; color: #718096; line-height: 1.5; font-size: 13px;">{{ __('home.contact_hours_weekdays') }}<br>{{ __('home.contact_hours_weekend') }}</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Social Media -->
-                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
-                        <h4 style="margin: 0 0 20px 0; font-size: 18px; color: #1a202c;">{{ __('home.contact_follow_us') }}</h4>
-                        <div style="display: flex; gap: 15px;">
-                            <a href="https://facebook.com" target="_blank" style="background: #1877f2; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                                📘
+                    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.06);">
+                        <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #1a202c;">{{ __('home.contact_follow_us') }}</h4>
+                        <div class="social-links" style="display: flex; gap: 15px;">
+                            <a href="https://facebook.com" target="_blank" style="background: #1877f2;" aria-label="Facebook">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="https://instagram.com" target="_blank" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                                📷
+                            <a href="https://instagram.com" target="_blank" style="background: radial-gradient(circle at 30% 30%, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);" aria-label="Instagram">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
                             </a>
-                            <a href="https://linkedin.com" target="_blank" style="background: #0077b5; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                                💼
+                            <a href="https://linkedin.com" target="_blank" style="background: #0077b5;" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                             </a>
-                            <a href="https://twitter.com" target="_blank" style="background: #1da1f2; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                                🐦
+                            <a href="https://twitter.com" target="_blank" style="background: #1da1f2;" aria-label="Twitter">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Google Map -->
+                <!-- Contact Form -->
                 <div data-aos="fade-left">
-                    <div style="background: white; padding: 10px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); height: 100%;">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2701.217856662707!2d8.537788776543656!3d47.376888571172395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a08cc0e6e41%3A0xf5c698b65f8c52a7!2sBarhnhofstrasse%2C%20Z%C3%BCrich%2C%20Switzerland!5e0!3m2!1sen!2s!4v1701234567890!5m2!1sen!2s" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0; border-radius: 10px; min-height: 600px;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                    <div class="contact-form-box" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.06);">
+                        <!-- Logo -->
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img src="{{ asset('images/logo.png') }}" alt="{{ __('home.nav_brand') }}" style="max-width: 80px; height: auto;">
+                        </div>
+                        
+                        <h3 style="text-align: center; font-size: 18px; margin-bottom: 8px; color: #12487E; font-weight: 700;">{{ __('home.contact_form_title') }}</h3>
+                        <p style="text-align: center; color: #718096; margin-bottom: 20px; font-size: 13px;">{{ __('home.contact_form_subtitle') }}</p>
+                        
+                        @if(session('status'))
+                            <div class="alert alert-success" style="background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); color: white; padding: 10px 16px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: 500; font-size: 13px;">{{ __('home.contact_success') }}</div>
+                        @endif
+
+                        <form method="POST" action="{{ route('contact.store') }}" style="display: grid; gap: 14px;">
+                            @csrf
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 6px; color: #12487E; font-weight: 600; margin-bottom: 6px; font-size: 13px;">
+                                    <i class="fas fa-user" style="color: #F795CB; font-size: 12px;"></i>
+                                    {{ __('home.contact_first_name') }}
+                                </label>
+                                <input type="text" name="first_name" value="{{ old('first_name') }}" required style="width: 100%; padding: 10px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 13px; transition: all 0.3s; outline: none;" onfocus="this.style.borderColor='#12487E'" onblur="this.style.borderColor='#e5e7eb'">
+                                @error('first_name')<div style="color:#dc2626;font-size:12px;margin-top:3px"><i class="fas fa-exclamation-circle"></i> {{ $message }}</div>@enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 6px; color: #12487E; font-weight: 600; margin-bottom: 6px; font-size: 13px;">
+                                    <i class="fas fa-user" style="color: #F795CB; font-size: 12px;"></i>
+                                    {{ __('home.contact_last_name') }}
+                                </label>
+                                <input type="text" name="last_name" value="{{ old('last_name') }}" style="width: 100%; padding: 10px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 13px; transition: all 0.3s; outline: none;" onfocus="this.style.borderColor='#12487E'" onblur="this.style.borderColor='#e5e7eb'">
+                                @error('last_name')<div style="color:#dc2626;font-size:12px;margin-top:3px"><i class="fas fa-exclamation-circle"></i> {{ $message }}</div>@enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 6px; color: #12487E; font-weight: 600; margin-bottom: 6px; font-size: 13px;">
+                                    <i class="fas fa-envelope" style="color: #F795CB; font-size: 12px;"></i>
+                                    {{ __('home.contact_email') }}
+                                </label>
+                                <input type="email" name="email" value="{{ old('email') }}" required style="width: 100%; padding: 10px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 13px; transition: all 0.3s; outline: none;" onfocus="this.style.borderColor='#12487E'" onblur="this.style.borderColor='#e5e7eb'">
+                                @error('email')<div style="color:#dc2626;font-size:12px;margin-top:3px"><i class="fas fa-exclamation-circle"></i> {{ $message }}</div>@enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 6px; color: #12487E; font-weight: 600; margin-bottom: 6px; font-size: 13px;">
+                                    <i class="fas fa-message" style="color: #F795CB; font-size: 12px;"></i>
+                                    {{ __('home.contact_message') }}
+                                </label>
+                                <textarea name="message" required style="width: 100%; padding: 10px 14px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 13px; transition: all 0.3s; outline: none; min-height: 100px; resize: vertical; font-family: inherit;" onfocus="this.style.borderColor='#12487E'" onblur="this.style.borderColor='#e5e7eb'">{{ old('message') }}</textarea>
+                                @error('message')<div style="color:#dc2626;font-size:12px;margin-top:3px"><i class="fas fa-exclamation-circle"></i> {{ $message }}</div>@enderror
+                            </div>
+
+                            <button type="submit" class="btn-submit" style="background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); color: white; padding: 12px 24px; border: none; border-radius: 50px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(18,72,126,0.25); width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(18,72,126,0.35)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(18,72,126,0.25)'">
+                                <i class="fas fa-paper-plane"></i>
+                                {{ __('home.contact_submit') }}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
 
+            <style>
+                @media (max-width: 768px) {
+                    #contact > .container > div:first-of-type {
+                        grid-template-columns: 1fr !important;
+                    }
+                    .contact-form-box {
+                        padding: 5px !important;
+                    }
+                }
+            </style>
+        </div>
+    </section>
+
             <!-- Contact Form -->
-            <div class="contact-form" data-aos="fade-up" style="margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <h3 style="text-align: center; font-size: 28px; margin-bottom: 15px; color: #1a202c;">{{ __('home.contact_form_title') }}</h3>
-                <p style="text-align: center; color: #718096; margin-bottom: 40px;">{{ __('home.contact_form_subtitle') }}</p>
-                
-                @if(session('status'))
-                    <div class="alert alert-success">{{ __('home.contact_success') }}</div>
-                @endif
-
-                <form method="POST" action="{{ route('contact.store') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label>{{ __('home.contact_first_name') }}</label>
-                        <input type="text" name="first_name" value="{{ old('first_name') }}" required>
-                        @error('first_name')<div style="color:#dc2626;font-size:14px;margin-top:4px">{{ $message }}</div>@enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>{{ __('home.contact_last_name') }}</label>
-                        <input type="text" name="last_name" value="{{ old('last_name') }}">
-                        @error('last_name')<div style="color:#dc2626;font-size:14px;margin-top:4px">{{ $message }}</div>@enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>{{ __('home.contact_email') }}</label>
-                        <input type="email" name="email" value="{{ old('email') }}" required>
-                        @error('email')<div style="color:#dc2626;font-size:14px;margin-top:4px">{{ $message }}</div>@enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label>{{ __('home.contact_message') }}</label>
-                        <textarea name="message" required>{{ old('message') }}</textarea>
-                        @error('message')<div style="color:#dc2626;font-size:14px;margin-top:4px">{{ $message }}</div>@enderror
-                    </div>
-
-                    <button type="submit" class="btn-submit">{{ __('home.contact_submit') }}</button>
-                </form>
-            </div>
         </div>
     </section>
     </main>
@@ -1856,23 +2346,62 @@
     <!-- Lightbox for Gallery -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <img id="lightbox-img" src="" alt="Gallery image">
+        <img id="lightbox-img" loading="lazy" decoding="async" src="" alt="Gallery image">
     </div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">
-        ↑
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
         <div class="container">
-            <p itemprop="copyrightNotice">&copy; {{ date('Y') }} {{ __('home.nav_brand') }}. {{ __('home.footer_rights') }}</p>
-            <p style="margin-top:10px">
-                <a href="{{ route('login') }}" aria-label="Login to admin panel">Login</a>
-            </p>
-            <div style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.8);">
-                <p>{{ __('home.seo_keywords') }}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <!-- Company Info -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">{{ __('home.nav_brand') }}</h4>
+                    <p style="opacity: 0.9; line-height: 1.6; font-size: 14px;">{{ __('home.seo_description') }}</p>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+                        <a href="tel:+41714227777" style="color: rgba(255,255,255,0.9); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-phone"></i> +41 71 422 77 77
+                        </a>
+                        <a href="mailto:info@janiracare.ch" style="color: rgba(255,255,255,0.9); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-envelope"></i> info@janiracare.ch
+                        </a>
+                        <p style="margin: 0; opacity: 0.9; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-map-marker-alt"></i> Zürich, Switzerland
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Social Media -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">Follow Us</h4>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="https://facebook.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#1877f2'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#E4405F'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#0077b5'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 25px; text-align: center;">
+                <p itemprop="copyrightNotice" style="opacity: 0.9;">&copy; {{ date('Y') }} {{ __('home.nav_brand') }}. {{ __('home.footer_rights') }}</p>
+                <p style="margin-top: 10px;">
+                    <a href="{{ route('login') }}" style="color: rgba(255,255,255,0.9); text-decoration: none; font-size: 13px;" aria-label="Login to admin panel">Admin Login</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -2159,6 +2688,21 @@
             document.body.classList.add('dark-mode');
             document.querySelector('.dark-mode-icon').textContent = '☀️';
         }
+    </script>
+    <script>
+        // Font Awesome compatibility fallback
+        (function() {
+            function convertFaClasses() {
+                document.querySelectorAll('.fa-solid').forEach(el => { el.classList.remove('fa-solid'); el.classList.add('fas'); });
+                document.querySelectorAll('.fa-regular').forEach(el => { el.classList.remove('fa-regular'); el.classList.add('far'); });
+                document.querySelectorAll('.fa-brands').forEach(el => { el.classList.remove('fa-brands'); el.classList.add('fab'); });
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', convertFaClasses);
+            } else {
+                convertFaClasses();
+            }
+        })();
     </script>
 </body>
 </html>

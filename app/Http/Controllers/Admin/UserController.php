@@ -38,6 +38,12 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with('status','You cannot delete yourself');
         }
 
+        // Prevent deleting protected super-admin
+        $protected = env('SUPER_ADMIN_EMAIL', 'info@janiracare.ch');
+        if ($user->email === $protected) {
+            return redirect()->route('admin.users.index')->with('status','This user is protected and cannot be deleted via the admin UI');
+        }
+
         $user->tokens()->delete();
         $user->delete();
 
@@ -87,6 +93,12 @@ class UserController extends Controller
         // Prevent demoting/changing own admin status via UI.
         if ($request->user()->id === $user->id) {
             return redirect()->route('admin.users.index')->with('status','You cannot change your own admin status');
+        }
+
+        // Prevent changing admin status of protected super-admin
+        $protected = env('SUPER_ADMIN_EMAIL', 'info@janiracare.ch');
+        if ($user->email === $protected) {
+            return redirect()->route('admin.users.index')->with('status','This user is protected and their admin status cannot be changed via the admin UI');
         }
 
         $user->is_admin = ! $user->is_admin;

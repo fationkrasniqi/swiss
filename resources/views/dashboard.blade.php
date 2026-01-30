@@ -265,8 +265,24 @@ function showSection(sectionId) {
     // Show selected section
     document.getElementById(sectionId).classList.add('active');
     // Add active class to clicked menu item
-    event.currentTarget.classList.add('active');
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    } else {
+        // If called programmatically, find and activate the menu item
+        document.querySelectorAll('.menu-item').forEach(item => {
+            if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(sectionId)) {
+                item.classList.add('active');
+            }
+        });
+    }
 }
+
+// Show cantons section if redirected from update
+document.addEventListener('DOMContentLoaded', function() {
+    @if(session('show_cantons'))
+        showSection('cantons');
+    @endif
+});
 </script>
 
 @php 
@@ -317,6 +333,10 @@ function showSection(sectionId) {
                         <span class="menu-badge">{{ $msgCount }}</span>
                     @endif
                 </a>
+                <div class="menu-item" onclick="showSection('cantons')">
+                    <span class="menu-icon">🗺️</span>
+                    <span>Cantons</span>
+                </div>
             </div>
             @endif
             
@@ -437,6 +457,136 @@ function showSection(sectionId) {
                         Edit Profile
                     </a>
                 </div>
+            </div>
+        </div>
+
+        <!-- Cantons Section -->
+        <div id="cantons" class="content-section">
+            <div class="section-header">
+                <h1>Manage Cantons Pricing</h1>
+                <p>Set hourly rates for each Swiss canton</p>
+            </div>
+
+            <div class="content-card">
+                <style>
+                    .cantons-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    .cantons-table th {
+                        background: #f8fafc;
+                        color: #475569;
+                        font-weight: 600;
+                        text-align: left;
+                        padding: 12px 16px;
+                        border-bottom: 2px solid #e2e8f0;
+                        font-size: 14px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                    .cantons-table td {
+                        padding: 16px;
+                        border-bottom: 1px solid #f1f5f9;
+                        color: #334155;
+                    }
+                    .cantons-table tr:hover {
+                        background: #fafbfc;
+                    }
+                    .canton-name {
+                        font-weight: 600;
+                        color: #1e293b;
+                    }
+                    .price-input-group {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+                    .price-input-group input {
+                        width: 100px;
+                        padding: 8px 12px;
+                        border: 2px solid #e2e8f0;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    .price-input-group input:focus {
+                        outline: none;
+                        border-color: #4f46e5;
+                    }
+                    .btn-update-canton {
+                        background: #10b981;
+                        color: white;
+                        padding: 8px 16px;
+                        border: none;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        font-size: 13px;
+                    }
+                    .btn-update-canton:hover {
+                        background: #059669;
+                        transform: translateY(-1px);
+                    }
+                    .alert-success-canton {
+                        background: #d1fae5;
+                        color: #065f46;
+                        border: 1px solid #6ee7b7;
+                        padding: 16px 20px;
+                        border-radius: 12px;
+                        margin-bottom: 24px;
+                        font-weight: 500;
+                    }
+                </style>
+
+                @if(session('canton_status'))
+                    <div class="alert-success-canton">
+                        ✅ {{ session('canton_status') }}
+                    </div>
+                @endif
+
+                @php
+                    $cantons = \App\Models\Canton::orderBy('name')->get();
+                @endphp
+
+                <table class="cantons-table">
+                    <thead>
+                        <tr>
+                            <th>Canton</th>
+                            <th>Price per Hour (CHF)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($cantons as $canton)
+                        <tr>
+                            <td class="canton-name">{{ $canton->name }}</td>
+                            <td>
+                                <form method="POST" action="{{ route('admin.cantons.update', $canton->id) }}" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="price-input-group">
+                                        <input 
+                                            type="number" 
+                                            name="price_per_hour" 
+                                            value="{{ $canton->price_per_hour }}" 
+                                            step="0.01"
+                                            min="0"
+                                            max="999"
+                                            required>
+                                        <span style="font-weight: 600; color: #64748b;">CHF</span>
+                                    </div>
+                            </td>
+                            <td>
+                                    <button type="submit" class="btn-update-canton">
+                                        💾 Update
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
 

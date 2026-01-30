@@ -102,60 +102,70 @@
         border-collapse: collapse;
     }
     .data-table th {
-        text-align: left;
-        padding: 12px;
+        background: #f8fafc;
+        color: #475569;
         font-weight: 600;
-        color: #1e293b;
+        text-align: left;
+        padding: 12px 16px;
         border-bottom: 2px solid #e2e8f0;
         font-size: 14px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
     .data-table td {
-        padding: 12px;
+        padding: 16px;
         border-bottom: 1px solid #f1f5f9;
-        color: #64748b;
+        color: #334155;
     }
     .data-table tr:hover {
-        background: #f8fafc;
+        background: #fafbfc;
     }
-    .action-btn {
-        display: inline-block;
-        padding: 8px 16px;
+    .alert {
+        padding: 16px 20px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        font-weight: 500;
+    }
+    .alert-success {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #6ee7b7;
+    }
+    .price-input {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .price-input input {
+        width: 100px;
+        padding: 8px 12px;
+        border: 2px solid #e2e8f0;
         border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
         font-size: 14px;
-        transition: all 0.2s ease;
+        font-weight: 600;
+    }
+    .price-input input:focus {
+        outline: none;
+        border-color: #4f46e5;
+    }
+    .btn-update {
+        background: #10b981;
+        color: white;
+        padding: 8px 16px;
         border: none;
+        border-radius: 8px;
+        font-weight: 600;
         cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 13px;
     }
-    .action-btn.primary {
-        background: #3b82f6;
-        color: white;
-    }
-    .action-btn.primary:hover {
-        background: #2563eb;
+    .btn-update:hover {
+        background: #059669;
         transform: translateY(-1px);
     }
-    .action-btn.dark {
-        background: #1e293b;
-        color: white;
-    }
-    .action-btn.dark:hover {
-        background: #0f172a;
-        transform: translateY(-1px);
-    }
-    @media (max-width: 968px) {
-        .admin-layout {
-            flex-direction: column;
-        }
-        .admin-sidebar {
-            width: 100%;
-            height: auto;
-            position: relative;
-            top: 0;
-        }
+    .canton-name {
+        font-weight: 600;
+        color: #1e293b;
     }
 </style>
 
@@ -171,7 +181,7 @@
                 <span class="admin-menu-icon">📊</span>
                 <span>Dashboard</span>
             </a>
-            <a href="{{ route('admin.clients.index') }}" class="admin-menu-item active">
+            <a href="{{ route('admin.clients.index') }}" class="admin-menu-item">
                 <span class="admin-menu-icon">🏥</span>
                 <span>Clients</span>
             </a>
@@ -183,7 +193,7 @@
                 <span class="admin-menu-icon">👥</span>
                 <span>Users</span>
             </a>
-            <a href="{{ route('admin.cantons.index') }}" class="admin-menu-item">
+            <a href="{{ route('admin.cantons.index') }}" class="admin-menu-item active">
                 <span class="admin-menu-icon">🗺️</span>
                 <span>Cantons</span>
             </a>
@@ -193,58 +203,57 @@
     <!-- Main Content -->
     <div class="admin-content">
         <div class="admin-header">
-            <h1>Clients Management</h1>
+            <h1>Manage Cantons Pricing</h1>
             <a href="{{ route('dashboard') }}" class="btn-back">
-                <span>←</span> Back to Dashboard
+                ← Back to Dashboard
             </a>
         </div>
 
+        @if(session('status'))
+            <div class="alert alert-success">
+                ✅ {{ session('status') }}
+            </div>
+        @endif
+
         <div class="data-table">
             <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Canton</th>
-                    <th>Services</th>
-                    <th>Hours</th>
-                    <th>Total (CHF)</th>
-                    <th>Service Date</th>
-                    <th>Requested</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($clients as $c)
-                <tr>
-                    <td>{{ $c->id }}</td>
-                    <td><strong>{{ $c->first_name }} {{ $c->last_name }}</strong></td>
-                    <td>{{ $c->email }}</td>
-                    <td>{{ $c->phone_prefix }} {{ $c->phone_number }}</td>
-                    <td>{{ $c->canton }}</td>
-                    <td>{{ $c->services }}</td>
-                    <td>{{ $c->hours }}h</td>
-                    <td><strong>{{ $c->total_price }}</strong></td>
-                    <td>{{ $c->service_date ? \Carbon\Carbon::parse($c->service_date)->format('d M Y') : '-' }}</td>
-                    <td>{{ $c->created_at->format('d M Y H:i') }}</td>
-                    <td>
-                        <div style="display:flex;gap:8px;align-items:center">
-                            <form method="POST" action="{{ route('admin.clients.sendEmail', $c->id) }}" style="display:inline">
+                <thead>
+                    <tr>
+                        <th>Canton</th>
+                        <th>Price per Hour (CHF)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($cantons as $canton)
+                    <tr>
+                        <td class="canton-name">{{ $canton->name }}</td>
+                        <td>
+                            <form method="POST" action="{{ route('admin.cantons.update', $canton->id) }}" style="display: inline;">
                                 @csrf
-                                <input type="hidden" name="email" value="{{ $c->email }}">
-                                <input type="hidden" name="name" value="{{ $c->first_name }} {{ $c->last_name }}">
-                                <button type="submit" class="action-btn primary">📧 Send Email</button>
+                                @method('PUT')
+                                <div class="price-input">
+                                    <input 
+                                        type="number" 
+                                        name="price_per_hour" 
+                                        value="{{ $canton->price_per_hour }}" 
+                                        step="0.01"
+                                        min="0"
+                                        max="999"
+                                        required>
+                                    <span style="font-weight: 600; color: #64748b;">CHF</span>
+                                </div>
+                        </td>
+                        <td>
+                                <button type="submit" class="btn-update">
+                                    💾 Update
+                                </button>
                             </form>
-                            <a href="{{ route('admin.clients.download', $c->id) }}" class="action-btn dark">📥 PDF</a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div style="margin-top:20px">{{ $clients->links() }}</div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

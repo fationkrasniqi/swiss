@@ -27,8 +27,7 @@
                 <div class="container">
                     <div class="header-inner">
                         <a href="{{ url('/') }}" class="brand">
-                            <span class="brand-mark">{{ strtoupper(substr(config('app.name', 'App'),0,1)) }}</span>
-                            <span class="brand-name">{{ config('app.name', 'Laravel') }}</span>
+                            <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" style="max-height: 40px; width: auto;">
                         </a>
 
                         <nav class="site-nav">

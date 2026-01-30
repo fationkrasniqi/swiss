@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>Client Request #{{ $client->id }}</title>
+    <title>Anfrage #{{ $client->id }}</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -100,63 +100,63 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Client Service Request</h1>
-            <p>Request ID: <span class="badge">#{{ $client->id }}</span></p>
+            <h1>Kundenanfrage</h1>
+            <p>Anfrage-ID: <span class="badge">#{{ $client->id }}</span></p>
         </div>
 
         <div class="section">
-            <div class="section-title">Client Information</div>
+            <div class="section-title">Kundeninformationen</div>
             <div class="info-row">
-                <span class="label">Full Name:</span>
+                <span class="label">Name:</span>
                 <span class="value">{{ $client->first_name }} {{ $client->last_name }}</span>
             </div>
             <div class="info-row">
-                <span class="label">Email:</span>
+                <span class="label">E-Mail:</span>
                 <span class="value">{{ $client->email }}</span>
             </div>
             <div class="info-row">
-                <span class="label">Phone:</span>
+                <span class="label">Telefon:</span>
                 <span class="value">{{ $client->phone_prefix }} {{ $client->phone_number }}</span>
             </div>
             <div class="info-row">
-                <span class="label">Canton:</span>
+                <span class="label">Kanton:</span>
                 <span class="value">{{ $client->canton }}</span>
             </div>
         </div>
 
         <div class="section">
-            <div class="section-title">Service Details</div>
+            <div class="section-title">Leistungsdetails</div>
             <div class="info-row">
-                <span class="label">Services:</span>
+                <span class="label">Leistungen:</span>
                 <span class="value services-list">{{ $client->services }}</span>
             </div>
             <div class="info-row">
-                <span class="label">Hours Requested:</span>
-                <span class="value">{{ $client->hours }} hours</span>
+                <span class="label">Angeforderte Stunden:</span>
+                <span class="value">{{ $client->hours }} Stunden</span>
             </div>
             @if($client->service_date)
             <div class="info-row">
-                <span class="label">Service Date:</span>
-                <span class="value">{{ \Carbon\Carbon::parse($client->service_date)->format('d M Y') }}</span>
+                <span class="label">Datum:</span>
+                <span class="value">{{ \Carbon\Carbon::parse($client->service_date)->locale('de')->translatedFormat('d. F Y') }}</span>
             </div>
             @endif
             <div class="info-row">
-                <span class="label">Total Price:</span>
+                <span class="label">Gesamtpreis:</span>
                 <span class="value" style="font-weight:bold;color:#059669;font-size:16px">{{ $client->total_price }} CHF</span>
             </div>
         </div>
 
         <div class="section">
-            <div class="section-title">Request Information</div>
+            <div class="section-title">Anfrageinformationen</div>
             <div class="info-row">
-                <span class="label">Submitted On:</span>
-                <span class="value">{{ $client->created_at->format('l, F j, Y \a\t g:i A') }}</span>
+                <span class="label">Eingereicht am:</span>
+                <span class="value">{{ $client->created_at->locale('de')->translatedFormat('l, d. F Y H:i') }}</span>
             </div>
         </div>
 
         <div class="footer">
-            <p>This document was generated automatically from the client management system.</p>
-            <p>© {{ date('Y') }} - All rights reserved</p>
+            <p>Dieses Dokument wurde automatisch aus dem Kundenverwaltungssystem erstellt.</p>
+            <p>© {{ date('Y') }} - Alle Rechte vorbehalten</p>
         </div>
     </div>
 

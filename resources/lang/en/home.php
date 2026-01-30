@@ -9,8 +9,19 @@ return [
     
     'hero_title' => 'Professional Care for the Elderly',
     'hero_subtitle' => 'We offer specialized and personalized services for your beloved elderly. With trained staff and complete dedication to their well-being.',
-    'hero_cta' => 'Contact Now',
-    
+    'hero_cta' => 'Contact Now',    
+    // How It Works Section
+    'how_it_works_aria' => 'How the booking process works',
+    'how_it_works_title' => 'How It Works',
+    'how_it_works_subtitle' => 'Just 4 simple steps to get the best care for your loved ones',
+    'step_1_title' => 'Choose Service',
+    'step_1_description' => 'Browse our list of services and select the one you need most for your loved ones.',
+    'step_2_title' => 'Book Appointment',
+    'step_2_description' => 'Choose the date and time that suits you best. Our system is available 24/7.',
+    'step_3_title' => 'Get Confirmation',
+    'step_3_description' => 'You will receive immediate confirmation with full details of your appointment.',
+    'step_4_title' => 'Receive Care',
+    'step_4_description' => 'Our professional staff will arrive on time and provide excellent care for your elderly.',    
     'services_title' => 'Our Services',
     'services_subtitle' => 'We offer a wide range of personalized services for elderly care',
     
@@ -118,4 +129,30 @@ return [
     'timeline_2019_text' => 'Introduction of state-of-the-art care and health monitoring systems.',
     'timeline_2025_title' => 'Today',
     'timeline_2025_text' => 'Over 850 happy seniors and 45 professional caregivers.',
+
+    // Booking hero specific keys
+    'hero_title_html' => 'Professional Care for the Elderly <span>Near You</span>',
+    'hero_cta_primary' => 'Book Appointment',
+    'hero_cta_secondary' => 'How it works',
+    'stat_doctors' => 'Qualified Doctors',
+    'stat_patients' => 'Satisfied Patients',
+    'stat_online' => 'Online Booking',
+    'hero_image_alt' => 'Caregiver assisting a senior',
+    'hero_stats_aria' => 'Key statistics about our services',
+    'hero_aria' => 'Hero banner',
+
+    // Our Story Section
+    'our_story_title' => 'Our Story – How It All Started',
+    'our_story_subtitle' => 'Building trust through professional care and genuine compassion',
+    'story_1_title' => 'The Beginning',
+    'story_1_text' => 'We started with a simple belief: every elderly person deserves compassionate, professional care in the comfort of their own home. Founded by experienced healthcare professionals in Switzerland, our company was built on years of working closely with patients and understanding their real needs. We saw families searching for trustworthy support, and we knew we could help.',
+    'story_1_image_alt' => 'The beginning of our healthcare journey',
+    'story_2_title' => 'Our Foundation',
+    'story_2_text' => 'From day one, we\'ve focused on recruiting only qualified, certified nurses and caregivers who share our commitment to dignity and respect. Every team member is carefully selected and trained to meet Swiss healthcare standards. We may be a new company, but our approach is grounded in proven professional practices and genuine human connection.',
+    'story_2_image_alt' => 'Our professional foundation',
+    'story_3_title' => 'Growing with Purpose',
+    'story_3_text' => 'As we grow, our mission remains unchanged: to provide reliable, personalized care that allows seniors to maintain their independence and quality of life. We listen to families, adapt to individual needs, and build lasting relationships based on trust. Each patient we serve strengthens our commitment to excellence in home healthcare.',
+    'story_3_image_alt' => 'Growing with purpose',
+    'mission_title' => 'Our Mission Today',
+    'mission_text' => 'We are dedicated to delivering compassionate, professional elderly care throughout Switzerland. Every day, our team works to ensure that seniors receive the dignity, attention, and quality support they deserve in their own homes.',
 ];

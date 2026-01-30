@@ -27,6 +27,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
+        'can_view_clients',
+        'can_view_messages',
     ];
 
     /**
@@ -48,6 +51,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
+        'can_view_clients' => 'boolean',
+        'can_view_messages' => 'boolean',
     ];
 
     /**

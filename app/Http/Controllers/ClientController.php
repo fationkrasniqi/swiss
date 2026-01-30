@@ -53,27 +53,21 @@ class ClientController extends Controller
 
         // Send email automatically to client
         try {
-            $emailBody = "Pershendetje {$client->first_name},\n\n";
-            $emailBody .= "Kerkesa juaj u pranua me sukses!\n\n";
-            $emailBody .= "Detajet:\n";
-            $emailBody .= "Emri: {$client->first_name} {$client->last_name}\n";
-            $emailBody .= "Email: {$client->email}\n";
-            $emailBody .= "Telefoni: {$client->phone_prefix} {$client->phone_number}\n";
-            $emailBody .= "Sherbimet: {$client->services}\n";
-            $emailBody .= "Kantoni: {$client->canton}\n";
-            $emailBody .= "Ore: {$client->hours}\n";
-            
-            if ($client->service_date) {
-                $serviceDate = \Carbon\Carbon::parse($client->service_date)->format('d M Y');
-                $emailBody .= "Data e sherbimit: {$serviceDate}\n";
-            }
-            
-            $emailBody .= "Totali: {$client->total_price} CHF\n\n";
-            $emailBody .= "Faleminderit!";
-            
-            \Mail::raw($emailBody, function($message) use ($client) {
+            // Exact German confirmation message requested by user (hardcoded contact)
+            $germanBody = "Guten Tag\n\n" .
+                "Vielen Dank für Ihre Anfrage und das Vertrauen in Janira Care – Pflege durch Angehörige.\n" .
+                "Wir haben Ihre Angaben erfolgreich erhalten.\n\n" .
+                "Unser Team prüft nun Ihre Anfrage sorgfältig. Wir melden uns innert 24 Stunden bei Ihnen, um die nächsten Schritte zu besprechen und allfällige Fragen zu klären.\n\n" .
+                "Wir freuen uns darauf, Sie zu unterstützen und gemeinsam eine passende Lösung für Ihre Situation zu finden.\n\n" .
+                "Freundliche Grüsse\n" .
+                "Janira Care\n" .
+                "📞 Telefon: +41 71 422 77 77\n" .
+                "📧 E-Mail: info@janiracare.ch\n";
+
+            \Mail::raw($germanBody, function($message) use ($client) {
                 $message->to($client->email)
-                    ->subject('Kerkesa u pranua');
+                    ->from(config('mail.from.address'), config('mail.from.name'))
+                    ->subject('Ihre Anfrage bei Janira Care');
             });
         } catch (\Exception $e) {
             // Optional: log error
@@ -90,17 +84,29 @@ class ClientController extends Controller
     public function sendEmail(Request $request, $id)
     {
         $client = Client::findOrFail($id);
-        $email = $request->input('email', $client->email);
+        // send admin-triggered emails to the client
+        $email = $client->email;
         $name = $request->input('name', $client->first_name . ' ' . $client->last_name);
 
         try {
-            \Mail::raw(
-                "Pershendetje $name,\n\nKerkesa juaj u pranua nga admini!\n\nDetajet:\nSherbimet: {$client->services}\nKantoni: {$client->canton}\nOre: {$client->hours}\nTotali: {$client->total_price} CHF\n\nFaleminderit!",
-                function($message) use ($email) {
-                    $message->to($email)
-                        ->subject('Kerkesa u pranua nga admini');
-                }
-            );
+            $german = "Guten Tag {$name},\n\n" .
+                "Ihre Anfrage wurde von der Administration angenommen.\n\n" .
+                "Details:\n" .
+                "Leistungen: {$client->services}\n" .
+                "Kanton: {$client->canton}\n" .
+                "Stunden: {$client->hours}\n" .
+                "Gesamtpreis: {$client->total_price} CHF\n\n" .
+                "Für weitere Fragen erreichen Sie uns unter:\n" .
+                "📞 Telefon: +41 71 422 77 77\n" .
+                "📧 E-Mail: info@janiracare.ch\n\n" .
+                "Vielen Dank!\n\n" .
+                "Freundliche Grüße,\nJanira Care";
+
+            \Mail::raw($german, function($message) use ($email) {
+                $message->to($email)
+                    ->from(config('mail.from.address'), config('mail.from.name'))
+                    ->subject('Ihre Anfrage wurde bestätigt');
+            });
             return redirect()->back()->with('status', 'Email u dërgua me sukses!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Dërgimi i emailit dështoi.');

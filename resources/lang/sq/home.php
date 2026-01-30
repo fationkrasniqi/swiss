@@ -11,6 +11,19 @@ return [
     'hero_subtitle' => 'Ofrojmë shërbime të specializuara dhe të personalizuara për të moshuarit tuaj të dashur. Me staf të trajnuar dhe përkushtim të plotë për mirëqenien e tyre.',
     'hero_cta' => 'Kontaktoni Tani',
     
+    // How It Works Section
+    'how_it_works_aria' => 'Si funksionon procesi i rezervimit',
+    'how_it_works_title' => 'Si Funksionon',
+    'how_it_works_subtitle' => 'Vetëm 4 hapa të thjeshtë për të marrë kujdesin më të mirë për të dashurit tuaj',
+    'step_1_title' => 'Zgjidhni Shërbimin',
+    'step_1_description' => 'Shfletoni listën tonë të shërbimeve dhe zgjidhni atë që ju nevojitet më shumë për të dashurit tuaj.',
+    'step_2_title' => 'Rezervoni Terminin',
+    'step_2_description' => 'Zgjidhni datën dhe kohën që ju përshtatet më mirë. Sistemi ynë është i disponueshëm 24/7.',
+    'step_3_title' => 'Merrni Konfirmimin',
+    'step_3_description' => 'Do të merrni një konfirmim të menjëhershëm me detajet e plotë të takimit tuaj.',
+    'step_4_title' => 'Merrni Kujdesin',
+    'step_4_description' => 'Stafi ynë profesional do të vijë në kohë dhe do të ofrojë kujdes të shkëlqyer për të moshuarit tuaj.',
+    
     'services_title' => 'Shërbimet Tona',
     'services_subtitle' => 'Ofrojmë një gamë të gjerë shërbimesh të personalizuara për kujdesin e të moshuarve',
     
@@ -118,4 +131,30 @@ return [
     'timeline_2019_text' => 'Prezantimi i sistemeve më të fundit të kujdesit dhe monitorimit shendëtsor.',
     'timeline_2025_title' => 'Sot',
     'timeline_2025_text' => 'Më shumë se 850 pleq të lumtur dhe 45 profesionistë të kujdesit.',
+
+    // Booking hero specific keys
+    'hero_title_html' => 'Kujdes Profesional për të Moshuarit <span>afër jush</span>',
+    'hero_cta_primary' => 'Rezervo Terminin',
+    'hero_cta_secondary' => 'Si Funksionon',
+    'stat_doctors' => 'Doktorë të Kualifikuar',
+    'stat_patients' => 'Pacientë të Kënaqur',
+    'stat_online' => 'Rezervime Online',
+    'hero_image_alt' => 'Përkujdesës duke ndihmuar një të moshuar',
+    'hero_stats_aria' => 'Statistikat kryesore mbi shërbimet tona',
+    'hero_aria' => 'Bannera kryesore',
+
+    // Our Story Section
+    'our_story_title' => 'Historia Jonë – Si Filloi Gjithçka',
+    'our_story_subtitle' => 'Ndërtimi i besimit përmes kujdesit profesional dhe përkushtimit të vërtetë',
+    'story_1_title' => 'Fillimi',
+    'story_1_text' => 'Ne filluam me një besim të thjeshtë: çdo person i moshuar meriton kujdes profesional dhe të dhembshur në rehati të shtëpisë së tij. Themeluar nga profesionistë me përvojë të kujdesit shëndetësor në Zvicër, kompania jonë u ndërtua mbi vite pune të afërt me pacientët dhe kuptimin e nevojave të tyre reale. Ne pamë familje që kërkuan mbështetje të besueshme, dhe ne dinim se mund të ndihmojmë.',
+    'story_1_image_alt' => 'Fillimi i udhëtimit tonë në kujdesin shëndetësor',
+    'story_2_title' => 'Baza Jonë',
+    'story_2_text' => 'Që nga dita e parë, ne u përqendruam në punësimin e infermierëve dhe kujdestarëve të kualifikuar dhe të certifikuar që ndajnë angazhimin tonë ndaj dinjitetit dhe respektit. Çdo anëtar i ekipit përzgjidhet me kujdes dhe trajnohet për të përmbushur standardet zvicerane të kujdesit shëndetësor. Ne mund të jemi një kompani e re, por qasja jonë bazohet në praktika profesionale të vërtetuara dhe lidhje njerëzore të vërteta.',
+    'story_2_image_alt' => 'Baza jonë profesionale',
+    'story_3_title' => 'Rritja me Qëllim',
+    'story_3_text' => 'Ndërsa rritem, misioni ynë mbetet i pandryshuar: të ofrojmë kujdes të besueshëm dhe të personalizuar që u lejon të moshuarve të ruajnë pavarësinë dhe cilësinë e jetës së tyre. Ne dëgjojmë familjet, përshtatemi me nevojat individuale dhe ndërtojmë marrëdhënie të qëndrueshme të bazuara në besim. Çdo pacient që ne shërbejmë forcon angazhimin tonë ndaj përsosmërisë në kujdesin shëndetësor në shtëpi.',
+    'story_3_image_alt' => 'Rritja me qëllim',
+    'mission_title' => 'Misioni Ynë Sot',
+    'mission_text' => 'Ne jemi të përkushtuar për të ofruar kujdes të dhembshur dhe profesional për të moshuarit në të gjithë Zvicrën. Çdo ditë, ekipi ynë punon për të siguruar që të moshuarit të marrin dinjitetin, vëmendjen dhe mbështetjen cilësore që meritojnë në shtëpitë e tyre.',
 ];
