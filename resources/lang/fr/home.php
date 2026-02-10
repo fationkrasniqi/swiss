@@ -4,6 +4,7 @@ return [
     'nav_brand' => 'Soins aux personnes âgées',
     'nav_home' => 'Accueil',
     'nav_services' => 'Services',
+    'nav_services_details' => 'Nos soins',
     'nav_gallery' => 'Galerie',
     'nav_contact' => 'Contact',
     
@@ -12,17 +13,25 @@ return [
     'hero_cta' => 'Contactez-Nous Maintenant',
     
     // How It Works Section
-    'how_it_works_aria' => 'Comment fonctionne le processus de réservation',
+    'how_it_works_aria' => 'Comment fonctionne l’accompagnement des proches',
     'how_it_works_title' => 'Comment Ça Marche',
-    'how_it_works_subtitle' => 'Seulement 4 étapes simples pour obtenir les meilleurs soins pour vos proches',
-    'step_1_title' => 'Choisir le Service',
-    'step_1_description' => 'Parcourez notre liste de services et sélectionnez celui dont vous avez le plus besoin pour vos proches.',
-    'step_2_title' => 'Réserver un Rendez-vous',
-    'step_2_description' => 'Choisissez la date et l\'heure qui vous conviennent le mieux. Notre système est disponible 24h/24 et 7j/7.',
-    'step_3_title' => 'Recevoir la Confirmation',
-    'step_3_description' => 'Vous recevrez une confirmation immédiate avec tous les détails de votre rendez-vous.',
-    'step_4_title' => 'Recevoir les Soins',
-    'step_4_description' => 'Notre personnel professionnel arrivera à l\'heure et fournira d\'excellents soins pour vos personnes âgées.',
+    'how_it_works_subtitle' => 'Voici comment fonctionne l’accompagnement des proches. En bref : vous prenez soin — nous vous accompagnons. Simple, sûr et personnel.',
+    'step_1_title' => 'Prise de contact',
+    'step_1_description' => 'Contactez‑nous par téléphone, e‑mail ou via notre formulaire.',
+    'step_2_title' => 'Entretien initial',
+    'step_2_description' => 'Nous faisons connaissance avec la personne à accompagner et la famille.',
+    'step_3_title' => 'Conseil',
+    'step_3_description' => 'Nous clarifions ensemble votre situation et le soutien utile.',
+    'step_4_title' => 'Planification',
+    'step_4_description' => 'Plan pas‑à‑pas et prochaines étapes claires pour les soins.',
+    'step_5_title' => 'Accompagnement',
+    'step_5_description' => 'Nous sommes régulièrement sur place et accompagnons les soins.',
+    'step_6_title' => 'Soutien & réponses',
+    'step_6_description' => 'Conseils, réponses et soutien à tout moment.',
+    'step_7_title' => 'Soulagement',
+    'step_7_description' => 'Sécurité et soulagement au quotidien pour les proches.',
+    'step_8_title' => 'Contrôle & ajustement',
+    'step_8_description' => 'Contrôle régulier et ajustements si nécessaire.',
     
     'services_title' => 'Nos Services',
     'services_subtitle' => 'Nous offrons une large gamme de services personnalisés pour les soins aux personnes âgées',
@@ -57,7 +66,8 @@ return [
     'service_transport' => 'Transport Médical',
     'service_transport_desc' => 'Accompagnement aux visites médicales, thérapies et examens réguliers.',
     
-    'services_cta' => 'Demander un Service Maintenant',
+    'services_cta' => 'Réserver un rendez-vous',
+    'services_details_cta' => 'Nos services',
     
     'gallery_title' => 'Notre Galerie',
     'gallery_subtitle' => 'Les plus beaux moments de soins et d\'amour pour nos personnes âgées',
@@ -83,7 +93,7 @@ return [
     'footer_rights' => 'Tous droits réservés.',
     
     // SEO Meta Tags
-    'seo_title' => 'Soins aux Personnes Âgées Suisse | Service Professionnel 24/7 | Hygiène & Santé',
+    'seo_title' => 'Janira Care | Soins aux Personnes Âgées Suisse | Service Professionnel 24/7 | Hygiène & Santé',
     'seo_description' => 'Soins professionnels pour personnes âgées et assistance médicale en Suisse. 15 ans d’expérience, 850+ seniors heureux. Soins d’hygiène, assistance médicale, aide quotidienne.',
     'seo_keywords' => 'soins aux personnes âgées, assistance médicale, soins d’hygiène, soins à domicile, service 24/7, Suisse',
     

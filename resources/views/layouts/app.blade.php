@@ -6,6 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -31,7 +33,8 @@
                         </a>
 
                         <nav class="site-nav">
-                            <a href="{{ url('/') }}">Home</a>
+                            <a href="{{ url('/') }}">{{ __('home.nav_home') }}</a>
+                            <a href="{{ route('services.details') }}">{{ __('home.nav_services_details') }}</a>
                             @auth
                                 <a href="{{ route('dashboard') }}">Dashboard</a>
                             @endauth

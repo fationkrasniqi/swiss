@@ -10,6 +10,8 @@
     <meta name="keywords" content="{{ __('home.seo_keywords') }}">
     <meta name="author" content="{{ __('home.nav_brand') }}">
     <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
     <link rel="canonical" href="{{ url('/') }}">
     
     <!-- Open Graph / Facebook -->
@@ -1664,6 +1666,7 @@
                 <ul class="navbar-menu" id="navbarMenu">
                     <li><a href="#home" aria-label="{{ __('home.nav_home') }}">{{ __('home.nav_home') }}</a></li>
                     <li><a href="{{ url('/services') }}" aria-label="{{ __('home.nav_services') }}">{{ __('home.nav_services') }}</a></li>
+                    <li><a href="{{ route('services.details') }}" aria-label="{{ __('home.nav_services_details') }}">{{ __('home.nav_services_details') }}</a></li>
                     <li><a href="#contact" aria-label="{{ __('home.nav_contact') }}">{{ __('home.nav_contact') }}</a></li>
                     <li class="lang-switcher">
                         <a href="{{ url('/lang/de') }}" class="lang-btn {{ app()->getLocale() == 'de' ? 'active' : '' }}" aria-label="Switch to German">🇩🇪 Deutsch</a>
@@ -1769,12 +1772,12 @@
                 .booking-section-title { font-size: 2.3rem; color: #12487E; font-weight: 700; margin-bottom: 12px; }
                 .booking-section-subtitle { font-size: 1.05rem; color: #666; max-width: 680px; margin: 0 auto; line-height: 1.65; }
                 .booking-steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-top: 40px; }
-                .booking-step-card { background: transparent; padding: 32px 24px; border-radius: 15px; text-align: center; transition: all 0.3s ease; position: relative; border: 2px solid rgba(18,72,126,0.08); }
+                .booking-step-card { background: transparent; padding: 24px 20px; border-radius: 15px; text-align: center; transition: all 0.3s ease; position: relative; border: 2px solid rgba(18,72,126,0.08); }
                 .booking-step-card:hover { transform: translateY(-7px); box-shadow: 0 15px 30px rgba(18,72,126,0.11); border-color: #F795CB; }
-                .booking-step-number { width: 62px; height: 62px; background: linear-gradient(135deg, #12487E, #1a5ba0); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; font-weight: 700; margin: 0 auto 18px; box-shadow: 0 5px 15px rgba(18,72,126,0.15); }
-                .booking-step-icon { font-size: 2.1rem; color: #F795CB; margin-bottom: 15px; }
-                .booking-step-title { font-size: 1.25rem; color: #12487E; font-weight: 600; margin-bottom: 12px; }
-                .booking-step-description { font-size: 0.95rem; color: #666; line-height: 1.55; }
+                .booking-step-number { width: 54px; height: 54px; background: linear-gradient(135deg, #12487E, #1a5ba0); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 14px; box-shadow: 0 5px 15px rgba(18,72,126,0.15); }
+                .booking-step-icon { font-size: 1.85rem; color: #F795CB; margin-bottom: 12px; }
+                .booking-step-title { font-size: 1.15rem; color: #12487E; font-weight: 600; margin-bottom: 10px; }
+                .booking-step-description { font-size: 0.9rem; color: #666; line-height: 1.5; }
                 
                 @media (max-width: 900px) {
                     .booking-steps-section { padding: 55px 0; }
@@ -1825,6 +1828,34 @@
                         <div class="booking-step-icon"><i class="fas fa-user-doctor" aria-hidden="true"></i></div>
                         <h3 class="booking-step-title">{{ __('home.step_4_title') }}</h3>
                         <p class="booking-step-description">{{ __('home.step_4_description') }}</p>
+                    </div>
+
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="booking-step-number">5</div>
+                        <div class="booking-step-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_5_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_5_description') }}</p>
+                    </div>
+
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="booking-step-number">6</div>
+                        <div class="booking-step-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_6_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_6_description') }}</p>
+                    </div>
+
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="booking-step-number">7</div>
+                        <div class="booking-step-icon"><i class="fas fa-shield-heart" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_7_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_7_description') }}</p>
+                    </div>
+
+                    <div class="booking-step-card" data-aos="fade-up" data-aos-delay="800">
+                        <div class="booking-step-number">8</div>
+                        <div class="booking-step-icon"><i class="fas fa-sliders" aria-hidden="true"></i></div>
+                        <h3 class="booking-step-title">{{ __('home.step_8_title') }}</h3>
+                        <p class="booking-step-description">{{ __('home.step_8_description') }}</p>
                     </div>
                 </div>
             </div>
@@ -1910,14 +1941,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Mission Statement -->
-            <div style="background: linear-gradient(135deg, #12487E 0%, #F795CB 100%); border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(18, 72, 126, 0.1);" data-aos="zoom-in">
-                <h3 style="color: white; font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">{{ __('home.mission_title') }}</h3>
-                <p style="color: rgba(255, 255, 255, 0.95); font-size: 0.9rem; line-height: 1.55; max-width: 700px; margin: 0 auto;">
-                    {{ __('home.mission_text') }}
-                </p>
-            </div>
         </div>
 
         <!-- Responsive Styles -->
@@ -2000,10 +2023,14 @@
                 </div>
             </div>
 
-            <div style="text-align:center;margin-top:35px">
+            <div style="text-align:center;margin-top:35px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
                 <a href="{{ route('clients.create') }}" style="background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);color:white;padding:12px 32px;border-radius:50px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;box-shadow:0 4px 15px rgba(18,72,126,0.25);transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(18,72,126,0.35)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(18,72,126,0.25)'">
                     <i class="fas fa-calendar-check"></i>
                     {{ __('home.services_cta') }}
+                </a>
+                <a href="{{ route('services.details') }}" style="background: white;color:#12487E;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;border:2px solid rgba(18,72,126,0.25);transition:all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(18,72,126,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+                    <i class="fas fa-list-check"></i>
+                    {{ __('home.services_details_cta') }}
                 </a>
             </div>
         </div>

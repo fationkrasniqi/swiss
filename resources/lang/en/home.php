@@ -4,6 +4,7 @@ return [
     'nav_brand' => 'Elderly Care',
     'nav_home' => 'Home',
     'nav_services' => 'Services',
+    'nav_services_details' => 'Our Care',
     'nav_gallery' => 'Gallery',
     'nav_contact' => 'Contact',
     
@@ -11,17 +12,25 @@ return [
     'hero_subtitle' => 'We offer specialized and personalized services for your beloved elderly. With trained staff and complete dedication to their well-being.',
     'hero_cta' => 'Contact Now',    
     // How It Works Section
-    'how_it_works_aria' => 'How the booking process works',
+    'how_it_works_aria' => 'How family caregiving works',
     'how_it_works_title' => 'How It Works',
-    'how_it_works_subtitle' => 'Just 4 simple steps to get the best care for your loved ones',
-    'step_1_title' => 'Choose Service',
-    'step_1_description' => 'Browse our list of services and select the one you need most for your loved ones.',
-    'step_2_title' => 'Book Appointment',
-    'step_2_description' => 'Choose the date and time that suits you best. Our system is available 24/7.',
-    'step_3_title' => 'Get Confirmation',
-    'step_3_description' => 'You will receive immediate confirmation with full details of your appointment.',
-    'step_4_title' => 'Receive Care',
-    'step_4_description' => 'Our professional staff will arrive on time and provide excellent care for your elderly.',    
+    'how_it_works_subtitle' => 'This is how family caregiving works. In short: you care — we accompany. Simple, safe, and personal.',
+    'step_1_title' => 'Contact Us',
+    'step_1_description' => 'Reach out by phone, email, or our contact form.',
+    'step_2_title' => 'Initial Meeting',
+    'step_2_description' => 'We get to know the person needing care and the family.',
+    'step_3_title' => 'Consultation',
+    'step_3_description' => 'Together we clarify your situation and the right support.',
+    'step_4_title' => 'Planning',
+    'step_4_description' => 'A step‑by‑step plan and clear next steps for care.',
+    'step_5_title' => 'Ongoing Support',
+    'step_5_description' => 'We are regularly on site and accompany the care.',
+    'step_6_title' => 'Guidance & Answers',
+    'step_6_description' => 'Tips, answers, and support whenever you need it.',
+    'step_7_title' => 'Relief for Families',
+    'step_7_description' => 'Security and relief in everyday life for relatives.',
+    'step_8_title' => 'Review & Adjust',
+    'step_8_description' => 'Regular checks and adjustments when needed.',
     'services_title' => 'Our Services',
     'services_subtitle' => 'We offer a wide range of personalized services for elderly care',
     
@@ -55,7 +64,8 @@ return [
     'service_transport' => 'Medical Transport',
     'service_transport_desc' => 'Accompaniment to medical visits, therapy and regular examinations.',
     
-    'services_cta' => 'Request Service Now',
+    'services_cta' => 'Book Appointment',
+    'services_details_cta' => 'Our Services',
     
     'gallery_title' => 'Our Gallery',
     'gallery_subtitle' => 'The most beautiful moments of care and love for our elderly',
@@ -81,7 +91,7 @@ return [
     'footer_rights' => 'All rights reserved.',
     
     // SEO Meta Tags
-    'seo_title' => 'Elderly Care Switzerland | Professional 24/7 Service | Hygiene & Health',
+    'seo_title' => 'Janira Care | Elderly Care Switzerland | Professional 24/7 Service | Hygiene & Health',
     'seo_description' => 'Professional elderly care and medical support in Switzerland. 15 years of experience, 850+ happy seniors. Hygiene care, medical assistance, daily support.',
     'seo_keywords' => 'elderly care, senior care, hygiene care, medical support, home care, 24/7 service, Switzerland',
     

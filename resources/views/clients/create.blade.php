@@ -8,6 +8,8 @@
     <title>{{ __('services.page_title') }} | {{ __('home.nav_brand') }}</title>
     <meta name="description" content="{{ __('services.page_subtitle') }}">
     <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
     
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -499,6 +501,7 @@
             <ul class="navbar-menu" id="navbarMenu">
                 <li><a href="{{ url('/') }}#home" aria-label="Homepage">{{ __('home.nav_home') }}</a></li>
                 <li><a href="{{ url('/services') }}" aria-label="Our Services">{{ __('home.nav_services') }}</a></li>
+                <li><a href="{{ route('services.details') }}" aria-label="{{ __('home.nav_services_details') }}">{{ __('home.nav_services_details') }}</a></li>
                 <li><a href="{{ url('/') }}#contact" aria-label="Contact Us">{{ __('home.nav_contact') }}</a></li>
                 <li class="lang-switcher">
                     <a href="{{ url('/lang/de') }}" class="lang-btn {{ app()->getLocale() == 'de' ? 'active' : '' }}" aria-label="Switch to German">🇩🇪 Deutsch</a>
@@ -583,23 +586,9 @@
                         @error('services')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                        <label><i class="fas fa-clock"></i>{{ __('services.hours') }}</label>
-                        <select name="hours" class="input" id="hoursInput">
-                            @for($h=1;$h<=12;$h++)
-                                <option value="{{ $h }}" @if(old('hours')==$h)selected @endif>{{ $h }} {{ trans_choice('services.hours_text', $h) }}</option>
-                            @endfor
-                        </select>
-                        @error('hours')<div class="form-error">{{ $message }}</div>@enderror
-                    </div>
-                    <div class="form-group">
                         <label><i class="fas fa-calendar"></i>{{ __('services.service_date') }}</label>
                         <input type="date" name="service_date" value="{{ old('service_date') }}" class="input" min="{{ date('Y-m-d') }}" />
                         @error('service_date')<div class="form-error">{{ $message }}</div>@enderror
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-money-bill-wave"></i>{{ __('services.total') }}</label>
-                        <input type="text" name="total_price" id="totalPriceInput" class="input" readonly value="{{ old('total_price', 0) }}" style="background: linear-gradient(135deg, rgba(18,72,126,0.05), rgba(247,149,203,0.05)); font-weight: 700; font-size: 18px; color: #12487E; border-color: #12487E;" />
-                        @error('total_price')<div class="form-error">{{ $message }}</div>@enderror
                     </div>
                     
                     <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i>{{ __('services.submit') }}</button>
@@ -650,21 +639,6 @@
         });
     }
 
-    // Simple price calculation
-    const baseRate = 30;
-    const serviceForm = document.getElementById('serviceForm');
-    const totalPriceInput = document.getElementById('totalPriceInput');
-    const hoursInput = document.getElementById('hoursInput');
-    serviceForm.addEventListener('change', function() {
-        let checked = Array.from(serviceForm.querySelectorAll('input[type=checkbox][name="services[]"]:checked'));
-        let hours = parseInt(hoursInput.value) || 1;
-        let price = 0;
-        checked.forEach((el, i) => {
-            price += Math.round(baseRate * (1 + i * 0.05) * hours);
-        });
-        if (checked.length === 0) price = baseRate * hours;
-        totalPriceInput.value = price;
-    });
     </script>
 
     <!-- Footer -->

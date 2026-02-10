@@ -130,20 +130,12 @@
                 <span class="label">Leistungen:</span>
                 <span class="value services-list">{{ $client->services }}</span>
             </div>
-            <div class="info-row">
-                <span class="label">Angeforderte Stunden:</span>
-                <span class="value">{{ $client->hours }} Stunden</span>
-            </div>
             @if($client->service_date)
             <div class="info-row">
                 <span class="label">Datum:</span>
                 <span class="value">{{ \Carbon\Carbon::parse($client->service_date)->locale('de')->translatedFormat('d. F Y') }}</span>
             </div>
             @endif
-            <div class="info-row">
-                <span class="label">Gesamtpreis:</span>
-                <span class="value" style="font-weight:bold;color:#059669;font-size:16px">{{ $client->total_price }} CHF</span>
-            </div>
         </div>
 
         <div class="section">

@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/services-details', function () {
+    return view('services-details');
+})->name('services.details');
+
 // Language Switcher
 Route::get('/lang/{locale}', function ($locale) {
     if (in_array($locale, ['en', 'de', 'sq', 'fr'])) {

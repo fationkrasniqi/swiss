@@ -44,11 +44,11 @@ class ClientController extends Controller
             'phone_number' => 'required|string|max:20',
             'canton' => 'required|string|max:255',
             'services' => 'required|array|min:1',
-            'hours' => 'required|integer|min:1|max:24',
-            'total_price' => 'required|integer|min:0',
             'service_date' => 'nullable|date|after_or_equal:today',
         ]);
         $data['services'] = implode(',', $data['services']);
+        $data['hours'] = 0;
+        $data['total_price'] = 0;
         $client = Client::create($data);
 
         // Send email automatically to client
@@ -94,8 +94,6 @@ class ClientController extends Controller
                 "Details:\n" .
                 "Leistungen: {$client->services}\n" .
                 "Kanton: {$client->canton}\n" .
-                "Stunden: {$client->hours}\n" .
-                "Gesamtpreis: {$client->total_price} CHF\n\n" .
                 "Für weitere Fragen erreichen Sie uns unter:\n" .
                 "📞 Telefon: +41 71 422 77 77\n" .
                 "📧 E-Mail: info@janiracare.ch\n\n" .

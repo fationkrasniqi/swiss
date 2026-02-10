@@ -209,8 +209,6 @@
                     <th>Phone</th>
                     <th>Canton</th>
                     <th>Services</th>
-                    <th>Hours</th>
-                    <th>Total (CHF)</th>
                     <th>Service Date</th>
                     <th>Requested</th>
                     <th>Actions</th>
@@ -225,8 +223,6 @@
                     <td>{{ $c->phone_prefix }} {{ $c->phone_number }}</td>
                     <td>{{ $c->canton }}</td>
                     <td>{{ $c->services }}</td>
-                    <td>{{ $c->hours }}h</td>
-                    <td><strong>{{ $c->total_price }}</strong></td>
                     <td>{{ $c->service_date ? \Carbon\Carbon::parse($c->service_date)->format('d M Y') : '-' }}</td>
                     <td>{{ $c->created_at->format('d M Y H:i') }}</td>
                     <td>

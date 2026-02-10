@@ -4,6 +4,7 @@ return [
     'nav_brand' => 'Altenpflege',
     'nav_home' => 'Startseite',
     'nav_services' => 'Dienstleistungen',
+    'nav_services_details' => 'Unsere Pflege',
     'nav_gallery' => 'Galerie',
     'nav_contact' => 'Kontakt',
     
@@ -12,17 +13,25 @@ return [
     'hero_cta' => 'Jetzt Kontaktieren',
     
     // How It Works Section
-    'how_it_works_aria' => 'Wie der Buchungsprozess funktioniert',
+    'how_it_works_aria' => 'So funktioniert die Angehörigenpflege',
     'how_it_works_title' => 'Wie Es Funktioniert',
-    'how_it_works_subtitle' => 'Nur 4 einfache Schritte, um die beste Pflege für Ihre Lieben zu erhalten',
-    'step_1_title' => 'Service Wählen',
-    'step_1_description' => 'Durchsuchen Sie unsere Dienstleistungen und wählen Sie diejenige aus, die Sie am meisten benötigen.',
-    'step_2_title' => 'Termin Buchen',
-    'step_2_description' => 'Wählen Sie das Datum und die Uhrzeit, die Ihnen am besten passt. Unser System ist 24/7 verfügbar.',
-    'step_3_title' => 'Bestätigung Erhalten',
-    'step_3_description' => 'Sie erhalten sofort eine Bestätigung mit allen Details Ihres Termins.',
-    'step_4_title' => 'Pflege Empfangen',
-    'step_4_description' => 'Unser professionelles Personal wird pünktlich eintreffen und exzellente Pflege für Ihre Senioren bieten.',
+    'how_it_works_subtitle' => 'So funktioniert die Angehörigenpflege. Kurz gesagt: Sie pflegen – wir begleiten. Einfach, sicher und persönlich.',
+    'step_1_title' => 'Kontaktaufnahme',
+    'step_1_description' => 'Sie melden sich bei uns – telefonisch, per E‑Mail oder über unser Kontaktformular.',
+    'step_2_title' => 'Erstgespräch',
+    'step_2_description' => 'Wir lernen die pflegebedürftige Person und die Angehörigen kennen.',
+    'step_3_title' => 'Beratung',
+    'step_3_description' => 'Gemeinsam klären wir Ihre Situation und welche Unterstützung sinnvoll ist.',
+    'step_4_title' => 'Planung',
+    'step_4_description' => 'Schritt‑für‑Schritt‑Anleitung und klare nächste Schritte für die Pflege.',
+    'step_5_title' => 'Begleitung',
+    'step_5_description' => 'Wir sind regelmäßig vor Ort und begleiten die Pflege.',
+    'step_6_title' => 'Unterstützung',
+    'step_6_description' => 'Tipps, Antworten und Unterstützung jederzeit verfügbar.',
+    'step_7_title' => 'Entlastung',
+    'step_7_description' => 'Sicherheit und Entlastung im Alltag für Angehörige.',
+    'step_8_title' => 'Kontrolle & Anpassung',
+    'step_8_description' => 'Regelmäßige Kontrolle und Anpassung bei Bedarf.',
     
     'services_title' => 'Unsere Dienstleistungen',
     'services_subtitle' => 'Wir bieten eine breite Palette personalisierter Dienstleistungen für die Altenpflege',
@@ -57,7 +66,8 @@ return [
     'service_transport' => 'Medizinischer Transport',
     'service_transport_desc' => 'Begleitung zu Arztbesuchen, Therapien und regelmäßigen Untersuchungen.',
     
-    'services_cta' => 'Jetzt Service Anfordern',
+    'services_cta' => 'Termin Buchen',
+    'services_details_cta' => 'Unsere Leistungen',
     
     'gallery_title' => 'Unsere Galerie',
     'gallery_subtitle' => 'Die schönsten Momente der Fürsorge und Liebe für unsere Senioren',
@@ -83,7 +93,7 @@ return [
     'footer_rights' => 'Alle Rechte vorbehalten.',
     
     // SEO Meta Tags
-    'seo_title' => 'Altenpflege Schweiz | Professionelle Pflege für Senioren | 24/7 Service',
+    'seo_title' => 'Janira Care | Altenpflege Schweiz | Professionelle Pflege für Senioren | 24/7 Service',
     'seo_description' => 'Professionelle Altenpflege und medizinische Betreuung in der Schweiz. 15 Jahre Erfahrung, 850+ zufriedene Senioren. Hygienepflege, medizinische Unterstützung, tägliche Hilfe.',
     'seo_keywords' => 'Altenpflege, Seniorenbetreuung, Hygienepflege, medizinische Pflege, häusliche Pflege, 24/7 Betreuung, Schweiz',
     
