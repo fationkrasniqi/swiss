@@ -18,6 +18,10 @@ return new class extends Migration
             $table->integer('hours');
             $table->integer('total_price');
             $table->timestamps();
+            
+            // Indexes for performance
+            $table->index('email');
+            $table->index('created_at');
         });
     }
 

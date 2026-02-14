@@ -8,8 +8,8 @@ return [
     'nav_gallery' => 'Galerie',
     'nav_contact' => 'Contact',
     
-    'hero_title' => 'Soins Professionnels pour les Personnes Âgées',
-    'hero_subtitle' => 'Nous offrons des services spécialisés et personnalisés pour vos proches âgés. Avec un personnel formé et un dévouement total à leur bien-être.',
+    'hero_title' => 'Quand les soins deviennent une famille – soutien à domicile',
+    'hero_subtitle' => 'Nous soutenons et accompagnons les proches dans la prise en charge de leurs êtres chers. Grâce à notre expertise, des conseils clairs et un accompagnement personnalisé, nous apportons sécurité, soulagement et qualité des soins à domicile.',
     'hero_cta' => 'Contactez-Nous Maintenant',
     
     // How It Works Section
@@ -143,7 +143,7 @@ return [
     'timeline_2025_text' => 'Plus de 850 seniors heureux et 45 professionnels des soins.',
 
     // Booking hero specific keys
-    'hero_title_html' => 'Soins Professionnels pour les Personnes Âgées <span>près de chez vous</span>',
+    'hero_title_html' => 'Quand les soins deviennent une famille – soutien à domicile',
     'hero_cta_primary' => 'Réserver un Rendez-vous',
     'hero_cta_secondary' => 'Comment ça marche',
     'stat_doctors' => 'Médecins Qualifiés',

@@ -1689,22 +1689,22 @@
                 .booking-hero-container { max-width: 1350px; margin: 0 auto; padding: 0 35px; }
                 .booking-hero-layout { display:flex; gap:55px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
                 .booking-hero-textside { flex:1; min-width:280px; max-width:700px; }
-                .booking-main-title { font-size: 2.7rem; line-height:1.25; margin:0 0 22px; color:#12487E; font-weight:700; max-height: 3.5em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+                .booking-main-title { font-size: 2.7rem; line-height:1.25; margin:0 0 22px; color:#12487E; font-weight:700; }
                 .booking-main-title span{ color:#F795CB; }
-                .booking-hero-description{ color:#555; font-size:1.2rem; max-width:680px; margin-bottom:28px; line-height: 1.6; }
+                .booking-hero-description{ color:#555; font-size:1.05rem; max-width:600px; margin-bottom:22px; line-height: 1.55; }
                 .booking-cta-buttons{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:28px; }
                 .booking-btn-primary-cta{ background:#12487E;color:#fff;padding:15px 34px;border-radius:999px;text-decoration:none;font-weight:600;border:2px solid #12487E; font-size:1.12rem; }
                 .booking-btn-secondary-cta{ background:transparent;color:#12487E;padding:15px 34px;border-radius:999px;text-decoration:none;font-weight:600;border:2px solid #12487E; font-size:1.12rem; }
-                .booking-stats-container{ display:flex; gap:22px; flex-wrap:wrap; margin-top:22px; align-items:stretch; }
-                .booking-stat-card{ background: #fff; padding:26px 34px; border-radius:12px; box-shadow:0 6px 18px rgba(18,72,126,0.06); text-align:center; min-width:155px; flex:1; display:flex; flex-direction:column; justify-content:center; min-height:120px; }
-                .booking-stat-number{ font-size:40px;font-weight:700;color:#12487E; display:block; margin-bottom:8px; }
-                .booking-stat-text{ font-size:20px;color:#444; line-height:1.4; }
+                .booking-stats-container{ display:flex; gap:14px; flex-wrap:wrap; margin-top:18px; align-items:stretch; }
+                .booking-stat-card{ background: #fff; padding:16px 18px; border-radius:12px; box-shadow:0 6px 18px rgba(18,72,126,0.06); text-align:center; min-width:120px; flex:1; display:flex; flex-direction:column; justify-content:center; min-height:86px; }
+                .booking-stat-number{ font-size:26px;font-weight:700;color:#12487E; display:block; margin-bottom:6px; }
+                .booking-stat-text{ font-size:13px;color:#444; line-height:1.35; }
                 .booking-hero-imageside{ flex:1; min-width:280px; text-align:center; }
                 .booking-hero-visual{ width:100%; height:580px; object-fit:cover; border-radius:16px; display:block; box-shadow: 0 20px 60px rgba(18,72,126,0.15); }
                 @media (max-width: 1200px) {
                     .booking-hero-section { padding: 95px 0 75px; }
                     .booking-main-title { font-size: 3rem; }
-                    .booking-hero-description { font-size: 1.18rem; }
+                    .booking-hero-description { font-size: 1.05rem; }
                     .booking-hero-visual { height: 480px; }
                 }
                 @media (max-width: 900px) {
@@ -1713,18 +1713,18 @@
                     .booking-hero-layout{ flex-direction:column-reverse; gap:32px; }
                     .booking-hero-visual{ height:360px; }
                     .booking-main-title{ font-size:2.2rem; text-align:left; }
-                    .booking-hero-description { font-size: 1.08rem; }
+                    .booking-hero-description { font-size: 1rem; }
                     .booking-btn-primary-cta, .booking-btn-secondary-cta { padding: 12px 28px; font-size: 1rem; }
                 }
                 @media (max-width: 576px) {
                     .booking-hero-section { padding: 60px 0; }
                     .booking-main-title{ text-align:center; font-size:1.9rem; margin-bottom: 16px; }
-                    .booking-hero-description{ text-align:center; font-size:1.05rem; }
+                    .booking-hero-description{ text-align:center; font-size:0.98rem; }
                     .booking-cta-buttons{ justify-content:center; }
                     .booking-hero-visual{ height:300px; }
-                    .booking-stat-card { min-width: 110px; padding: 14px 18px; }
-                    .booking-stat-number { font-size: 22px; }
-                    .booking-stat-text { font-size: 13px; }
+                    .booking-stat-card { min-width: 100px; padding: 12px 14px; }
+                    .booking-stat-number { font-size: 20px; }
+                    .booking-stat-text { font-size: 12px; }
                 }
             </style>
                 
@@ -1741,11 +1741,11 @@
 
                         <div class="booking-stats-container" role="list" aria-label="{{ __('home.hero_stats_aria') }}">
                             <div class="booking-stat-card" role="listitem">
-                                <span class="booking-stat-number">500+</span>
+                                <span class="booking-stat-number">15</span>
                                 <span class="booking-stat-text">{{ __('home.stat_doctors') }}</span>
                             </div>
                             <div class="booking-stat-card" role="listitem">
-                                <span class="booking-stat-number">15K+</span>
+                                <span class="booking-stat-number">150</span>
                                 <span class="booking-stat-text">{{ __('home.stat_patients') }}</span>
                             </div>
                             <div class="booking-stat-card" role="listitem">
@@ -1753,6 +1753,7 @@
                                 <span class="booking-stat-text">{{ __('home.stat_online') }}</span>
                             </div>
                         </div>
+
                     </div>
 
                     <div class="booking-hero-imageside" aria-hidden="true">
@@ -2062,26 +2063,6 @@
         </div>
     </section>
 
-    <!-- Stats Counter Section -->
-    <section class="section" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center;">
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div style="font-size: 56px; font-weight: 700; margin-bottom: 10px;" class="counter" data-target="850">0</div>
-                    <div style="font-size: 18px; opacity: 0.95;">{{ __('home.stat_happy_seniors') }}</div>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <div style="font-size: 56px; font-weight: 700; margin-bottom: 10px;" class="counter" data-target="15">0</div>
-                    <div style="font-size: 18px; opacity: 0.95;">{{ __('home.stat_years_experience') }}</div>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <div style="font-size: 56px; font-weight: 700; margin-bottom: 10px;" class="counter" data-target="45">0</div>
-                    <div style="font-size: 18px; opacity: 0.95;">{{ __('home.stat_staff_members') }}</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Reviews Section with Slider -->
     <section class="section" style="background: #f9fafb;">
         <div class="container">
@@ -2197,7 +2178,7 @@
                 <!-- Sarah Müller - Head Nurse -->
                 <div class="team-card-advanced" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-photo-advanced">
-                        <img loading="lazy" decoding="async" src="{{ asset('images/doctor2.jpeg') }}" alt="Sarah Müller">
+                        <img loading="lazy" decoding="async" src="{{ asset('images/doctor3.png') }}" alt="Sarah Müller">
                     </div>
                     <div class="team-info-advanced">
                         <h3>Sarah Müller</h3>
@@ -2274,17 +2255,14 @@
                     <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.06);">
                         <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #1a202c;">{{ __('home.contact_follow_us') }}</h4>
                         <div class="social-links" style="display: flex; gap: 15px;">
-                            <a href="https://facebook.com" target="_blank" style="background: #1877f2;" aria-label="Facebook">
+                            <a href="https://www.facebook.com/profile.php?id=61586744824189&locale=sq_AL" target="_blank" style="background: #1877f2;" aria-label="Facebook">
                                 <i class="fab fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="https://instagram.com" target="_blank" style="background: radial-gradient(circle at 30% 30%, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);" aria-label="Instagram">
+                            <a href="https://www.instagram.com/janiracare/" target="_blank" style="background: radial-gradient(circle at 30% 30%, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);" aria-label="Instagram">
                                 <i class="fab fa-instagram" aria-hidden="true"></i>
                             </a>
-                            <a href="https://linkedin.com" target="_blank" style="background: #0077b5;" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/in/janira-care-3201833a7" target="_blank" style="background: #0077b5;" aria-label="LinkedIn">
                                 <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                            </a>
-                            <a href="https://twitter.com" target="_blank" style="background: #1da1f2;" aria-label="Twitter">
-                                <i class="fab fa-twitter" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -2364,10 +2342,6 @@
             </style>
         </div>
     </section>
-
-            <!-- Contact Form -->
-        </div>
-    </section>
     </main>
 
     <!-- Lightbox for Gallery -->
@@ -2411,13 +2385,13 @@
                 <div>
                     <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">Follow Us</h4>
                     <div style="display: flex; gap: 12px;">
-                        <a href="https://facebook.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#1877f2'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                        <a href="https://www.facebook.com/profile.php?id=61586744824189&locale=sq_AL" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#1877f2'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#E4405F'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                        <a href="https://www.instagram.com/janiracare/" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#E4405F'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#0077b5'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                        <a href="https://www.linkedin.com/in/janira-care-3201833a7" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#0077b5'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>

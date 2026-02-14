@@ -8,8 +8,8 @@ return [
     'nav_gallery' => 'Galeria',
     'nav_contact' => 'Kontakti',
     
-    'hero_title' => 'Kujdesi Profesional për të Moshuarit',
-    'hero_subtitle' => 'Ofrojmë shërbime të specializuara dhe të personalizuara për të moshuarit tuaj të dashur. Me staf të trajnuar dhe përkushtim të plotë për mirëqenien e tyre.',
+    'hero_title' => 'Kur kujdesi bëhet familje – Mbështetje në shtëpi',
+    'hero_subtitle' => 'Ne i mbështesim dhe i shoqërojmë familjarët në kujdesin për të dashurit e tyre. Me dije profesionale, udhëzim të qartë dhe përkujdesje personale, sjellim siguri, lehtësim dhe cilësi të kujdesit në shtëpi.',
     'hero_cta' => 'Kontaktoni Tani',
     
     // How It Works Section
@@ -143,7 +143,7 @@ return [
     'timeline_2025_text' => 'Më shumë se 850 pleq të lumtur dhe 45 profesionistë të kujdesit.',
 
     // Booking hero specific keys
-    'hero_title_html' => 'Kujdes Profesional për të Moshuarit <span>afër jush</span>',
+    'hero_title_html' => 'Kur kujdesi bëhet familje – Mbështetje në shtëpi',
     'hero_cta_primary' => 'Rezervo Terminin',
     'hero_cta_secondary' => 'Si Funksionon',
     'stat_doctors' => 'Doktorë të Kualifikuar',

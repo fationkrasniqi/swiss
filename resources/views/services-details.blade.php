@@ -4,6 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ __('services_details.page_title') }} | {{ __('home.nav_brand') }}</title>
+    <meta name="description" content="{{ __('services_details.page_subtitle') }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ __('services_details.page_title') }} | {{ __('home.nav_brand') }}">
+    <meta property="og:description" content="{{ __('services_details.page_subtitle') }}">
+    <meta property="og:image" content="{{ asset('images/og-image.jpg') }}">
+    
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
     <link href="{{ asset('css/simple.css') }}" rel="stylesheet">
@@ -27,14 +38,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             width: 100%;
+            max-width: min(1200px, 100%);
             position: relative;
         }
         .navbar-brand {
-            text-decoration: none;
-            background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            z-index: 1001;
         }
         .navbar-logo { height: 50px; width: auto; display: block; }
         .hamburger {
@@ -51,7 +70,7 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #12487E;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             border-radius: 3px;
             transition: all 0.3s ease;
         }
@@ -72,7 +91,7 @@
             transition: all 0.3s;
             position: relative;
         }
-        .navbar-menu a:hover { color: #12487E; }
+        .navbar-menu a:hover { color: #4facfe; }
         .navbar-menu a::after {
             content: '';
             position: absolute;
@@ -80,7 +99,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             transition: width 0.3s;
         }
         .navbar-menu a:hover::after { width: 100%; }
@@ -105,7 +124,7 @@
             transform: translateY(-1px);
         }
         .lang-btn.active {
-            background: linear-gradient(135deg, #12487E 0%, #F795CB 100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
             border-color: transparent;
         }
@@ -258,7 +277,8 @@
             .services-details-extra { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            .hamburger { display: flex; margin-left: auto; }
+            .hamburger { display: flex; margin-left: auto; margin-right: 40px; }
+            .navbar .container { overflow: visible; }
             .navbar-menu {
                 position: fixed;
                 top: 0;
@@ -276,11 +296,20 @@
                 transition: right 0.4s ease;
                 padding: 20px;
                 overflow-y: auto;
+                visibility: hidden;
+                opacity: 0;
+                pointer-events: none;
             }
-            .navbar-menu.active { right: 0; }
+            .navbar-menu.active {
+                right: 0;
+                visibility: visible;
+                opacity: 1;
+                pointer-events: auto;
+            }
             .navbar-menu a { font-size: 18px; width: 100%; text-align: center; padding: 12px 0; }
             .lang-switcher { flex-direction: column; width: 100%; gap: 10px; }
-            .lang-btn { width: 100%; text-align: center; }
+            .lang-btn { width: 100%; justify-content: center; padding: 10px 15px; font-size: 15px; text-align: center; }
+            .navbar-brand { font-size: 18px; }
         }
     </style>
 </head>
@@ -322,7 +351,7 @@
                     </div>
                 </div>
                 <div>
-                    <img src="{{ asset('images/cover.jpg') }}" alt="{{ __('services_details.page_title') }}">
+                    <img src="{{ asset('images/service2.png') }}" alt="{{ __('services_details.page_title') }}">
                 </div>
             </div>
 
@@ -358,6 +387,9 @@
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         {{ __('home.services_cta') }}
                     </a>
+                </div>
+                <div style="margin-top:16px;">
+                    <img src="{{ asset('images/service1.png') }}" alt="{{ __('services_details.page_title') }}" style="width: 100%; max-width: 720px; border-radius: 14px; box-shadow: 0 10px 24px rgba(18,72,126,0.12);">
                 </div>
             </div>
 
@@ -406,13 +438,13 @@
                 <div>
                     <h4 style="margin-bottom: 15px; font-size: 18px; font-weight: 700;">Follow Us</h4>
                     <div style="display: flex; gap: 12px;">
-                        <a href="https://facebook.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#1877f2'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                        <a href="https://www.facebook.com/profile.php?id=61586744824189&locale=sq_AL" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#1877f2'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#E4405F'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                        <a href="https://www.instagram.com/janiracare/" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#E4405F'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#0077b5'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                        <a href="https://www.linkedin.com/in/janira-care-3201833a7" target="_blank" style="width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='#0077b5'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
@@ -431,6 +463,9 @@
         const hamburger = document.getElementById('hamburger');
         const navbarMenu = document.getElementById('navbarMenu');
         if (hamburger && navbarMenu) {
+            // Ensure closed by default on load
+            hamburger.classList.remove('active');
+            navbarMenu.classList.remove('active');
             hamburger.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -445,6 +480,13 @@
             });
             document.addEventListener('click', function(e) {
                 if (!hamburger.contains(e.target) && !navbarMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navbarMenu.classList.remove('active');
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
                     hamburger.classList.remove('active');
                     navbarMenu.classList.remove('active');
                 }

@@ -8,8 +8,8 @@ return [
     'nav_gallery' => 'Gallery',
     'nav_contact' => 'Contact',
     
-    'hero_title' => 'Professional Care for the Elderly',
-    'hero_subtitle' => 'We offer specialized and personalized services for your beloved elderly. With trained staff and complete dedication to their well-being.',
+    'hero_title' => 'When care becomes family – support at home',
+    'hero_subtitle' => 'We support and accompany family members in caring for their loved ones. With expertise, clear guidance, and personal support, we provide safety, relief, and quality care at home.',
     'hero_cta' => 'Contact Now',    
     // How It Works Section
     'how_it_works_aria' => 'How family caregiving works',
@@ -141,7 +141,7 @@ return [
     'timeline_2025_text' => 'Over 850 happy seniors and 45 professional caregivers.',
 
     // Booking hero specific keys
-    'hero_title_html' => 'Professional Care for the Elderly <span>Near You</span>',
+    'hero_title_html' => 'When care becomes family – support at home',
     'hero_cta_primary' => 'Book Appointment',
     'hero_cta_secondary' => 'How it works',
     'stat_doctors' => 'Qualified Doctors',

@@ -8,8 +8,8 @@ return [
     'nav_gallery' => 'Galerie',
     'nav_contact' => 'Kontakt',
     
-    'hero_title' => 'Professionelle Altenpflege',
-    'hero_subtitle' => 'Wir bieten spezialisierte und personalisierte Dienstleistungen für Ihre geliebten Senioren. Mit geschultem Personal und vollständigem Engagement für ihr Wohlbefinden.',
+    'hero_title' => 'Wenn Pflege zur Familie wird – Unterstützung zu Hause',
+    'hero_subtitle' => 'Wir unterstützen und begleiten Angehörige in der Pflege ihrer Liebsten. Mit Fachwissen, klarer Anleitung und persönlicher Betreuung sorgen wir für Sicherheit, Entlastung und Pflegequalität im eigenen Zuhause.',
     'hero_cta' => 'Jetzt Kontaktieren',
     
     // How It Works Section
@@ -143,7 +143,7 @@ return [
     'timeline_2025_text' => 'Über 850 glückliche Senioren und 45 professionelle Pflegekräfte.',
 
     // Booking hero specific keys
-    'hero_title_html' => 'Professionelle Altenpflege <span>in Ihrer Nähe</span>',
+    'hero_title_html' => 'Wenn Pflege zur Familie wird – Unterstützung zu Hause',
     'hero_cta_primary' => 'Termin Buchen',
     'hero_cta_secondary' => 'Wie es funktioniert',
     'stat_doctors' => 'Qualifizierte Ärzte',
